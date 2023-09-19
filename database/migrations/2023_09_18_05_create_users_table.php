@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Schema;
 return new class extends Migration
 {
     /**
-     * Run the migrations.
+     * Run migrations.
      */
     public function up(): void
     {
@@ -15,14 +15,14 @@ return new class extends Migration
             $table->id();
             $table->string('us_fname');
             $table->string('us_lname');
-            $table->date('us_datebirth');
-            $table->unsignedBigInteger('gender_id');
+            $table->date('us_datebirth')->nullable();
+            $table->unsignedBigInteger('gender_id')->nullable();
             $table->foreign('gender_id')
                   ->references('id')
                   ->on('genders')
                   ->onUpdate('cascade')
                   ->onDelete('cascade');
-            $table->unsignedBigInteger('career_id');
+            $table->unsignedBigInteger('career_id')->nullable();
             $table->foreign('career_id')
                   ->references('id')
                   ->on('careers')
@@ -31,7 +31,7 @@ return new class extends Migration
             $table->boolean('is_plus')->nullable();
             $table->boolean('is_admin')->nullable();
             $table->boolean('payment_status')->nullable();
-            $table->dateTime('payment_datetime');
+            $table->dateTime('payment_datetime')->nullable();
             $table->string('us_email')->unique();
             $table->string('password');
             $table->rememberToken();
