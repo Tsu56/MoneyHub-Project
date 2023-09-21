@@ -25,7 +25,7 @@
             <input type="date" name="start-date" id="start-date">
             <label for="end">สิ้นสุด</label>
             <input type="date" name="end-date" id="end-date">
-            <button type="submit">โอเค!</button>
+            <button type="submit">โอเค</button>
         </form>
         
     </main>
