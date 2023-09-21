@@ -11,7 +11,7 @@
     </header>
     <nav>
         <ul>
-            <li><a href="">หน้าหลัก</a></li>
+            <li><a href="/dashboard">หน้าหลัก</a></li>
             <li><a href="">รายรับ-รายจ่าย</a></li>
             <li><a href="">กระปุกออมสิน</a></li>
             <li><a href="/MoneyHub/summarize">สรุป</a></li>
