@@ -30,22 +30,28 @@
                 <img src="{{ asset('img/MoneyHub_loco.png') }}" alt="" width="150" height="42">
             </a>
             <!-- ***** Logo End ***** -->
-            <!-- ***** button toggler icon Start ***** -->
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-                aria-label="Toggle navigation">
+
+            <!-- ***** Navbar Toggler Start ***** -->
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <!-- ***** button toggler icon End ***** -->
+            <!-- ***** Navbar Toggler End ***** -->
 
+            <!-- ***** Navbar Start ***** -->
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page"
+                        <a class="nav-link @if (request()->routeIs('moneyhub.indexhome'))
+                            active
+                        @endif " aria-current="page"
                             href="{{ route('moneyhub.indexhome') }}">หน้าหลัก</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link"
+                        <a class="nav-link 
+                        @if (request()->routeIs('moneyhub.noteincome'))
+                            active
+                        @endif
+                        "
                             href="{{ route('moneyhub.noteincome', ['user_id' => auth()->user()->id]) }}">รายรับ-รายจ่าย</a>
                     </li>
                     <li class="nav-item dropdown">
@@ -53,13 +59,13 @@
                             id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             สรุป
                         </a>
-                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" href="#">สรุปแผนการเงิน</a></li>
-                            <li><a class="dropdown-item" href="#">ประวัติรายการ</a></li>
+                        <ul class="dropdown-menu dropdown-dark bg-dark" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item text-white" href="#">สรุปแผนการเงิน</a></li>
+                            <li><a class="dropdown-item text-white" href="#">ประวัติรายการ</a></li>
                             <li>
                                 <hr class="dropdown-divider">
                             </li>
-                            <li><a class="dropdown-item" href="#">อื่นๆ</a></li>
+                            <li><a class="dropdown-item text-white" href="#">อื่นๆ</a></li>
                         </ul>
                     </li>
                     <li class="nav-item">
@@ -93,9 +99,9 @@
                 </ul>
                 <!-- ***** search form End ***** -->
             </div>
+            <!-- ***** Navbar End ***** -->
         </div>
     </nav><br><br>
-    <!-- ***** navbar Area End ***** -->
 
     <div class="container">
         <main>
