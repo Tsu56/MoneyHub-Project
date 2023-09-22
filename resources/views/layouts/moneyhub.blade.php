@@ -13,15 +13,15 @@
     <header>
         <ul>
             <li class="logo">
-                <img src="http:localhost/img/logo.png" alt="Logo">
+                <img src="{{ url('img/logo.png')}}" alt="Logo">
             </li>
         </ul>
     </header>
     <nav>
         <ul>
-            <li><a href="/MoneyHub">หน้าหลัก</a></li>
-            <li><a href="">รายรับ-รายจ่าย</a></li>
-            <li><a href="/MoneyHub/summarize">สรุป</a></li>
+            <li><a href="{{ route('moneyhub.indexhome')}}">หน้าหลัก</a></li>
+            <li><a href="{{ route('moneyhub.noteincome', ['user_id' => auth()->user()->id])}}">รายรับ-รายจ่าย</a></li>
+            <li><a href="{{ route('moneyhub.indexsummarize')}}">สรุป</a></li>
             <li><a href="">ประวัติ</a></li>
         </ul>
     </nav>
