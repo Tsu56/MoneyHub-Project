@@ -10,6 +10,7 @@
     <title>MoneyHub</title>
 </head>
 <body>
+<<<<<<< HEAD
     <div class="container">
         <header class="navbar navbar-expand-lg navbar-light bg-light">
             <ul class="navbar-nav">
@@ -21,7 +22,7 @@
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item"><a class="nav-link active" href="{{ route('moneyhub.home') }}">หน้าหลัก</a></li>
-                <li class="nav-item"><a class="nav-link" href="">รายรับ-รายจ่าย</a></li>
+                <li class="nav-item"><a class="nav-link" href="{{ route('moneyhub.noteincome', ['user_id' => auth()->user()->id])}}">รายรับ-รายจ่าย</a></li>
                 <li class="nav-item"><a class="nav-link" href="{{ route('moneyhub.summarize') }}">สรุป</a></li>
                 <li class="nav-item"><a class="nav-link" href="">ประวัติ</a></li>
             </ul>
