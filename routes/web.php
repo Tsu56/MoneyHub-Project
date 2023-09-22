@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\summarizeController;
+use App\Http\Controllers\moneyhubController;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,5 +26,6 @@ Route::middleware([
     Route::get('/dashboard', function () {
         return view('dashboard');
     })->name('dashboard');
-    Route::get('/MoneyHub/summarize', [summarizeController::class, "index"])->name('moneyhub.summarize');
+    Route::get('/MoneyHub/summarize', [moneyhubController::class, "showSummarize"])->name('moneyhub.summarize');
+    Route::get('/MoneyHub', [moneyhubController::class, "showHome"])->name('moneyhub.home');
 });
