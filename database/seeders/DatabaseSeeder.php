@@ -20,30 +20,53 @@ class DatabaseSeeder extends Seeder
         //     'name' => 'Test User',
         //     'email' => 'test@example.com',
         // ]);
-        $gender = [
+        // $gender = [
+        //     [
+        //         'gender_name' => 'Male'
+        //     ],
+        //     [
+        //         'gender_name' => 'Female'
+        //     ]
+        // ];
+
+        // $career = [
+        //     [
+        //         'career_name' => 'Students'
+        //     ],
+        //     [
+        //         'career_name' => 'Bussiness Owner'
+        //     ]
+        // ];
+
+        // foreach($gender as $key => $value){
+        //     Gender::create($value);
+        // }
+
+        // foreach($career as $key => $value){
+        //     Career::create($value);
+        // }
+
+        $transactiontype = [
             [
-                'gender_name' => 'Male'
+                'transaction_type_name' => 'Income'
             ],
             [
-                'gender_name' => 'Female'
+                'transaction_type_name' => 'Expense'
             ]
         ];
 
-        $career = [
+        $category = [
             [
-                'career_name' => 'Students'
+                'category_name' => 'Food',
+                'transaction_type_id' => 2
             ],
             [
-                'career_name' => 'Bussiness Owner'
+                'category_name' => 'T',
+                'transaction_type_id' => 2
+            ],
+            [
+
             ]
         ];
-
-        foreach($gender as $key => $value){
-            Gender::create($value);
-        }
-
-        foreach($career as $key => $value){
-            Career::create($value);
-        }
     }
 }

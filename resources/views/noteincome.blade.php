@@ -1,7 +1,7 @@
 @extends('layouts.moneyhub')
 
 @section('main')
-    <h4>รายรับ-รายจ่าย</h4>
+    <h3>รายรับ-รายจ่าย</h3>
     <div>
         <ul>
             <li><a href="{{ route('moneyhub.noteincome', ['user_id' => auth()->user()->id])}}">รายรับ</a></li>
