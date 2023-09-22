@@ -6,6 +6,9 @@
     <title>MoneyHub</title>
 </head>
 <body>
+    @section('navigation-menu')
+        
+    @endsection
     <header>
         <h2>Hello {{auth()->user()->us_fname}}</h2>
     </header>
