@@ -22,7 +22,7 @@
         </header>
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <ul class="navbar-nav mr-auto">
-                <li class="nav-item"><a class="nav-link active" href="{{ route('moneyhub.home') }}">หน้าหลัก</a></li>
+                <li class="nav-item"><a class="nav-link active" href="{{ route('moneyhub.indexhome') }}">หน้าหลัก</a></li>
                 <li class="nav-item"><a class="nav-link" href="{{ route('moneyhub.noteincome', ['user_id' => auth()->user()->id])}}">รายรับ-รายจ่าย</a></li>
                 <li class="nav-item"><a class="nav-link" href="{{ route('moneyhub.summarize') }}">สรุป</a></li>
                 <li class="nav-item"><a class="nav-link" href="">ประวัติ</a></li>
