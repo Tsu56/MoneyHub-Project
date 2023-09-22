@@ -1,7 +1,9 @@
 <?php
 
+use App\Http\Controllers\homeController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\moneyhubController;
+use App\Http\Controllers\incomeController;
+use App\Http\Controllers\summarizeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,6 +28,7 @@ Route::middleware([
     Route::get('/dashboard', function () {
         return view('dashboard');
     })->name('dashboard');
-    Route::get('/MoneyHub/summarize', [moneyhubController::class, "showSummarize"])->name('moneyhub.summarize');
-    Route::get('/MoneyHub', [moneyhubController::class, "showHome"])->name('moneyhub.home');
+    Route::get('/MoneyHub', [homeController::class, "index"])->name('moneyhub.indexhome');
+    Route::get('/MoneyHub/summarize', [summarizeController::class, "index"])->name('moneyhub.indexsummarize');
+    Route::get('/MoneyHub/noteIncome/{user_id}', [incomeController::class, "noteIncomeForm"])->name('moneyhub.noteincome');
 });

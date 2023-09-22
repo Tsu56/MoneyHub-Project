@@ -11,27 +11,30 @@
     <link rel="stylesheet" type="text/css" href="{{asset('css/style.css')}}">
 </head>
 <body>
-    <header>
-        <ul>
-            <li class="logo">
-                <img src="http:localhost/img/logo.png" alt="Logo">
-            </li>
-        </ul>
-    </header>
-    <nav>
-        <ul>
-            <li><a href="/MoneyHub">หน้าหลัก</a></li>
-            <li><a href="">รายรับ-รายจ่าย</a></li>
-            <li><a href="/MoneyHub/summarize">สรุป</a></li>
-            <li><a href="">ประวัติ</a></li>
-        </ul>
-    </nav>
-    <main>
-        @yield('main')
-    </main>
-    <footer>
-        <span>MoneyHub</span>
-        <span>ติดต่อเรา</span>
-    </footer>
+<<<<<<< HEAD
+    <div class="container">
+        <header class="navbar navbar-expand-lg navbar-light bg-light">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <img class="navbar-brand img-thumbnail" src="/img/cp-logo.png" width="20%" alt="Logo">
+                </li>
+            </ul>
+        </header>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item"><a class="nav-link active" href="{{ route('moneyhub.home') }}">หน้าหลัก</a></li>
+                <li class="nav-item"><a class="nav-link" href="{{ route('moneyhub.noteincome', ['user_id' => auth()->user()->id])}}">รายรับ-รายจ่าย</a></li>
+                <li class="nav-item"><a class="nav-link" href="{{ route('moneyhub.summarize') }}">สรุป</a></li>
+                <li class="nav-item"><a class="nav-link" href="">ประวัติ</a></li>
+            </ul>
+        </nav>
+        <main>
+            @yield('main')
+        </main>
+        <footer>
+            <span>MoneyHub</span>
+            <span>ติดต่อเรา</span>
+        </footer>
+    </div>
 </body>
 </html>
