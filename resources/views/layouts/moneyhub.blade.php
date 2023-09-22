@@ -20,8 +20,8 @@
 
 <body>
     <!-- ***** navbar Area End ***** -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark navbar-area navbar-sticky">
-        <div class="container">
+    <nav class="navbar navbar-expand-lg navbar-area navbar-sticky custom-pink-navbar ">
+        <div class="container ">
             <!-- ***** Logo Start ***** -->
             <a href="{{ route('moneyhub.indexhome') }}" class="logo">
                 <img src="{{ asset('img/MoneyHub_loco.png') }}" alt="" width="150" height="42">
@@ -35,18 +35,18 @@
 
             <!-- ***** Navbar Start ***** -->
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0 ">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="{{ route('moneyhub.indexhome') }}">หน้าหลัก</a>
+                        <a class="nav-link active text-white" aria-current="page" href="{{ route('moneyhub.indexhome') }}">หน้าหลัก</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('moneyhub.noteincome', ['user_id' => auth()->user()->id])}}">รายรับ-รายจ่าย</a>
+                        <a class="nav-link text-white" href="{{ route('moneyhub.noteincome', ['user_id' => auth()->user()->id])}}">รายรับ-รายจ่าย</a>
                     </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="{{ route('moneyhub.indexsummarize') }}" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <a class="nav-link dropdown-toggle text-white" href="{{ route('moneyhub.indexsummarize') }}" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             สรุป
                         </a>
-                        <ul class="dropdown-menu dropdown-dark bg-dark" aria-labelledby="navbarDropdown">
+                        <ul class="dropdown-menu custom-pink-dropdown" aria-labelledby="navbarDropdown">
                             <li><a class="dropdown-item text-white" href="#">สรุปแผนการเงิน</a></li>
                             <li><a class="dropdown-item text-white" href="#">ประวัติรายการ</a></li>
                             <li>
@@ -56,12 +56,12 @@
                         </ul>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">ติดต่อเรา</a>
+                        <a class="nav-link text-white" href="#">ติดต่อเรา</a>
                     </li>
                 </ul>
                 <!-- ***** search form Start ***** -->
                 <form class="d-flex">
-                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                    <input class="form-control me-2" type="search" placeholder="Search..." aria-label="Search">
                     <button class="btn btn-outline-success" type="submit">Search</button>
                 </form>
                 <!-- ***** search form End ***** -->
@@ -74,11 +74,27 @@
         <main>
             @yield('main')
         </main>
-        <footer>
-            <span>MoneyHub</span>
-            <span>ติดต่อเรา</span>
-        </footer>
-    </div>
+    </div><br><br>
+
+    <!-- ***** Footer Start ***** -->
+    <footer class="custom-pink-footer text-white text-center py-3">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <p>&copy; 2023 MoneyHub</p>
+                </div>
+                <div class="col-md-6">
+                    <ul class="list-inline">
+                        <li class="list-inline-item text-yellow"><a href="{{ route('moneyhub.indexhome') }}">หน้าหลัก</a></li>
+                        <li class="list-inline-item text-yellow"><a href="#">เกี่ยวกับเรา</a></li>
+                        <li class="list-inline-item text-yellow"><a href="#">บริการ</a></li>
+                        <li class="list-inline-item text-yellow"><a href="#">ติดต่อเรา</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- ***** Footer End ***** -->
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
 </body>

@@ -1,5 +1,7 @@
 @extends('layouts.moneyhub')
 
 @section('main')
-    <img src="img/35364794db1c5b0733303f2bba86003a.jpg" alt="Homepage">
+<div class="card">
+    <img src="{{ asset('img/Banner-3.png') }}" class="card-img-top" alt="...">
+</div>
 @endsection
