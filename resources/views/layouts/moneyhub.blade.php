@@ -14,7 +14,7 @@
         <header class="navbar navbar-expand-lg navbar-light bg-light">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <img class="navbar-brand img-thumbnail" src="/img/cp-kku-logo.png" width="20%" alt="Logo">
+                    <img class="navbar-brand img-thumbnail" src="/img/cp-logo.png" width="20%" alt="Logo">
                 </li>
             </ul>
         </header>
