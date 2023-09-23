@@ -852,7 +852,7 @@
 
         <div class="max-w-7xl mx-auto p-6 lg:p-8">
             <div class="flex justify-center">
-                <img src="{{ asset('img/MoneyHub_loco.png') }}" alt="logo" width="50%">
+                <img src="{{ asset('img/Logo_MoneyHub.png') }}" alt="logo" width="50%">
             </div>
 
             <div class="mt-16">
