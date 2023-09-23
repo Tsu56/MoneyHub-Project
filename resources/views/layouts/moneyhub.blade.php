@@ -58,12 +58,12 @@
                             สรุป
                         </a>
                         <ul class="dropdown-menu custom-pink-dropdown" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item text-white" href="{{ "#" }}">สรุปแผนการเงิน</a></li>
-                            <li><a class="dropdown-item text-white" href="{{ route('moneyhub.historyList') }}">ประวัติรายการ</a></li>
+                            <li><a class="dropdown-item" href="{{ "#" }}">สรุปแผนการเงิน</a></li>
+                            <li><a class="dropdown-item" href="{{ route('moneyhub.historyList') }}">ประวัติรายการ</a></li>
                             <li>
                                 <hr class="dropdown-divider">
                             </li>
-                            <li><a class="dropdown-item text-white" href="#" >อื่นๆ</a></li>
+                            <li><a class="dropdown-item" href="#" >อื่นๆ</a></li>
                         </ul>
                     </li>
                     <li class="nav-item">
@@ -73,7 +73,7 @@
                 <!-- ***** search form Start ***** -->
                 <form class="d-flex me-2">
                     <input class="form-control me-2" type="search" placeholder="Search..." aria-label="Search">
-                    <button class="btn btn-outline-success" type="submit">Search</button>
+                    <button class="btn btn-success" type="submit">Search</button>
                 </form>
 
                 <ul class="navbar-nav">
