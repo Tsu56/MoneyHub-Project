@@ -21,7 +21,7 @@
 <body>
     <!-- ***** navbar Area Start ***** -->
     <nav class="navbar navbar-expand-lg navbar-area navbar-sticky custom-pink-navbar ">
-        <div class="container ">
+        <div class="container-fluid">
             <!-- ***** Logo Start ***** -->
             <a href="{{ route('home') }}" class="logo">
                 <img src="{{ asset('img/Logo_MoneyHub.png') }}" alt="" width="150" height="42">
@@ -55,12 +55,12 @@
                             สรุป
                         </a>
                         <ul class="dropdown-menu dropdown-dark custom-pink-navbar" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item text-white" href="#" >สรุปแผนการเงิน</a></li>
-                            <li><a class="dropdown-item text-white" href="#" >ประวัติรายการ</a></li>
+                            <li><a class="dropdown-item text-white" href="#">สรุปแผนการเงิน</a></li>
+                            <li><a class="dropdown-item text-white" href="#">ประวัติรายการ</a></li>
                             <li>
                                 <hr class="dropdown-divider">
                             </li>
-                            <li><a class="dropdown-item text-white" href="#" >อื่นๆ</a></li>
+                            <li><a class="dropdown-item text-white" href="#">อื่นๆ</a></li>
                         </ul>
                     </li>
                     <li class="nav-item">
@@ -70,7 +70,7 @@
                 <!-- ***** search form Start ***** -->
                 <form class="d-flex me-2">
                     <input class="form-control me-2" type="search" placeholder="Search..." aria-label="Search">
-                    <button class="btn btn-outline-success" type="submit">Search</button>
+                    <button class="btn btn-outline-success btn-bold" type="submit">Search</button>
                 </form>
 
                 <ul class="navbar-nav">
@@ -99,7 +99,7 @@
     <!-- ***** navbar Area End ***** -->
 
     <!-- ***** Container Area Start ***** -->
-    <div class="container">
+    <div class="container container-item">
         <main>
             @yield('main')
         </main>
@@ -108,7 +108,7 @@
 
     <!-- ***** Footer Start ***** -->
     <footer class="custom-pink-footer text-white text-center py-3">
-        <div class="container">
+        <div class="container-fluid">
             <div class="row">
                 <div class="col-md-6">
                     <p>&copy; 2023 MoneyHub</p>
@@ -127,6 +127,7 @@
     <!-- ***** Footer End ***** -->
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+
 </body>
 
 </html>

@@ -1,67 +1,141 @@
-*{
+* {
     margin: 0;
     padding: 0;
     border: 0;
     outline: 0;
     font-family: Kanit !important;
 }
-.logo{
+
+/** CSS navbar always top  **/
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+}
+
+.logo {
     padding-bottom: 3px;
     padding-right: 10px;
+    margin-left: 20px
 }
-.custom-pink-navbar {
+
+.custom-pink-navbar,
+.custom-pink-footer,
+.custom-pink-container {
     background-color: #ff69b4;
 }
-.custom-pink-footer {
-    background-color: #ff69b4; 
+
+nav div ul li a {
+    margin: 0 13px;
 }
-nav div ul li a{
-    margin: 0 10px;
-}
+
 nav div .custom-pink-navbar {
-    background-color: #ff69b4; 
-    color: white; 
+    background-color: #ff69b4;
+    color: white;
 }
-div #navbarSupportedContent ul li a{
+
+div #navbarSupportedContent ul li a {
     font-size: large;
 }
 
-footer div ul li a{
-    color: #ffcf3e;
+.btn-bold {
+    font-weight: bold;
+    letter-spacing: 0.2pt;
 }
 
-footer div ul li a:hover{
-    color: whitesmoke; 
+footer div ul li a {
+    color: #ffcf3e;
+    text-shadow: 1px 2px 3px orange;
+    letter-spacing: 0.2pt;
+}
+
+footer div ul li a:hover {
+    color: white;
     transition: 0.1s;
-    text-shadow: 2px 4px 15px rgb(255, 221, 50);
+    text-shadow: 2px 4px 10px rgb(255, 221, 50);
     padding-top: 30px;
     padding-left: 13px;
     padding-right: 13px;
     padding-bottom: 30px;
 }
 
-footer{
+footer div ul li a:active{
+    color: orangered;
+    text-shadow: 1px 2px 4px violet;
+    font-size: small;
+    transition: 0.2s;
+    font-weight: bold;
+}
+
+footer {
     clear: both;
 }
-footer div ul li{
-    margin: 0 15px;
+
+footer div ul li {
+    margin: 0 16px;
 }
 
-div .card {
-    width: 100%;
-    margin: 50px 0 !important;
+.container-item{
+    margin-top: 7% !important;
 }
+
+.card {
+    margin-top: 35px;
+    width: 100%; 
+    cursor: pointer;
+    border: #ff69b4 groove 16px;
+    border-radius: 0;
+    outline: rgb(200, 77, 118) 13px ridge;
+}
+
 
 /* navbar bg yellow เมื่อ:hover */
-div #navbarSupportedContent ul li a:hover{ 
-    transition: 0.3s;
+div #navbarSupportedContent ul li a:hover {
+    transition: 0.3s ease;
     box-shadow: 1px 2px 12px #b98c03;
     background-color: #ebb102;
     border-radius: 4px;
-    margin: 0 15px;
+    margin: 0 16px;
 }
 
 /*  ตัวอักษรเป็นสีดำเมื่อ:hover  */
 .navbar-nav .nav-item.dropdown:hover .nav-link {
     color: black;
 }
+
+.bg-pink a button{
+    background-color: rgb(255, 200, 0);
+    color: black;
+    transition: 0.4s ease;
+    border-radius: 1px;
+    text-shadow: rgb(231, 151, 2) 1px 2px 1px;
+}
+
+.bg-pink a button:hover {
+    background-color: rgb(221, 151, 0); 
+    color: white;
+    margin-right: 10px;
+    margin-left: 10px;
+    transition: 0.3s;
+    box-shadow: 3px 2px 5px yellow;
+}
+
+.bg-pink a button:active {
+    background-color: rgb(221, 151, 0); 
+    color: greenyellow;
+    font-size: small;
+    box-shadow: 3px 2px 5px yellow;
+}
+
+.img-pointer {
+    cursor: pointer;
+}
+
+
+
+
+
+
+
