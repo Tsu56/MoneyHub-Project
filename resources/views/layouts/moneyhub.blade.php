@@ -19,6 +19,7 @@
         <link
             href="https://fonts.googleapis.com/css2?family=Inter&family=Kanit&family=Noto+Serif:wght@500&family=Playfair+Display:wght@400;600&family=Varela+Round&display=swap"
             rel="stylesheet">
+        @yield('add-link')
     </head>
 
 <body>
@@ -60,8 +61,8 @@
                             สรุป
                         </a>
                         <ul class="dropdown-menu custom-pink-dropdown" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item text-white" href="#">สรุปแผนการเงิน</a></li>
-                            <li><a class="dropdown-item text-white" href="#">ประวัติรายการ</a></li>
+                            <li><a class="dropdown-item text-white" href="{{ "#" }}">สรุปแผนการเงิน</a></li>
+                            <li><a class="dropdown-item text-white" href="{{ route('moneyhub.historyList') }}">ประวัติรายการ</a></li>
                             <li>
                                 <hr class="dropdown-divider">
                             </li>
