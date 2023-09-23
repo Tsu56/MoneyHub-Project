@@ -19,12 +19,12 @@
     </head>
 
 <body>
-    <!-- ***** navbar Area End ***** -->
+    <!-- ***** navbar Area Start ***** -->
     <nav class="navbar navbar-expand-lg navbar-area navbar-sticky custom-pink-navbar ">
         <div class="container ">
             <!-- ***** Logo Start ***** -->
             <a href="{{ route('home') }}" class="logo">
-                <img src="{{ asset('img/MoneyHub_loco.png') }}" alt="" width="150" height="42">
+                <img src="{{ asset('img/Logo_MoneyHub.png') }}" alt="" width="150" height="42">
             </a>
             <!-- ***** Logo End ***** -->
 
@@ -69,7 +69,7 @@
                 </ul>
                 <!-- ***** search form Start ***** -->
                 <form class="d-flex me-2">
-                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                    <input class="form-control me-2" type="search" placeholder="Search..." aria-label="Search">
                     <button class="btn btn-outline-success" type="submit">Search</button>
                 </form>
 
@@ -78,7 +78,7 @@
                         <a class="nav-link dropdown-toggle" href="" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             สวัสดี, {{ Auth::user()->us_fname }}
                         </a>
-                        <ul class="dropdown-menu">
+                        <ul class="dropdown-menu custom-pink-navbar">
                             <li><a class="dropdown-item" href="{{ route('profile.show') }}">โปรไฟล์</a></li>
                             <li>
                                 <form action="{{ route('logout') }}" method="POST">
@@ -95,13 +95,16 @@
             </div>
             <!-- ***** Navbar End ***** -->
         </div>
-    </nav><br><br>
+    </nav>
+    <!-- ***** navbar Area End ***** -->
 
+    <!-- ***** Container Area Start ***** -->
     <div class="container">
         <main>
             @yield('main')
         </main>
     </div><br><br>
+    <!-- ***** Container Area End ***** -->
 
     <!-- ***** Footer Start ***** -->
     <footer class="custom-pink-footer text-white text-center py-3">

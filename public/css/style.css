@@ -5,6 +5,10 @@
     outline: 0;
     font-family: Kanit !important;
 }
+.logo{
+    padding-bottom: 3px;
+    padding-right: 10px;
+}
 .custom-pink-navbar {
     background-color: #ff69b4;
 }
@@ -18,6 +22,9 @@ nav div .custom-pink-navbar {
     background-color: #ff69b4; 
     color: white; 
 }
+div #navbarSupportedContent ul li a{
+    font-size: large;
+}
 
 footer div ul li a{
     color: #ffcf3e;
@@ -26,7 +33,7 @@ footer div ul li a{
 footer div ul li a:hover{
     color: whitesmoke; 
     transition: 0.1s;
-    text-shadow: 3px 5px 11px rgb(215, 180, 1);
+    text-shadow: 2px 4px 15px rgb(255, 221, 50);
     padding-top: 30px;
     padding-left: 13px;
     padding-right: 13px;
@@ -40,11 +47,13 @@ footer div ul li{
     margin: 0 15px;
 }
 
-.card{
+div .card {
     width: 100%;
-    margin: 0 !important;
+    margin: 50px 0 !important;
 }
-div ul li:hover{ 
+
+/* navbar bg yellow เมื่อ:hover */
+div #navbarSupportedContent ul li a:hover{ 
     transition: 0.3s;
     box-shadow: 1px 2px 12px #b98c03;
     background-color: #ebb102;
@@ -52,6 +61,7 @@ div ul li:hover{
     margin: 0 15px;
 }
 
+/*  ตัวอักษรเป็นสีดำเมื่อ:hover  */
 .navbar-nav .nav-item.dropdown:hover .nav-link {
     color: black;
 }
