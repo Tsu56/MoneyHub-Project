@@ -11,16 +11,18 @@
 
 @section('main')
     <div class="container">
-        <div class="text-center">
-            <h2>ปฏิทิน {{ app()->getLocale() }}</h2>
-        </div>
-        <div class="row">
-            <div class="col-1"></div>
-            <div class="col-10">
-                <div id="calendar">
-                </div>    
+        <div class="card">
+            <div class="text-center mt-3">
+                <h2>ปฏิทิน</h2>
             </div>
-            <div class="col-1"></div>
+            <div class="row">
+                <div class="col-1"></div>
+                <div class="col-10">
+                    <div class="mb-5" id="calendar">
+                    </div>    
+                </div>
+                <div class="col-1"></div>
+            </div>
         </div>
     </div>    
     <script>
