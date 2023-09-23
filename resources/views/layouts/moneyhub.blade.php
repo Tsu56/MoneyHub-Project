@@ -113,11 +113,13 @@
     <footer class="custom-pink-footer text-white text-center py-3">
         <div class="container">
             <div class="row">
-                <div class="col-md-6">
-                    <p>&copy; 2023 MoneyHub</p>
+                <div class="col-md-6 d-flex justify-content-start">
+                    <div class="mx-3">
+                        <p class="m-0">&copy; 2023 MoneyHub</p>
+                    </div>
                 </div>
                 <div class="col-md-6">
-                    <ul class="list-inline">
+                    <ul class="list-inline m-0">
                         <li class="list-inline-item "><a href="{{ route('moneyhub.indexhome') }}">หน้าหลัก</a></li>
                         <li class="list-inline-item "><a href="#">เกี่ยวกับเรา</a></li>
                         <li class="list-inline-item "><a href="#">บริการ</a></li>
