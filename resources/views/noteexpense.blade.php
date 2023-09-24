@@ -23,8 +23,8 @@
         <form action="{{ route('moneyhub.inserttransaction') }}" method="post">
             @csrf
             <input type="text" name="us_id" value={{auth()->user()->id}} hidden>
-            <input type="text" name="trantype" value=1 hidden>
-            <p>ประเภทรายรับ
+            <input type="text" name="trantype" value=2 hidden>
+            <p>ประเภทค่าใช้จ่าย
                 <select name="category" id="category" onchange="selectChange()" required>
                     @foreach ($categories as $category)
                     <option>{{$category->category_name}}</option>
