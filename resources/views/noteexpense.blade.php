@@ -12,11 +12,11 @@
             }
         }
     </script>
-    <h3>รายรับ-รายจ่าย</h3>
+    <p class="h2 text-center">รายรับ-รายจ่าย</p>
     <div>
         <ul>
-            <li><a href="{{ route('moneyhub.noteincome', ['user_id' => auth()->user()->id])}}">รายรับ</a></li>
-            <li><a href="{{ route('moneyhub.noteexpense', ['user_id' => auth()->user()->id])}}">รายจ่าย</a></li>
+            <li><a class="h6 text-center" href="{{ route('moneyhub.noteincome', ['user_id' => auth()->user()->id])}}">รายรับ</a></li>
+            <li><a class="h6 text-center" href="{{ route('moneyhub.noteexpense', ['user_id' => auth()->user()->id])}}">รายจ่าย</a></li>
         </ul>
     </div>
     <div>
@@ -24,7 +24,7 @@
             @csrf
             <input type="text" name="us_id" value={{auth()->user()->id}} hidden>
             <input type="text" name="trantype" value=2 hidden>
-            <p>ประเภทค่าใช้จ่าย
+            <p class="h6 text-center">ประเภทค่าใช้จ่าย
                 <select name="category" id="category" onchange="selectChange()" required>
                     @foreach ($categories as $category)
                     <option>{{$category->category_name}}</option>
@@ -33,10 +33,10 @@
                 </select><br>
                 <input type="text" name="otherCategory" id="otherCategory" hidden>
             </p>
-            <p>จำนวนเงิน
+            <p class="h6 text-center">จำนวนเงิน
                 <input type="text" name="amount" required>
             </p>
-            <p>คำอธิบาย
+            <p class="h6 text-center">คำอธิบาย
                 <input type="text" name="description">
             </p>
             <button type="submit" id="insert-btn" name="insert-btn">บันทึก</button>
