@@ -27,7 +27,8 @@ div #navbarSupportedContent ul li a{
 }
 
 footer div ul li a{
-    color: #ffcf3e;
+    color: whitesmoke;
+    transition: 0.1s;
 }
 
 footer div ul li a:hover{
@@ -52,6 +53,11 @@ div .card {
     margin: 50px 0 !important;
 }
 
+/* navbar bg yellow เมื่อยังไม่ถูก hover */
+div #navbarSupportedContent ul li a{
+    transition: 0.3s;
+}
+
 /* navbar bg yellow เมื่อ:hover */
 div #navbarSupportedContent ul li a:hover{ 
     transition: 0.3s;
@@ -62,6 +68,6 @@ div #navbarSupportedContent ul li a:hover{
 }
 
 /*  ตัวอักษรเป็นสีดำเมื่อ:hover  */
-.navbar-nav .nav-item.dropdown:hover .nav-link {
-    color: black;
+.navbar-nav .nav-item.dropdown .nav-link {
+    color: white;
 }
