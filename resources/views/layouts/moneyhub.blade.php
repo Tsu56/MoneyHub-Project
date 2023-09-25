@@ -85,11 +85,11 @@
                             สวัสดี, {{ Auth::user()->us_fname }}
                         </a>
                         <ul class="dropdown-menu custom-pink-navbar">
-                            <li><a class="dropdown-item" href="{{ route('profile.show') }}">โปรไฟล์</a></li>
+                            <li><a class="dropdown-item custom-nav-level2" href="{{ route('profile.show') }}">โปรไฟล์</a></li>
                             <li>
                                 <form action="{{ route('logout') }}" method="POST">
                                     @csrf
-                                    <a class="dropdown-item" href="{{ route('logout') }}"
+                                    <a class="dropdown-item custom-nav-level2" href="{{ route('logout') }}"
                                         onclick="event.preventDefault(); this.closest('form').submit();">
                                         ลงชื่อออก
                                     </a>
