@@ -95,6 +95,12 @@
                 <h2>ปฏิทิน</h2>
             </div>
             <div class="row">
+                <style>
+                    .fc-daygrid-day-number, .fc-col-header-cell-cushion {
+                        text-decoration: none;
+                        color: black;
+                    }
+                </style>
                 <div class="col-12 px-5">
                     <div class="mb-5" id="calendar">
                     </div>
