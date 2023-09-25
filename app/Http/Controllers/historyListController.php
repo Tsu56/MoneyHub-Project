@@ -12,6 +12,7 @@ class historyListController extends Controller
     }
 
     public function pageResult() {
+        
         return view('historyListResult');
     }
 }

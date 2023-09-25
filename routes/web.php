@@ -3,7 +3,7 @@
 use App\Http\Controllers\historyListController;
 use App\Http\Controllers\homeController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\incomeController;
+use App\Http\Controllers\transactionController;
 use App\Http\Controllers\summarizeController;
 
 /*
@@ -30,9 +30,11 @@ Route::middleware([
         return view('dashboard');
     })->name('dashboard');
     Route::get('/MoneyHub', [homeController::class, "index"])->name('moneyhub.indexhome');
-    Route::get('/MoneyHub/summarize', [summarizeController::class, "index"])->name('moneyhub.indexsummarize');
-    Route::get('/MoneyHub/noteIncome/{user_id}', [incomeController::class, "noteIncomeForm"])->name('moneyhub.noteincome');
-
-    //เฟรน
+    Route::get('/MoneyHub/summarize/{user_id}', [summarizeController::class, "index"])->name('moneyhub.indexsummarize');
+    Route::post('/MoneyHub/getSummarize', [summarizeController::class, "getSummarize"])->name('moneyhub.getsummarize');
+    Route::get('/MoneyHub/noteIncome/{user_id}', [transactionController::class, "noteIncomeForm"])->name('moneyhub.noteincome');
+    Route::get('/MoneyHub/noteExpense/{user_id}', [transactionController::class, "noteExpenseForm"])->name('moneyhub.noteexpense');
+    Route::post('/MoneyHub/insertTransaction', [transactionController::class, "insertTransaction"])->name('moneyhub.inserttransaction');
     Route::get('MoneyHub/HistoryList', [historyListController::class , 'pageCalendar'])->name('moneyhub.historyList');
+    Route::post('MoneyHub/HistoryList/Result', [historyListController::class, 'pageResult'])->name('moneyhub.historyListReuslt');
 });
