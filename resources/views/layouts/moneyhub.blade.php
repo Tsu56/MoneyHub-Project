@@ -3,13 +3,14 @@
 <head lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
     <head>
+        <title>MoneyHub ตัวช่วยเก็บเงิน</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <meta name="csrf-token" content="{{ csrf_token() }}">
         <!-- @bootstrap -->
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-        <title>MoneyHub ตัวช่วยเก็บเงิน</title>
+        <link href='https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css' rel='stylesheet'>
+        <link href='https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css' rel='stylesheet'>
         <!-- @style.css -->
         <link rel="stylesheet" type="text/css" href="{{ asset('css/style.css') }}">
         <!-- @fonts.google -->
@@ -32,7 +33,8 @@
             <!-- ***** Logo End ***** -->
 
             <!-- ***** Navbar Toggler Start ***** -->
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <!-- ***** Navbar Toggler End ***** -->
@@ -42,28 +44,28 @@
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0 ">
                     <li class="nav-item">
                         <a class="nav-link text-white 
-                        @if (request()->routeIs('moneyhub.indexhome'))
-                            active
-                        @endif " aria-current="page" href="{{ route('moneyhub.indexhome') }}">หน้าหลัก</a>
+                        @if (request()->routeIs('moneyhub.indexhome')) active @endif "
+                            aria-current="page" href="{{ route('moneyhub.indexhome') }}">หน้าหลัก</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link text-white
-                        @if (request()->routeIs('moneyhub.noteincome'))
-                            active
-                        @endif
-                        " href="{{ route('moneyhub.noteincome', ['user_id' => auth()->user()->id]) }}">รายรับ-รายจ่าย</a>
+                        @if (request()->routeIs('moneyhub.noteincome')) active @endif
+                        "
+                            href="{{ route('moneyhub.noteincome', ['user_id' => auth()->user()->id]) }}">รายรับ-รายจ่าย</a>
                     </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle text-white" href="{{ route('moneyhub.indexsummarize') }}" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <a class="nav-link dropdown-toggle text-white" href="{{ route('moneyhub.indexsummarize') }}"
+                            id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             สรุป
                         </a>
                         <ul class="dropdown-menu custom-pink-dropdown" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" href="{{ "#" }}">สรุปแผนการเงิน</a></li>
-                            <li><a class="dropdown-item" href="{{ route('moneyhub.historyList') }}">ประวัติรายการ</a></li>
+                            <li><a class="dropdown-item" href="{{ '#' }}">สรุปแผนการเงิน</a></li>
+                            <li><a class="dropdown-item" href="{{ route('moneyhub.historyList') }}">ประวัติรายการ</a>
+                            </li>
                             <li>
                                 <hr class="dropdown-divider">
                             </li>
-                            <li><a class="dropdown-item" href="#" >อื่นๆ</a></li>
+                            <li><a class="dropdown-item" href="#">อื่นๆ</a></li>
                         </ul>
                     </li>
                     <li class="nav-item">
@@ -78,7 +80,8 @@
 
                 <ul class="navbar-nav">
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <a class="nav-link dropdown-toggle" href="" id="navbarDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
                             สวัสดี, {{ Auth::user()->us_fname }}
                         </a>
                         <ul class="dropdown-menu custom-pink-navbar">
@@ -86,7 +89,8 @@
                             <li>
                                 <form action="{{ route('logout') }}" method="POST">
                                     @csrf
-                                    <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); this.closest('form').submit();">
+                                    <a class="dropdown-item" href="{{ route('logout') }}"
+                                        onclick="event.preventDefault(); this.closest('form').submit();">
                                         ลงชื่อออก
                                     </a>
                                 </form>
@@ -131,7 +135,9 @@
     </footer>
     <!-- ***** Footer End ***** -->
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous">
+    </script>
 </body>
 
 </html>
