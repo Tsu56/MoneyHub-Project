@@ -36,5 +36,5 @@ Route::middleware([
     Route::get('/MoneyHub/noteExpense/{user_id}', [transactionController::class, "noteExpenseForm"])->name('moneyhub.noteexpense');
     Route::post('/MoneyHub/insertTransaction', [transactionController::class, "insertTransaction"])->name('moneyhub.inserttransaction');
     Route::get('MoneyHub/HistoryList', [historyListController::class , 'pageCalendar'])->name('moneyhub.historyList');
-    Route::post('MoneyHub/HistoryList/Result', [historyListController::class, 'pageResult'])->name('moneyhub.historyListReuslt');
+    Route::get('MoneyHub/HistoryList/Result', [historyListController::class, 'pageResult'])->name('moneyhub.historyListReuslt');
 });

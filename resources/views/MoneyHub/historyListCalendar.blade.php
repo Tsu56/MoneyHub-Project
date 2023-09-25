@@ -3,18 +3,19 @@
 @section('add-link')
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/locale/th.min.js"></script>
     <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.9/index.global.min.js'></script>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             var calendarEl = document.getElementById('calendar');
             var calendar = new FullCalendar.Calendar(calendarEl, {
                 locale: 'th',
-                timeZone: 'GMT+7',
+                timeZone: 'Asia/Bangkok',
                 selectable: true,
                 selectHelper: true,
                 dateClick: function(info) {
-                    $('#show-pre-date').html(`ของวันที่ ${info.dateStr} หรือไม่`);
+                    $('#show-pre-date').html(`ของวันที่ '${ moment(info.dateStr).format('LL') }' หรือไม่`);
                     $('#confirmModal').modal('toggle');
                     $('#closeModalBtn1').click(() => {
                         $('#confirmModal').modal('hide')
@@ -109,7 +110,7 @@
         </div>
         <div id="show-transaction">
         </div>
-        <form action="{{ route('moneyhub.historyListReuslt') }}" method="post" id="select-date-form">
+        <form action="{{ route('moneyhub.historyListReuslt') }}" method="get" id="select-date-form">
             @csrf
             <input type="hidden" name="user-id" id="user-id">
             <input type="hidden" name="select-date" id="select-date">

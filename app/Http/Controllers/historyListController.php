@@ -38,7 +38,7 @@ class historyListController extends Controller
     }
 
     public function pageResult(Request $request) {
-        return $request;
-        // return view('MoneyHub.historyListResult');
+        // return $request;
+        return view('MoneyHub.historyListResult'); 
     }
 }
