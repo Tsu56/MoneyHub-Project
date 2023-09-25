@@ -12,11 +12,10 @@
     </a>
 </div>
 
-
-
-<div>
+<div class="container p-5 my-6 text-white custom-pink-container">
     <form action="{{ route('moneyhub.inserttransaction') }}" method="post">
         @csrf
+        <p class="h4 text-center">บันทึกรายรับ</p><br>
         <input type="text" name="us_id" value={{auth()->user()->id}} hidden>
         <input type="text" name="trantype" value=1 hidden>
         <p class="h6 text-center">ประเภทรายรับ
@@ -33,11 +32,14 @@
         </p>
         <p class="h6 text-center">คำอธิบาย
             <input type="text" name="description">
-        </p>
-        <button type="submit" id="insert-btn" name="insert-btn">บันทึก</button>
+        </p><br>
+
+        <div class="container text-center">
+            <button type="submit" class="btn btn-warning mx-auto d-block" id="insert-btn" name="insert-btn">บันทึก</button>
+        </div>
     </form>
 </div>
-</div>
+
 
 <script>
     function selectChange() {
