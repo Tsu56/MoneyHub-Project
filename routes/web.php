@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\historyListController;
 use App\Http\Controllers\homeController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\incomeController;
@@ -31,4 +32,7 @@ Route::middleware([
     Route::get('/MoneyHub', [homeController::class, "index"])->name('moneyhub.indexhome');
     Route::get('/MoneyHub/summarize', [summarizeController::class, "index"])->name('moneyhub.indexsummarize');
     Route::get('/MoneyHub/noteIncome/{user_id}', [incomeController::class, "noteIncomeForm"])->name('moneyhub.noteincome');
+
+    //เฟรน
+    Route::get('MoneyHub/HistoryList', [historyListController::class , 'pageCalendar'])->name('moneyhub.historyList');
 });

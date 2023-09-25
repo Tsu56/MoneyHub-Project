@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Laravel</title>
+    <title>MoneyHub Home</title>
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net">
@@ -852,7 +852,7 @@
 
         <div class="max-w-7xl mx-auto p-6 lg:p-8">
             <div class="flex justify-center">
-                <img src="{{ asset('img/MoneyHub_loco.png') }}" alt="logo" width="50%">
+                <img src="{{ asset('img/Logo_MoneyHub.png') }}" alt="logo" width="50%">
             </div>
 
             <div class="mt-16">
@@ -868,7 +868,9 @@
                                         d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25" />
                                 </svg>
                             </div>
-                            <h2 class="mt-6 text-xl font-semibold text-gray-900 dark:text-white">หน้าแรก</h2>
+                            <h2 class="mt-6 text-xl font-semibold text-gray-900 dark:text-white">
+                                เริ่มต้นใช้งาน
+                            </h2>
                             <p class="mt-4 text-gray-500 dark:text-gray-400 text-sm leading-relaxed">
                                 ยินดีต้อนรับเข้าสู่ MoneyHub เว็บไซต์พาราย
                             </p>

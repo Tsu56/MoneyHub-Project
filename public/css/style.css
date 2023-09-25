@@ -53,12 +53,10 @@ footer div ul li a {
 
 footer div ul li a:hover {
     color: white;
-    transition: 0.1s;
+    transition: 0.1s ease;
     text-shadow: 2px 4px 10px rgb(255, 221, 50);
-    padding-top: 30px;
-    padding-left: 13px;
+    padding-left: 17px;
     padding-right: 13px;
-    padding-bottom: 30px;
 }
 
 footer div ul li a:active{
