@@ -25,7 +25,7 @@
 <body>
     <!-- ***** navbar Area Start ***** -->
     <nav class="navbar navbar-expand-lg navbar-area navbar-sticky custom-pink-navbar ">
-        <div class="container ">
+        <div class="container-fluid">
             <!-- ***** Logo Start ***** -->
             <a href="{{ route('home') }}" class="logo">
                 <img src="{{ asset('img/Logo_MoneyHub.png') }}" alt="" width="150" height="42">
@@ -53,19 +53,21 @@
                         "
                             href="{{ route('moneyhub.noteincome', ['user_id' => auth()->user()->id]) }}">รายรับ-รายจ่าย</a>
                     </li>
+                    <!--  dropdown-menu start-->
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle text-white" href="{{ route('moneyhub.indexsummarize', ['user_id' => auth()->user()->id]) }}" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             สรุป
                         </a>
                         <ul class="dropdown-menu custom-pink-dropdown" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" href="{{ route('moneyhub.indexsummarize', ['user_id' => auth()->user()->id]) }}">สรุปแผนการเงิน</a></li>
-                            <li><a class="dropdown-item" href="{{ route('moneyhub.historyList') }}">ประวัติรายการ</a></li>
+                            <li><a class="dropdown-item custom-dropdown" href="{{ route('moneyhub.indexsummarize', ['user_id' => auth()->user()->id]) }}">สรุปแผนการเงิน</a></li>
+                            <li><a class="dropdown-item custom-dropdown" href="{{ route('moneyhub.historyList') }}">ประวัติรายการ</a></li>
                             <li>
                                 <hr class="dropdown-divider">
                             </li>
-                            <li><a class="dropdown-item" href="#">อื่นๆ</a></li>
+                            <li><a class="dropdown-item custom-dropdown" href="#">อื่นๆ</a></li>
                         </ul>
                     </li>
+                    <!--  dropdown-menu End  -->
                     <li class="nav-item">
                         <a class="nav-link text-white" href="#">ติดต่อเรา</a>
                     </li>
@@ -73,7 +75,7 @@
                 <!-- ***** search form Start ***** -->
                 <form class="d-flex me-2">
                     <input class="form-control me-2" type="search" placeholder="Search..." aria-label="Search">
-                    <button class="btn btn-success" type="submit">Search</button>
+                    <button class="btn btn-outline-success btn-bold" type="submit">Search</button>
                 </form>
 
                 <ul class="navbar-nav">
@@ -104,16 +106,17 @@
     <!-- ***** navbar Area End ***** -->
 
     <!-- ***** Container Area Start ***** -->
-    <div class="container">
+    <div class="container container-item">
         <main>
             @yield('main')
         </main>
-    </div><br><br>
+    </div>
+    <br><br><br>
     <!-- ***** Container Area End ***** -->
 
     <!-- ***** Footer Start ***** -->
     <footer class="custom-pink-footer text-white text-center py-3">
-        <div class="container">
+        <div class="container-fluid">
             <div class="row">
                 <div class="col-md-6 d-flex justify-content-start">
                     <div class="mx-3">
@@ -133,9 +136,8 @@
     </footer>
     <!-- ***** Footer End ***** -->
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous">
-    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+
 </body>
 
 </html>
