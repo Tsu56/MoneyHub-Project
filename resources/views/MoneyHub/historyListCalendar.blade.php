@@ -29,6 +29,37 @@
                     });
                 },
                 events: [
+                    @foreach ($transac_cal_table as $key => $val)
+                        @if ($val['expense'] != 0)
+                            {
+                                title: 'รายจ่าย {{ number_format($val['expense']) }} ฿',
+                                start: '{{ $key }}',
+                                color: '#FFA07A'
+                            }, 
+                        @endif
+                        @if ($val['income'] != 0)
+                            {
+                                title: 'รายรับ {{ number_format($val['income']) }} ฿',
+                                start: '{{ $key }}',
+                                color: '#9ACD32'
+                            },
+                        @endif
+                        @if ($val['balance'] >= 0)
+                            {
+                                title: 'ยอดเงิน {{ number_format($val['balance']) }} ฿',
+                                start: '{{ $key }}',
+                                color: '#8FBC8F' 
+                            },
+                        @else
+                            {
+                                title: 'ยอดเงิน {{ number_format($val['balance']) }} ฿',
+                                start: '{{ $key }}',
+                                color: '#F08080'
+                            },
+                        @endif
+
+
+                    @endforeach
                 ]
             });
             calendar.render();
@@ -71,10 +102,6 @@
             </div>
         </div>
         <div id="show-transaction">
-            user id = {{ $user_id }}
-            @foreach ($user_transactions as $user_transaction)
-                <div>{{ $user_transaction-> }}</div>
-            @endforeach
         </div>
         <form action="{{ route('moneyhub.historyListReuslt') }}" method="post" id="select-date-form">
             @csrf
@@ -82,11 +109,4 @@
             <input type="hidden" name="select-date" id="select-date">
         </form>
     </div>
-    {{-- <script>
-        $(document).ready(()=>{
-            $('#calendar').fullCalendar({
-                locale: 'th',
-            });
-        });
-    </script> --}}
 @endsection
