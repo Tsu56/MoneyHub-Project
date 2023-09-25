@@ -54,14 +54,12 @@
                             href="{{ route('moneyhub.noteincome', ['user_id' => auth()->user()->id]) }}">รายรับ-รายจ่าย</a>
                     </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle text-white" href="{{ route('moneyhub.indexsummarize') }}"
-                            id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <a class="nav-link dropdown-toggle text-white" href="{{ route('moneyhub.indexsummarize', ['user_id' => auth()->user()->id]) }}" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             สรุป
                         </a>
                         <ul class="dropdown-menu custom-pink-dropdown" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" href="{{ '#' }}">สรุปแผนการเงิน</a></li>
-                            <li><a class="dropdown-item" href="{{ route('moneyhub.historyList') }}">ประวัติรายการ</a>
-                            </li>
+                            <li><a class="dropdown-item" href="{{ route('moneyhub.indexsummarize', ['user_id' => auth()->user()->id]) }}">สรุปแผนการเงิน</a></li>
+                            <li><a class="dropdown-item" href="{{ route('moneyhub.historyList') }}">ประวัติรายการ</a></li>
                             <li>
                                 <hr class="dropdown-divider">
                             </li>
