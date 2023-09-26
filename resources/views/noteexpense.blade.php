@@ -28,14 +28,14 @@
                 <option>อื่นๆ</option>
             </select>
             <label for="sel1" class="form-label text-dark">Select type (select one):</label>
-        </div><br>
+        </div>
         <input type="text" class="form-control" placeholder="กรอกประเภทค่าใช้จ่ายอื่นๆ" name="otherCategory" id="otherCategory" hidden>
 
 
         <div class="mb-3 mt-3">
-            <label for="money" class="form-label">จำนวนเงิน :</label>
-            <input type="number" step="0.01" class="form-control" id="money" placeholder="Enter amount of money" name="amount" required>
-        </div><br>
+            <label for="money" class="form-label">จำนวนเงิน(บาท) :</label>
+            <input type="number" step="0.01" class="form-control" id="money" placeholder="00.00" name="amount" required>
+        </div>
 
 
         <label for="comment" class="form-label">คำอธิบาย :</label>

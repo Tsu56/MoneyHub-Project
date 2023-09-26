@@ -118,7 +118,7 @@ nav div #navbarSupportedContent ul li a:hover {
     scale: 1.1;
     transition: 0.3s ;
     border: solid 8px cyan;
-    outline: dotted aquamarine 8px;
+    outline: solid aquamarine 6px;
 }
 
 /***  note income button menu***/
@@ -162,6 +162,9 @@ nav div #navbarSupportedContent ul li a:hover {
 }
 .custom-pink-container form{
     padding: 0 14rem;
+}
+#otherCategory{
+    margin-top: 5px;
 }
 
 

@@ -29,21 +29,21 @@
                 <option>อื่นๆ</option>
             </select>
             <label for="sel1" class="form-label text-dark">Select type (select one):</label>
-        </div><br>
+        </div>
         <input type="text" class="form-control" placeholder="กรอกประเภทอื่นๆ" name="otherCategory" id="otherCategory" hidden>
 
 
         <div class="mb-3 mt-3">
-            <label for="money" class="form-label">จำนวนเงิน :</label>
-            <input type="number" step="0.01" class="form-control" id="money" placeholder="Enter amount of money" name="amount" required>
-        </div><br>
+            <label for="money" class="form-label">จำนวนเงิน(บาท) :</label>
+            <input type="number" step="0.01" class="form-control" id="money" placeholder="00.00" name="amount" required>
+        </div>
 
 
         <label for="comment" class="form-label">คำอธิบาย :</label>
         <div class="mb-3 mt-3">
             <textarea class="form-control" rows="5" id="comment" name="description"></textarea>
-        </div>
-        <br>
+        </div><br>
+        
 
         <div class="container text-center">
             <button type="submit" class="btn btn-success mx-auto d-block" id="insert-btn" name="insert-btn">บันทึก</button>
