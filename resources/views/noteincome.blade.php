@@ -30,12 +30,12 @@
             </select>
             <label for="sel1" class="form-label text-dark">Select type (select one):</label>
         </div><br>
-        <input type="text" name="otherCategory" id="otherCategory" hidden>
+        <input type="text" class="form-control" placeholder="กรอกประเภทอื่นๆ" name="otherCategory" id="otherCategory" hidden>
 
 
         <div class="mb-3 mt-3">
             <label for="money" class="form-label">จำนวนเงิน :</label>
-            <input type="number" step="0.01" class="form-control" id="money" placeholder="Enter amount of money . . . " name="amount" required>
+            <input type="number" step="0.01" class="form-control" id="money" placeholder="Enter amount of money" name="amount" required>
         </div><br>
 
 
