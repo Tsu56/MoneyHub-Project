@@ -32,6 +32,7 @@ return new class extends Migration
             $table->boolean('is_admin')->nullable();
             $table->boolean('payment_status')->nullable();
             $table->dateTime('payment_datetime')->nullable();
+            $table->decimal('balance', 10, 2)->nullable();
             $table->string('us_email')->unique();
             $table->string('password');
             $table->rememberToken();

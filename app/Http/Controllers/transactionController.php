@@ -6,6 +6,7 @@ use App\Models\Category;
 use App\Models\Transaction;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class transactionController extends Controller
 {
@@ -22,28 +23,39 @@ class transactionController extends Controller
     }
 
     public function insertTransaction(Request $request){
-        $categories = Category::where("transaction_type_id", $request->trantype)->get();
+        if ($request->trantype == 1) {
+            $balance = User::find($request->us_id);
+            $balance->balance += $request->amount;
+            $balance->save();
+        } else {
+            $balance = User::find($request->us_id);
+            $balance->balance -= $request->amount;
+            $balance->save();
+        }
+
         $new_transaction = new Transaction;
         $new_transaction->us_id = $request->us_id;
         $new_transaction->transaction_type_id = $request->trantype;
 
         if ($request->otherCategory == null) {
+            $categories = Category::where("transaction_type_id", $request->trantype)->get();
+            foreach ($categories as $category){
+                if($request->category == $category->category_name) {
+                    $new_transaction->category_id = $category->id;
+                    break;
+                }
+            }
         } else {
             $new_category = new Category;
             $new_category->category_name = $request->otherCategory;
             $new_category->transaction_type_id = $request->trantype;
             $new_category->save();
+            $category = Category::where("category_name", $request->otherCategory)->first();
+            $new_transaction->category_id = $category->id;
         }
         
-        foreach ($categories as $category){
-            if($request->category == $category->category_name) {
-                $new_transaction->category_id = $category->id;
-                break;
-            }
-        }
-
         $new_transaction->transaction_description = $request->description;
-        $new_transaction->transaction_amount = $request->amount;
+        $new_transaction->transaction_amount = $request->amount;  
         $new_transaction->transaction_datetime = date("Y-m-d H:i:s", strtotime("now"));
         $new_transaction->save();
         return redirect( route('moneyhub.noteincome', ['user_id' => auth()->user()->id]));
