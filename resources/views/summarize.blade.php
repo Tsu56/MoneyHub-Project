@@ -41,7 +41,7 @@
         <input type="date" name="startdate" id="startdate">
         <label for="end">สิ้นสุด</label>
         <input type="date" name="enddate" id="enddate">
-        <button type="submit">โอเค!</button>
+        <button type="submit">โอเค</button>
     </form>
     <span>รายรับ {{number_format($Total_income, 2)}}</span><br>
     <span>รายจ่าย {{number_format($Total_expense, 2)}}</span><br>
