@@ -15,27 +15,38 @@
 <div class="container p-5 my-6 text-white custom-pink-container">
     <form action="{{ route('moneyhub.inserttransaction') }}" method="post">
         @csrf
-        <p class="h4 text-center">บันทึกรายรับ</p><br>
+        <p class="h3 text-center">บันทึกรายรับ</p>
+        <br>
         <input type="text" name="us_id" value={{auth()->user()->id}} hidden>
         <input type="text" name="trantype" value=1 hidden>
-        <p class="h6 text-center">ประเภทรายรับ
-            <select name="category" id="category" onchange="selectChange()" required>
+
+        <label for="typeincome" class="form-label">ประเภทรายรับ :</label>
+        <div class="form-floating">
+            <select class="form-select" name="category" id="category" onchange="selectChange()" required>
                 @foreach ($categories as $category)
                 <option>{{$category->category_name}}</option>
                 @endforeach
                 <option>อื่นๆ</option>
-            </select><br>
-            <input type="text" name="otherCategory" id="otherCategory" hidden>
-        </p>
-        <p class="h6 text-center">จำนวนเงิน
-            <input type="text" name="amount" required>
-        </p>
-        <p class="h6 text-center">คำอธิบาย
-            <input type="text" name="description">
-        </p><br>
+            </select>
+            <label for="sel1" class="form-label text-dark">Select type (select one):</label>
+        </div><br>
+        <input type="text" name="otherCategory" id="otherCategory" hidden>
+
+
+        <div class="mb-3 mt-3">
+            <label for="money" class="form-label">จำนวนเงิน :</label>
+            <input type="number" step="0.01" class="form-control" id="money" placeholder="Enter amount of money . . . " name="amount" required>
+        </div><br>
+
+
+        <label for="comment" class="form-label">คำอธิบาย :</label>
+        <div class="mb-3 mt-3">
+            <textarea class="form-control" rows="5" id="comment" name="description"></textarea>
+        </div>
+        <br>
 
         <div class="container text-center">
-            <button type="submit" class="btn btn-warning mx-auto d-block" id="insert-btn" name="insert-btn">บันทึก</button>
+            <button type="submit" class="btn btn-success mx-auto d-block" id="insert-btn" name="insert-btn">บันทึก</button>
         </div>
     </form>
 </div>
