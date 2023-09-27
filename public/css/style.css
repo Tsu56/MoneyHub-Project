@@ -166,6 +166,9 @@ nav div #navbarSupportedContent ul li a:hover {
 #otherCategory{
     margin-top: 5px;
 }
+.input-group-append {
+    cursor: pointer;
+  }
 
 
 

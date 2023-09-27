@@ -32,13 +32,6 @@
             </a>
             <!-- ***** Logo End ***** -->
 
-            <!-- ***** Navbar Toggler Start ***** -->
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
-                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <!-- ***** Navbar Toggler End ***** -->
-
             <!-- ***** Navbar Start ***** -->
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0 ">
@@ -72,12 +65,8 @@
                         <a class="nav-link text-white" href="#">ติดต่อเรา</a>
                     </li>
                 </ul>
-                <!-- ***** search form Start ***** -->
-                <form class="d-flex me-2">
-                    <input class="form-control me-2" type="search" placeholder="Search..." aria-label="Search">
-                    <button class="btn btn-outline-success btn-bold" type="submit">Search</button>
-                </form>
-
+        
+                <!--  navbar Profile-LogOut Start -->
                 <ul class="navbar-nav">
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="" id="navbarDropdown" role="button"
@@ -98,7 +87,7 @@
                         </ul>
                     </li>
                 </ul>
-                <!-- ***** search form End ***** -->
+                <!--  navbar Profile-LogOut End -->
             </div>
             <!-- ***** Navbar End ***** -->
         </div>
