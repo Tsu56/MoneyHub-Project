@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ContactController;
 use App\Http\Controllers\historyListController;
 use App\Http\Controllers\homeController;
 use Illuminate\Support\Facades\Route;
@@ -37,4 +38,5 @@ Route::middleware([
     Route::post('/MoneyHub/insertTransaction', [transactionController::class, "insertTransaction"])->name('moneyhub.inserttransaction');
     Route::get('MoneyHub/HistoryList', [historyListController::class , 'pageCalendar'])->name('moneyhub.historyList');
     Route::post('MoneyHub/HistoryList/Result', [historyListController::class, 'pageResult'])->name('moneyhub.historyListReuslt');
+    Route::get('/MoneyHub/contact',[ContactController::class,'contact'])->name('moneyhub.contact');
 });
