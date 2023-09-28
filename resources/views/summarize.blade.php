@@ -39,40 +39,23 @@
 
 
 <div class="container p-5 my-5 text-white custom-pink-container">
-    <div class="col-md-8">
+    <div>
         <h2 class="py-6">สรุปแผนการเงิน</h2>
         <h5>เลือกช่วง</h5>
 
-        <form class="row">
-            <label for="date" class="col-1 col-form-label">Date</label>
-            <div class="col-5">
-                <div class="input-group date" id="datepicker">
-                    <input type="text" class="form-control" id="date" />
-                    <span class="input-group-append">
-                        <span class="input-group-text bg-light d-block">
-                            <i class="fa fa-calendar"></i>
-                        </span>
-                    </span>
-                </div>
-            </div>
-        </form>
-
-        <form action="{{ route('moneyhub.getsummarize')}}" method="post">
+        <form id="datepicker" action="{{ route('moneyhub.getsummarize')}}" method="post">
             @csrf
             <input type="text" name="us_id" value={{auth()->user()->id}} hidden>
-            <label for="start">เริ่ม</label>
+            <label for="start">เริ่ม: </label>
             <input type="date" name="startdate" id="startdate">
-            <br>
-            <label for="end">สิ้นสุด</label>
+            <label for="end">สิ้นสุด: </label>
             <input type="date" name="enddate" id="enddate">
-            <br>
-            <div class="container text-center">
-                <button type="submit" class="btn btn-success mx-auto d-block" id="insert-btn" name="insert-btn">ตกลง</button>
-            </div>
-        </form>
-        <span>รายรับ {{number_format($Total_income, 2)}}</span><br>
-        <span>รายจ่าย {{number_format($Total_expense, 2)}}</span><br>
-        <span>สรุปยอด {{number_format($Total_income-$Total_expense, 2)}}</span>
+            <button type="submit" class="btn btn-success" id="insert-btn" name="insert-btn">ตกลง</button>
+        </form><br>
+
+        <span>รายรับ {{number_format($Total_income, 2)}} บาท</span><br>
+        <span>รายจ่าย {{number_format($Total_expense, 2)}} บาท</span><br>
+        <span id="summ">สรุปยอด {{number_format($Total_income-$Total_expense, 2)}} บาท</span>
     </div>
 
     <br><br>

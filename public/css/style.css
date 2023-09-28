@@ -156,8 +156,7 @@ nav div #navbarSupportedContent ul li a:hover {
 }
 #insert-btn:hover {
     color: white;
-    text-shadow: yellow 2px 1px 13px;
-    scale: 1.1;
+    text-shadow: yellow 1px 1px 11px;
     transition: 0.3s ease;
 }
 .custom-pink-container form{
@@ -166,10 +165,23 @@ nav div #navbarSupportedContent ul li a:hover {
 #otherCategory{
     margin-top: 5px;
 }
-.input-group-append {
-    cursor: pointer;
-  }
-
+form #startdate, #enddate{
+    padding: 8px;
+    border-radius: 5px;
+    margin-left: 3px;
+}
+.custom-pink-container form label{
+    margin-left: 10px;
+}
+#datepicker{
+    padding: 0 ;
+}
+.btn-success{
+    margin-left: 10px;
+}
+#summ{
+    color: yellow;
+}
 
 
 
