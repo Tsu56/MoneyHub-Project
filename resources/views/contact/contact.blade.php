@@ -25,7 +25,9 @@
                                 <br>
                                 <p class="or">Or</p>
                                 <br>
+                                <a href="https://www.facebook.com/" target="_blank">
                                 <ion-icon name="logo-facebook"></ion-icon>
+                                </a>
                             </div>
                         </div>
                     </form>
