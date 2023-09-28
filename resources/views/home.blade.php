@@ -13,7 +13,7 @@
         <li>ช่วยให้คุณวางแผนการเงิน อย่างเป็นระบบ</li>
         <li>รู้ทุกรายรับ-รายจ่าย วางแผนการเงินได้แม่นยำ</li>
     </ul>
-    <button type="button" class="btn custom-btn-blue">บันทึกรายรับ-รายจ่าย</button>
+    <button type="button" class="btn custom-btn-blue"><ion-icon name="caret-forward-circle-outline" ></ion-icon>บันทึกรายรับ-รายจ่าย</button>
 </div><br><br>
 
 <div class="container mt-3">
