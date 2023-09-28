@@ -83,12 +83,13 @@ footer div ul li {
 }
 
 .card {
-    margin-top: 35px;
-    width: 100%; 
+    scale: 1.224;
     cursor: pointer;
-    border: #ff69b4 groove 16px;
+    margin-bottom: 30px;
+    border-left: rgb(212, 63, 212) 6px solid;
+    border-right: rgb(212, 63, 212) 6px solid;
+    border-bottom: rgb(212, 63, 212) 6px solid;
     border-radius: 0;
-    outline: rgb(200, 77, 118) 13px ridge;
 }
 
 /* navbar bg yellow เมื่อ:hover */
@@ -113,12 +114,14 @@ nav div #navbarSupportedContent ul li a:hover {
 
 .img-pointer {
     cursor: pointer;
+    margin-top: 40px;
+    margin-bottom: 35px;
 }
 .img-pointer:hover{
     scale: 1.1;
     transition: 0.3s ;
-    border: solid 8px cyan;
-    outline: solid aquamarine 6px;
+    border: solid 9px cyan;
+    outline: solid aquamarine 8px;
 }
 
 /***  note income button menu***/
@@ -166,7 +169,7 @@ nav div #navbarSupportedContent ul li a:hover {
     margin-top: 5px;
 }
 form #startdate, #enddate{
-    padding: 8px;
+    padding: 7px 15px;
     border-radius: 5px;
     margin-left: 3px;
 }
@@ -182,6 +185,37 @@ form #startdate, #enddate{
 #summ{
     color: yellow;
 }
+
+#card-2{
+    border: solid 11px aquamarine;
+    outline: aqua solid 8px;
+    scale: 1;
+    margin-top: 10px;
+    border-radius: 0;
+}
+#paragraph-1{
+    color: rgb(11, 34, 106);
+}
+.btn btn-info{
+    margin-left: 20px;
+    color: darkblue;
+}
+.custom-btn-blue {
+    margin-top: 10px;
+    border-radius: 5px;
+    background: linear-gradient(to right, #3b5ffd, #58f9f9);
+    color: white;
+    text-shadow: rgb(44, 60, 87) 1px 1px 5px;
+}
+.custom-btn-blue:hover{
+    color: rgb(4, 4, 56);
+    transition: 0.3s ease-in;
+    box-shadow: aquamarine 2px 2px 12px;
+    padding-right: 20px;
+    padding-left: 35px;
+    text-shadow: none;
+}
+
 
 .container-form{
     border: 1px solid rgb(209, 215, 222);
