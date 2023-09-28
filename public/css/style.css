@@ -214,18 +214,21 @@ form #startdate, #enddate{
     padding-right: 20px;
     padding-left: 35px;
     text-shadow: none;
+    border: #58f9f9 solid 1px;
 }
 
-
+/** กรอบฟอร์มติดต่อ **/
 .container-form{
-    border: 8px solid rgb(209, 215, 222);
+    border: 6px solid rgb(244, 178, 245);
     border-radius: 20px;
     box-shadow: 10px 10px 10px gray;
 }
 
-.card-header {
+div .card-header {
     background-color: #ff69b4;
     color: white;
+    border-radius: 10px !important;
+
 }
 
 .card-header h3 {
@@ -237,7 +240,7 @@ form #startdate, #enddate{
 }
 
 textarea {
-    border: 1px solid lightgrey;
+    border: 2px solid lightgray;
 }
 
 .msg {
@@ -269,6 +272,7 @@ ion-icon {
     color: #ff69b4;
     cursor: pointer;
 }
+
 
 
 
