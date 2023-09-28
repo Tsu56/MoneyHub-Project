@@ -251,6 +251,7 @@ textarea {
     margin: 30px auto;
     border-radius: 10px;
     font-size: large;
+    background-color: lightgray;
 }
 
 .btn-sub:hover {
