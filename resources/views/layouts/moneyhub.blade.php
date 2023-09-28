@@ -71,7 +71,7 @@
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="" id="navbarDropdown" role="button"
                             data-bs-toggle="dropdown" aria-expanded="false">
-                            สวัสดี, {{ Auth::user()->us_fname }}
+                            สวัสดีคุณ {{ Auth::user()->us_fname }}
                         </a>
                         <ul class="dropdown-menu custom-pink-navbar">
                             <li><a class="dropdown-item custom-nav-level2" href="{{ route('profile.show') }}">โปรไฟล์</a></li>
