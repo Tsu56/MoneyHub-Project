@@ -19,6 +19,8 @@
         <link
             href="https://fonts.googleapis.com/css2?family=Inter&family=Kanit&family=Noto+Serif:wght@500&family=Playfair+Display:wght@400;600&family=Varela+Round&display=swap"
             rel="stylesheet">
+            <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+            <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
         @yield('add-link')
     </head>
 
@@ -62,7 +64,7 @@
                     </li>
                     <!--  dropdown-menu End  -->
                     <li class="nav-item">
-                        <a class="nav-link text-white" href="#">ติดต่อเรา</a>
+                        <a class="nav-link text-white" href="{{route('moneyhub.contact')}}">ติดต่อเรา</a>
                     </li>
                 </ul>
         
@@ -71,7 +73,7 @@
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="" id="navbarDropdown" role="button"
                             data-bs-toggle="dropdown" aria-expanded="false">
-                            สวัสดี, {{ Auth::user()->us_fname }}
+                            สวัสดีคุณ {{ Auth::user()->us_fname }}
                         </a>
                         <ul class="dropdown-menu custom-pink-navbar">
                             <li><a class="dropdown-item custom-nav-level2" href="{{ route('profile.show') }}">โปรไฟล์</a></li>
