@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\historyListController;
 use App\Http\Controllers\homeController;
+use App\Models\Transaction;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\transactionController;
 use App\Http\Controllers\summarizeController;
@@ -32,6 +33,8 @@ Route::middleware([
     Route::get('/MoneyHub', [homeController::class, "index"])->name('moneyhub.indexhome');
     Route::get('/MoneyHub/summarize/{user_id}', [summarizeController::class, "index"])->name('moneyhub.indexsummarize');
     Route::post('/MoneyHub/getSummarize', [summarizeController::class, "getSummarize"])->name('moneyhub.getsummarize');
+    Route::post('/MoneyHub/getTransaction', [transactionController::class, "getAllTransaction"])->name('moneyhub.gettransaction');
+    Route::get('/MoneyHub/csv-export', [summarizeController::class, "exportCSV"])->name('moneyhub.exportCSV');
     Route::get('/MoneyHub/noteIncome/{user_id}', [transactionController::class, "noteIncomeForm"])->name('moneyhub.noteincome');
     Route::get('/MoneyHub/noteExpense/{user_id}', [transactionController::class, "noteExpenseForm"])->name('moneyhub.noteexpense');
     Route::post('/MoneyHub/insertTransaction', [transactionController::class, "insertTransaction"])->name('moneyhub.inserttransaction');

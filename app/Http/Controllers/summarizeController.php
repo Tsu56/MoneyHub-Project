@@ -6,10 +6,14 @@ use App\Models\Transaction;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use App\Exports\SummarizeExport;
+use CSV;
 
 class summarizeController extends Controller
 {
     public function index($user_id){
+        $StartdateForSetForm = now();
+        $EnddateForSetForm = now();
         $Total_income = Transaction::where('us_id', $user_id)
                                    ->where('transaction_type_id', 1)
                                    ->whereMonth('transaction_datetime', Carbon::now()->month)
@@ -46,10 +50,12 @@ class summarizeController extends Controller
         }    
         $completeExpenseDataForchart = $expenseTextforChart; 
 
-        return view("summarize", compact('Total_income', 'Total_expense', 'completeIncomeDataForchart', 'completeExpenseDataForchart'));
+        return view("summarize", compact('Total_income', 'Total_expense', 'completeIncomeDataForchart', 'completeExpenseDataForchart', 'StartdateForSetForm', 'EnddateForSetForm'));
     }
 
     public function getSummarize(Request $request){
+        $StartdateForSetForm = $request->startdate;
+        $EnddateForSetForm = $request->enddate;
         $Total_income = Transaction::where('us_id', $request->us_id)
                                    ->where('transaction_type_id', 1)
                                    ->whereBetween('transaction_datetime', [$request->startdate, $request->enddate])
@@ -86,6 +92,10 @@ class summarizeController extends Controller
         }    
         $completeExpenseDataForchart = $expenseTextforChart;
 
-        return view("summarize", compact('Total_income', 'Total_expense', 'completeIncomeDataForchart', 'completeExpenseDataForchart'));
+        return view("summarize", compact('Total_income', 'Total_expense', 'completeIncomeDataForchart', 'completeExpenseDataForchart', 'StartdateForSetForm', 'EnddateForSetForm'));
+    }
+
+    public function exportCSV(){
+        return CSV::download(new SummarizeExport, 'transaction-record.csv');
     }
 }

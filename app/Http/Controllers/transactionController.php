@@ -6,7 +6,6 @@ use App\Models\Category;
 use App\Models\Transaction;
 use App\Models\User;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 
 class transactionController extends Controller
 {
@@ -59,5 +58,16 @@ class transactionController extends Controller
         $new_transaction->transaction_datetime = date("Y-m-d H:i:s", strtotime("now"));
         $new_transaction->save();
         return redirect( route('moneyhub.noteincome', ['user_id' => auth()->user()->id]));
+    }
+
+    public static function getAllTransaction(Request $request){
+        $result = Transaction::join('transaction_types', 'transaction_types.id', '=', 'transactions.transaction_type_id')
+                             ->join('categories', 'categories.id', '=', 'transactions.category_id')
+                             ->where('transactions.us_id', auth()->user()->id)
+                             ->whereBetween('transaction_datetime', [$request->Start, $request->End])
+                             ->select('transaction_types.transaction_type_name', 'categories.category_name', 'transactions.transaction_amount', 'transactions.transaction_description', 'transactions.transaction_datetime')
+                             ->get()
+                             ->toArray();
+        return route('moneyhub.exportCSV', $result);
     }
 }
