@@ -19,6 +19,8 @@
         <link
             href="https://fonts.googleapis.com/css2?family=Inter&family=Kanit&family=Noto+Serif:wght@500&family=Playfair+Display:wght@400;600&family=Varela+Round&display=swap"
             rel="stylesheet">
+            <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+            <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
         @yield('add-link')
     </head>
 
@@ -31,13 +33,6 @@
                 <img src="{{ asset('img/Logo_MoneyHub.png') }}" alt="" width="150" height="42">
             </a>
             <!-- ***** Logo End ***** -->
-
-            <!-- ***** Navbar Toggler Start ***** -->
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
-                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <!-- ***** Navbar Toggler End ***** -->
 
             <!-- ***** Navbar Start ***** -->
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -69,20 +64,16 @@
                     </li>
                     <!--  dropdown-menu End  -->
                     <li class="nav-item">
-                        <a class="nav-link text-white" href="#">ติดต่อเรา</a>
+                        <a class="nav-link text-white" href="{{route('moneyhub.contact')}}">ติดต่อเรา</a>
                     </li>
                 </ul>
-                <!-- ***** search form Start ***** -->
-                <form class="d-flex me-2">
-                    <input class="form-control me-2" type="search" placeholder="Search..." aria-label="Search">
-                    <button class="btn btn-outline-success btn-bold" type="submit">Search</button>
-                </form>
-
+        
+                <!--  navbar Profile-LogOut Start -->
                 <ul class="navbar-nav">
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="" id="navbarDropdown" role="button"
                             data-bs-toggle="dropdown" aria-expanded="false">
-                            สวัสดี, {{ Auth::user()->us_fname }}
+                            สวัสดีคุณ {{ Auth::user()->us_fname }}
                         </a>
                         <ul class="dropdown-menu custom-pink-navbar">
                             <li><a class="dropdown-item custom-nav-level2" href="{{ route('profile.show') }}">โปรไฟล์</a></li>
@@ -98,7 +89,7 @@
                         </ul>
                     </li>
                 </ul>
-                <!-- ***** search form End ***** -->
+                <!--  navbar Profile-LogOut End -->
             </div>
             <!-- ***** Navbar End ***** -->
         </div>

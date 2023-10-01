@@ -27,23 +27,23 @@
                 <?php echo $completeIncomeDataForchart; ?>
             ]);
 
-            var expensedata = google.visualization.arrayToDataTable([
-                ['Category', 'Amount of Expense'],
-                <?php echo $completeExpenseDataForchart; ?>
-            ]);
+        var expensedata = google.visualization.arrayToDataTable([
+            ['Category', 'Amount of Expense'],
+            <?php echo $completeExpenseDataForchart; ?>
+        ]);
 
-            var incomeoptions = {
-                title: 'รายได้',
-                pieHole: 0.4,
-            };
+        var incomeoptions = {
+            title: 'รายได้',
+            pieHole: 0.4,
+        };
 
-            var expenseoptions = {
-                title: 'ค่าใช้จ่าย',
-                pieHole: 0.4,
-            };
+        var expenseoptions = {
+            title: 'ค่าใช้จ่าย',
+            pieHole: 0.4,
+        };
 
-            var incomechart = new google.visualization.PieChart(document.getElementById('incomechart'));
-            incomechart.draw(incomedata, incomeoptions);
+        var incomechart = new google.visualization.PieChart(document.getElementById('incomechart'));
+        incomechart.draw(incomedata, incomeoptions);
 
             var expensechart = new google.visualization.PieChart(document.getElementById('expensechart'));
             expensechart.draw(expensedata, expenseoptions);
@@ -65,4 +65,6 @@
     <input type="button" value="Send" onclick="sendExport()">
     <div id="incomechart" style="width: 900px; height: 500px;"></div>
     <div id="expensechart" style="width: 900px; height: 500px;"></div>
+</div>
+
 @endsection
