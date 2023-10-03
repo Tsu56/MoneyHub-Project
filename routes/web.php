@@ -37,4 +37,8 @@ Route::middleware([
     Route::post('/MoneyHub/insertTransaction', [transactionController::class, "insertTransaction"])->name('moneyhub.inserttransaction');
     Route::get('MoneyHub/HistoryList', [historyListController::class , 'pageCalendar'])->name('moneyhub.historyList');
     Route::get('MoneyHub/HistoryList/Result', [historyListController::class, 'pageResult'])->name('moneyhub.historyListReuslt');
+    Route::get('MoneyHub/HistoryList/getMonthTransaction', [historyListController::class, 'getMonthTransaction'])->name('moneyhub.historyListgetMonthTransaction');
+    Route::get('MoneyHub/HistoryList/delTransaction', [historyListController::class, 'pageEdit'])->name('moneyhub.historyList.pageEdit');
+    Route::get('MoneyHub/HistoryList/delTransaction', [historyListController::class, 'deleteTran'])->name('moneyhub.historyList.delTran');
+    Route::get('MoneyHub/HistoryList/updateTransaction', [historyListController::class, 'updateTran'])->name('moneyhub.historyList.updateTran');
 });
