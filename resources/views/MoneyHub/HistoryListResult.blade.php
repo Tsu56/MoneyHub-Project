@@ -132,10 +132,10 @@
                             <td>
                                 <div class="d-flex flex-row justify-content-end align-items-center">
                                     {{-- ปุ่มแสดงรายละเอียด --}}   
-                                    <button class="btn">รายละเอียด</button>
+                                    {{-- <button class="btn btn-outline-primary" style="width: 7em;">รายละเอียด</button> --}}
 
                                     {{-- ปุ่ม edit --}}
-                                    <button class="btn" value="{{ $tran->id }}" id="btn-edit{{ $tran->id }}"
+                                    <button class="btn btn-outline-warning mx-1" value="{{ $tran->id }}" id="btn-edit{{ $tran->id }}"
                                         type="button">แก้ไข</button>
                                     <script>
                                         $(document).ready(() => {
@@ -169,7 +169,7 @@
 
                                     {{-- ปุ่ม delete --}}
                                         <input type="hidden" name="id" value="{{ $tran->id }}">
-                                        <button class="btn" value="{{ $tran->id }}" id="btn-delete{{ $tran->id }}" type="submit">ลบ</button>
+                                        <button class="btn btn-outline-danger mx-1" value="{{ $tran->id }}" id="btn-delete{{ $tran->id }}" type="submit">ลบ</button>
                                         <script>
                                             $(document).ready(() => {
                                                 $('#btn-delete{{ $tran->id }}').click((e) => {
@@ -179,7 +179,6 @@
                                                 });
                                             });
                                         </script>
-                                    {{-- <i class="bi bi-three-dots-vertical"></i> --}}
                                 </div>
                             </td>
                         </tr>

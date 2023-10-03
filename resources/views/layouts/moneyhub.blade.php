@@ -65,7 +65,7 @@
                                     href="{{ route('moneyhub.indexsummarize', ['user_id' => auth()->user()->id]) }}">สรุปแผนการเงิน</a>
                             </li>
                             <li><a class="dropdown-item custom-dropdown"
-                                    href="{{ route('moneyhub.historyList') }}">ประวัติรายการ</a></li>
+                                    href="{{ route('moneyhub.historyListReuslt') }}">ประวัติรายการ</a></li>
                             <li>
                                 <hr class="dropdown-divider">
                             </li>
