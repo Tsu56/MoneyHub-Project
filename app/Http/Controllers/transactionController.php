@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\SummarizeExport;
 use App\Models\Category;
 use App\Models\Transaction;
 use App\Models\User;
 use Illuminate\Http\Request;
+use CSV;
 
 class transactionController extends Controller
 {
@@ -66,8 +68,10 @@ class transactionController extends Controller
                              ->where('transactions.us_id', auth()->user()->id)
                              ->whereBetween('transaction_datetime', [$request->Start, $request->End])
                              ->select('transaction_types.transaction_type_name', 'categories.category_name', 'transactions.transaction_amount', 'transactions.transaction_description', 'transactions.transaction_datetime')
-                             ->get()
-                             ->toArray();
-        return route('moneyhub.exportCSV', $result);
+                             ->get();
+        
+        // return response()->json(['start'=>$request->Start, 'end'=>$request->End]);
+
+        return response()->json($result);
     }
 }

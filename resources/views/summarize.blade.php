@@ -10,10 +10,25 @@
             }
 
             $.ajax({
+                headers: {'X-CSRF-token': $("meta[name='csrf-token']").attr('content')},
                 url: "{{ route('moneyhub.gettransaction')}}",
                 type: "POST",
                 dataType: "json",
-                data: data
+                data: data,
+                success: function(res){
+                    const transactions = JSON.parse(res).filter(transaction => transaction.transaction_description)
+                    $.ajax({
+                        headers: {'X-CSRF-token': $("meta[name='csrf-token']").attr('content')},
+                        url: '{{ route("moneyhub.exportCSV") }}',
+                        type: 'POST',
+                        data: {
+                            data: JSON.stringify(transactions)
+                        },
+                        success: function(response){
+                            console.log(response);
+                        }
+                    })
+                }
             })
         }
     </script>

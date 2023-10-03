@@ -8,12 +8,18 @@ use Maatwebsite\Excel\Concerns\WithHeadings;
 
 class SummarizeExport implements FromCollection, WithHeadings
 {
+    protected $data;
+    function __construct($data){
+        $this->data = $data;
+    }
+
     /**
     * @return \Illuminate\Support\Collection
     */
     public function collection()
     {
-        return collect(transactionController::getAllTransaction(request()));
+        
+        return collect($this->data);
         // return Transaction::all();
     }
 
