@@ -17,7 +17,8 @@
                                 <label for="name">ชื่อ :</label>
                                 <input type="text" name="name" class="form-control">
                                 <br>
-                                <label for="email">อีเมล :</label>                                <input type="email" name="email" class="form-control">
+                                <label for="email">อีเมล :</label>                               
+                                <input type="email" name="email" class="form-control">
                                 <br>
                                 <label for="msg">ข้อความ :</label><br>
                                 <textarea class="msg" name="msg" id=""></textarea>
