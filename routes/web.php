@@ -1,10 +1,13 @@
 <?php
 
+use App\Http\Controllers\ContactController;
 use App\Http\Controllers\historyListController;
 use App\Http\Controllers\homeController;
+use App\Models\Transaction;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\transactionController;
 use App\Http\Controllers\summarizeController;
+use App\Http\Controllers\QrcodeController;
 
 /*
 |--------------------------------------------------------------------------

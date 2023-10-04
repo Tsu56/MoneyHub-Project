@@ -85,12 +85,13 @@ footer div ul li {
 }
 
 .card {
-    margin-top: 35px;
-    width: 100%; 
+    scale: 1.225;
     cursor: pointer;
-    border: #ff69b4 groove 16px;
+    margin-bottom: 30px;
+    border-left: rgb(212, 63, 212) 6px solid;
+    border-right: rgb(212, 63, 212) 6px solid;
+    border-bottom: rgb(212, 63, 212) 6px solid;
     border-radius: 0;
-    outline: rgb(200, 77, 118) 13px ridge;
 }
 
 /* navbar bg yellow เมื่อ:hover */
@@ -103,21 +104,29 @@ nav div #navbarSupportedContent ul li a:hover {
 }
 
 /*  nav dropdown อักษรสีดำ เมื่อ hover */
-.navbar-nav .nav-item.dropdown:hover .nav-link {
+.navbar-nav .nav-item.dropdown .nav-link, #navbarDropdown:hover {
     color: black;
+}
+#navbarDropdown, .custom-nav-level2{
+    color: purple;
+}
+.dropdown-menu {
+    border-top: 4px solid #ebb102;
 }
 
 .img-pointer {
     cursor: pointer;
+    margin-top: 40px;
+    margin-bottom: 35px;
 }
 .img-pointer:hover{
     scale: 1.1;
     transition: 0.3s ;
-    border: solid 8px cyan;
-    outline: dotted aquamarine 8px;
+    border: solid 9px cyan;
+    outline: solid aquamarine 8px;
 }
 
-/***  note income  ***/
+/***  note income button menu***/
 .bg-yellow a button{
     background-color: rgb(255, 200, 0);
     color: black;
@@ -125,22 +134,21 @@ nav div #navbarSupportedContent ul li a:hover {
     border-radius: 1px;
     text-shadow: rgb(231, 151, 2) 1px 2px 1px;
 }
-
 .bg-yellow a button:hover {
-    background-color: rgb(221, 151, 0); 
+    background-color: rgb(228, 156, 0); 
     color: white;
     margin-right: 10px;
     margin-left: 10px;
     transition: 0.3s;
-    box-shadow: 3px 2px 5px rgb(255, 255, 42);
-    border-bottom: whitesmoke 3px solid;
-    position: relative;
+    text-shadow: #b97903 1px 2px 4px;
+    box-shadow: 2px 2px 7px rgb(255, 255, 42);
+    border-bottom: white 3px solid;
 }
-
 .bg-yellow a button:active {
-    background-color: rgb(221, 151, 0); 
-    color: cyan;
-    font-size: small;
+    background-color: rgb(255, 182, 26); 
+    color: wheat;
+    font-size: 14px;
+    border-radius: 1px;
     box-shadow: 3px 2px 5px yellow;
     transition: 0.2s ease-in-out;
 }
