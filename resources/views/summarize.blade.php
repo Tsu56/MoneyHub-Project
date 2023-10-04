@@ -1,6 +1,26 @@
 @extends('layouts.moneyhub')
 
 @section('main')
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        function sendExport(){
+            let data = {
+                Start: $("#startdate").val(), 
+                End: $("#enddate").val()
+            }
+
+            $.ajax({
+                headers: {'X-CSRF-token': $("meta[name='csrf-token']").attr('content')},
+                url: "{{ route('moneyhub.gettransaction')}}",
+                type: "POST",
+                dataType: "json",
+                data: data,
+                success: function(res){
+                    console.log(res);
+                }
+            })
+        }
+    </script>
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script type="text/javascript">
         google.charts.load("current", {packages:["corechart"]});
@@ -33,19 +53,28 @@
             expensechart.draw(expensedata, expenseoptions);
         }
     </script>
-    <span>เลือกช่วง</span>
-    <form action="{{ route('moneyhub.getsummarize')}}" method="post">
-        @csrf
-        <input type="text" name="us_id" value={{auth()->user()->id}} hidden>
-        <label for="start">เริ่ม</label>
-        <input type="date" name="startdate" id="startdate">
-        <label for="end">สิ้นสุด</label>
-        <input type="date" name="enddate" id="enddate">
-        <button type="submit">โอเค!</button>
-    </form>
-    <span>รายรับ {{number_format($Total_income, 2)}}</span><br>
-    <span>รายจ่าย {{number_format($Total_expense, 2)}}</span><br>
-    <span>สรุปยอด {{number_format($Total_income-$Total_expense, 2)}}</span>
-    <div id="incomechart" style="width: 900px; height: 500px;"></div>
-    <div id="expensechart" style="width: 900px; height: 500px;"></div>
+    <div class="container p-5 my-5 text-white custom-pink-container">
+        <div>
+            <h2 class="py-6">สรุปแผนการเงิน</h2>
+            <h5>เลือกช่วง</h5>
+
+            <form id="datepicker" action="{{ route('moneyhub.getsummarize')}}" method="post">
+                @csrf
+                <input type="text" name="us_id" value={{auth()->user()->id}} hidden>
+                <label for="start">เริ่ม: </label>
+                <input type="date" name="startdate" id="startdate" value={{$StartdateForSetForm}}>
+                <label for="end">สิ้นสุด: </label>
+                <input type="date" name="enddate" id="enddate" value={{$EnddateForSetForm}}>
+                <button type="submit" class="btn btn-success" id="insert-btn" name="insert-btn">ตกลง</button>
+            </form><br>
+
+            <span>รายรับ {{number_format($Total_income, 2)}} บาท</span><br>
+            <span>รายจ่าย {{number_format($Total_expense, 2)}} บาท</span><br>
+            <span id="summ">สรุปยอด {{number_format($Total_income-$Total_expense, 2)}} บาท</span>
+        </div>
+
+        <br><br>
+        <div id="incomechart" style="width: 900px; height: 500px;"></div>
+        <div id="expensechart" style="width: 900px; height: 500px;"></div>
+    </div>
 @endsection

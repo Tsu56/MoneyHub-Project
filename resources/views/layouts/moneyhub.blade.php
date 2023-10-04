@@ -76,6 +76,9 @@
                     <li class="nav-item">
                         <a class="nav-link text-white" href="#">ติดต่อเรา</a>
                     </li>
+                    <li class="nav-item">
+                        <a id="adminhome" class="nav-link text-white" href="{{route('moneyhub.admin')}}" hidden>Admin</a>
+                    </li>
                 </ul>
                 <!-- ***** search form Start ***** -->
                 <form class="d-flex me-2">
@@ -140,6 +143,13 @@
         </div>
     </footer>
     <!-- ***** Footer End ***** -->
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+    <script>
+        if (auth()->user()->is_admin == 1) {
+            document.getElementById('adminhome').hidden = false;
+        }
+    </script>
 </body>
 
 </html>

@@ -86,6 +86,6 @@ class summarizeController extends Controller
         }    
         $completeExpenseDataForchart = $expenseTextforChart;
 
-        return view("summarize", compact('Total_income', 'Total_expense', 'completeIncomeDataForchart', 'completeExpenseDataForchart'));
+        return view("summarize", compact('Total_income', 'Total_expense', 'completeIncomeDataForchart', 'completeExpenseDataForchart', 'StartdateForSetForm', 'EnddateForSetForm'));
     }
 }
