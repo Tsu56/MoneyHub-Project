@@ -6,8 +6,6 @@ use App\Models\Transaction;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use App\Exports\SummarizeExport;
-use CSV;
 
 class summarizeController extends Controller
 {
@@ -93,12 +91,5 @@ class summarizeController extends Controller
         $completeExpenseDataForchart = $expenseTextforChart;
 
         return view("summarize", compact('Total_income', 'Total_expense', 'completeIncomeDataForchart', 'completeExpenseDataForchart', 'StartdateForSetForm', 'EnddateForSetForm'));
-    }
-
-    public function exportCSV(Request $request){
-        $data = $request->input('data');
-        dd($data);
-
-        return CSV::download(new SummarizeExport($data), 'transaction-record.csv');
     }
 }

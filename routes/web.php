@@ -36,7 +36,6 @@ Route::middleware([
     Route::get('/MoneyHub/summarize/{user_id}', [summarizeController::class, "index"])->name('moneyhub.indexsummarize');
     Route::post('/MoneyHub/getSummarize', [summarizeController::class, "getSummarize"])->name('moneyhub.getsummarize');
     Route::post('/MoneyHub/getTransaction', [transactionController::class, "getAllTransaction"])->name('moneyhub.gettransaction');
-    Route::post('/MoneyHub/csv-export', [summarizeController::class, "exportCSV"])->name('moneyhub.exportCSV');
     Route::get('/MoneyHub/noteIncome/{user_id}', [transactionController::class, "noteIncomeForm"])->name('moneyhub.noteincome');
     Route::get('/MoneyHub/noteExpense/{user_id}', [transactionController::class, "noteExpenseForm"])->name('moneyhub.noteexpense');
     Route::post('/MoneyHub/insertTransaction', [transactionController::class, "insertTransaction"])->name('moneyhub.inserttransaction');
