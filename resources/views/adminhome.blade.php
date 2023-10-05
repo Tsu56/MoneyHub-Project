@@ -81,8 +81,20 @@
                     <td>{{ $user->us_fname }} {{ $user->us_lname }}</td>
                     <td>{{ $user->gender->gender_name }}</td>
                     <td>{{ $user->career->career_name }}</td>
-                    <td id="is_plus">{{ $user->is_plus }}</td>
-                    <td id="payment_status">{{ $user->payment_status }}</td>
+                    <td>
+                        @if ($user->is_plus == 0)
+                            Normal User
+                        @else
+                            Premium User
+                        @endif
+                    </td>
+                    <td>
+                        @if ($user->payment_status == 0)
+                            ยังไม่ได้จ่าย
+                        @else
+                            จ่ายแล้ว
+                        @endif
+                    </td>
                     <td>{{ $user->payment_datetime }}</td>
                     <td>{{ $user->us_email }}</td>
                     <td><button type="button" class="btn btn-danger">ลบ</button></td>

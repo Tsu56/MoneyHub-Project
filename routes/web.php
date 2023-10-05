@@ -48,6 +48,7 @@ Route::middleware([
     Route::get('MoneyHub/HistoryList/updateTransaction', [historyListController::class, 'updateTran'])->name('moneyhub.historyList.updateTran');
     Route::post('MoneyHub/HistoryList/Result', [historyListController::class, 'pageResult'])->name('moneyhub.historyListReuslt');
     Route::get('/MoneyHub/contact',[ContactController::class,'contact'])->name('moneyhub.contact');
+    Route::post('/MoneyHub/contact', [ContactController::class, 'store'])->name('moneyhub.contact.store');
     Route::get('/MoneyHub/QrCode', [QrcodeController::class, "QR"])->name('moneyhub.Qrcode');
     Route::get('/MoneyHub/QrCodelink', [QrcodeController::class, "link"])->name('moneyhub.Qrcodelink');
     Route::get('/MoneyHub/Adminhome', [adminController::class, "index"])->name('moneyhub.admin');
