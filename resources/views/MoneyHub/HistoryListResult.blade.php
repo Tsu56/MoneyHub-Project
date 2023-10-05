@@ -2,7 +2,7 @@
 
 @section('sub-script')
     <script>
-        getTransactionMonth(new Date('{{ array_keys($trans)[count($trans)-1] }}'), new Date('{{ array_keys($trans)[0] }}'));
+        // getTransactionMonth(new Date('{{ array_keys($trans)[count($trans)-1] }}'), new Date('{{ array_keys($trans)[0] }}'));
     </script>
 @endsection
 
