@@ -18,10 +18,12 @@ class historyListController extends Controller
         $trans_key_date = [];
         for($j=count($trans)-1; $j>=0; $j--) {
             if (!array_key_exists($trans[$j]['date'], $trans_key_date)) {
-                $trans_key_date[$trans[$j]['date']] = ['trans' => [], 'analy' => [
-                    'balance' => 0,
-                    'income' => 0,
-                    'expense' => 0
+                $trans_key_date[$trans[$j]['date']] = [
+                    'trans' => [], 
+                    'analy' => [
+                        'balance' => 0,
+                        'income' => 0,
+                        'expense' => 0
                 ]];
                 // var_dump('เพิ่ม column');
             }
