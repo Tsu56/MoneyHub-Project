@@ -15,7 +15,7 @@
             <div class="col">
              
                 <div id="image-container">
-                    <img src="{{ asset('/img/QR2.png') }}" class="qr" alt="คำอธิบายรูปภาพ">
+                    <img src="{{ asset('/img/QR2.png') }}" class="qr" alt="คำอธิบายรูปภาพ"> 
                     
                 </div>
                 
