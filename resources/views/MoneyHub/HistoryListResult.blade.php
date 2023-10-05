@@ -8,7 +8,39 @@
             </h1>
             <a class="btn btn-secondary" href="{{ url()->previous() }}">ย้อยกลับ</a>
         </div>
-        {{-- ทดสอบโค้ด --}}
+       
+    @else
+        <script>
+            getTransactionMonth(new Date('{{ array_keys($trans)[count($trans) - 1] }}'), new Date(
+                '{{ array_keys($trans)[0] }}'));
+        </script>
+          <style>
+            tr.hide-table-padding td {
+                padding: 0;
+            }
+
+            .expand-button {
+                position: relative;
+            }
+
+            .accordion-toggle .expand-button:after {
+                display: flex;
+                flex-direction: row;
+                justify-content: end;
+                margin-right: 2rem;
+                content: '-';
+            }
+
+            .accordion-toggle.collapsed .expand-button:after {
+                content: '+';
+            }
+
+            .collapsing {
+                -webkit-transition: height .01s ease-in-out;
+                transition: height .01s ease-in-out;
+            }
+        </style>
+         {{-- ทดสอบโค้ด --}}
         {{-- {{ array_keys($trans)[count($trans)-1] }}
         {{ array_keys($trans)[0] }} --}}
 
@@ -73,38 +105,6 @@
                 </div>
             </div>
         </div>
-
-        <style>
-            tr.hide-table-padding td {
-                padding: 0;
-            }
-
-            .expand-button {
-                position: relative;
-            }
-
-            .accordion-toggle .expand-button:after {
-                display: flex;
-                flex-direction: row;
-                justify-content: end;
-                margin-right: 2rem;
-                content: '-';
-            }
-
-            .accordion-toggle.collapsed .expand-button:after {
-                content: '+';
-            }
-
-            .collapsing {
-                -webkit-transition: height .01s ease-in-out;
-                transition: height .01s ease-in-out;
-            }
-        </style>
-    @else
-        <script>
-            getTransactionMonth(new Date('{{ array_keys($trans)[count($trans) - 1] }}'), new Date(
-                '{{ array_keys($trans)[0] }}'));
-        </script>
         <div class="table-responsive">
             <table class="table table-hover">
                 <thead>
