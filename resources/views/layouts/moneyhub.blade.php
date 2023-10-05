@@ -63,15 +63,11 @@
                             สรุป
                         </a>
                         <ul class="dropdown-menu custom-pink-dropdown" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item custom-dropdown"
+                            <li><a class="dropdown-item"
                                     href="{{ route('moneyhub.indexsummarize', ['user_id' => auth()->user()->id]) }}">สรุปแผนการเงิน</a>
                             </li>
-                            <li><a class="dropdown-item custom-dropdown"
+                            <li><a class="dropdown-item"
                                     href="{{ route('moneyhub.historyListReuslt') }}">ประวัติรายการ</a></li>
-                            <li>
-                                <hr class="dropdown-divider">
-                            </li>
-                            <li><a class="dropdown-item custom-dropdown" href="#">อื่นๆ</a></li>
                         </ul>
                     </li>
                     <!--  dropdown-menu End  -->
@@ -92,6 +88,7 @@
                         </a>
                         <ul class="dropdown-menu custom-pink-navbar">
                             <li><a class="dropdown-item custom-nav-level2" href="{{ route('profile.show') }}">โปรไฟล์</a></li>
+                            <li><a class="dropdown-item custom-nav-level2" href="{{ route('moneyhub.Qrcode') }}">อัปเกรดสมาชิก</a></li>
                             <li>
                                 <form action="{{ route('logout') }}" method="POST">
                                     @csrf

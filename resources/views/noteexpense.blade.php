@@ -15,7 +15,8 @@
 <div class="container p-5 my-6 text-white custom-pink-container">
     <form action="{{ route('moneyhub.inserttransaction') }}" method="post">
         @csrf
-        <p class="h3 text-center">บันทึกรายจ่าย</p><br>
+        <p class="h3 text-center">บันทึกรายจ่าย</p>
+        <hr><br>
         <input type="text" name="us_id" value={{auth()->user()->id}} hidden>
         <input type="text" name="trantype" value=2 hidden>
 
