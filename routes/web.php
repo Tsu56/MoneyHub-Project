@@ -52,4 +52,5 @@ Route::middleware([
     Route::get('/MoneyHub/QrCode', [QrcodeController::class, "QR"])->name('moneyhub.Qrcode');
     Route::get('/MoneyHub/QrCodelink', [QrcodeController::class, "link"])->name('moneyhub.Qrcodelink');
     Route::get('/MoneyHub/Adminhome', [adminController::class, "index"])->name('moneyhub.admin');
+    Route::get('/MoneyHub/delete/{user_id}', [adminController::class, "delete"])->name('moneyhub.deleteuser');
 });

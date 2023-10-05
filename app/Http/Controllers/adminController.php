@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Career;
+use App\Models\Enquiry;
 use App\Models\Gender;
+use App\Models\Transaction;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -28,10 +30,16 @@ class adminController extends Controller
             );
         }
 
-        $gender = Gender::all();
-        $career = Career::all();
         $users = User::all();
+        $enquiries = Enquiry::all();
 
-        return view('adminhome', compact('amountOfUser', 'amountNormalUser', 'amountPremiumUser', 'dataCareer', 'users'));
+        return view('adminhome', compact('amountOfUser', 'amountNormalUser', 'amountPremiumUser', 'dataCareer', 'users', 'enquiries'));
+    }
+
+    public function delete($user_id){
+        User::destroy($user_id);
+        Transaction::where('us_id', $user_id)->delete();
+        Enquiry::where('us_id', $user_id)->delete();
+        return redirect(route('moneyhub.admin'));
     }
 }

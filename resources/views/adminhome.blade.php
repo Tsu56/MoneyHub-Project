@@ -43,7 +43,29 @@
                     </td>
                     <td>{{ $user->payment_datetime }}</td>
                     <td>{{ $user->us_email }}</td>
-                    <td><button type="button" class="btn btn-danger">ลบ</button></td>
+                    <td><a class="btn btn-danger" href="{{ route('moneyhub.deleteuser', ['user_id' => $user->id]) }}" onclick="return confirm('Are you sure you want to delete this user?')">Delete</a></td>
+                </tr>
+            @endforeach
+        </tbody>
+    </table>
+    <hr class="border border-primary border-3 opacity-75">
+    <h4><b>คำขอร้อง</b></h4>
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th scope="col">ลำดับที่</th>
+                <th scope="col">ชื่อผู้ใช้</th>
+                <th scope="col">E-mail</th>
+                <th scope="col">Description</th>
+            </tr>
+        </thead>
+        <tbody class="table-group-divider">
+            @foreach ($enquiries as $enquiry)
+                <tr>
+                    <th scope="row">{{ $enquiry->id }}</th>
+                    <td>{{ $enquiry->user->us_fname }} {{ $enquiry->user->us_lname }}</td>
+                    <td>{{ $enquiry->user->us_email }}</td>
+                    <td>{{ $enquiry->description }}</td>
                 </tr>
             @endforeach
         </tbody>
