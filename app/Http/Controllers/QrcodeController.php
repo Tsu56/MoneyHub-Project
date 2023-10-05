@@ -18,7 +18,12 @@ class QrcodeController extends Controller
         if ($user) {
         \DB::table('users')
         ->where('id', $user->id)
-        ->update(['is_plus' => 1]);
+        ->update(
+            ['is_plus' => 1,
+             'payment_status' => 1,
+             'payment_datetime' => date("Y-m-d H:i:s", strtotime("now"))
+            ]
+        );
 }
 
         return redirect()->route('moneyhub.indexhome');

@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Support\Facades\Auth;
 
 class Transaction extends Model
 {
@@ -16,10 +17,10 @@ class Transaction extends Model
     }
 
     public function transaction_type(){
-        return $this->belongsTo(TransactionType::class);
+        return $this->belongsTo(TransactionType::class, 'transaction_type_id');
     }
 
     public function category(){
-        return $this->belongsTo(Category::class);
+        return $this->belongsTo(Category::class, 'category_id');
     }
 }
