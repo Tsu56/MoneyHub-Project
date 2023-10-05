@@ -15,12 +15,10 @@ class ContactController extends Controller
 
     public function store(Request $request)
     {
-        $request->validate([
-            'name' => 'required|string|max:255',
-            'email' => 'required|email|max:255',
-            'msg' => 'required|string',
-        ]);
-
+        $new_request = new Enquiry;
+        $new_request->us_id = auth()->user()->id;
+        $new_request->description = $request->msg;
+        $new_request->save();
         return redirect()->route('moneyhub.contact')->with('success', 'ส่งข้อความสำเร็จ!');;
     }
 }
