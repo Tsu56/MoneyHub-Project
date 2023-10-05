@@ -1,105 +1,6 @@
 @extends('layouts.historyList')
 
-@section('sub-script')
-    <script>
-        getTransactionMonth(new Date('{{ array_keys($trans)[count($trans) - 1] }}'), new Date('{{ array_keys($trans)[0] }}'));
-    </script>
-@endsection
-
 @section('sub-content')
-    {{-- ทดสอบโค้ด --}}
-    {{-- {{ array_keys($trans)[count($trans)-1] }}
-    {{ array_keys($trans)[0] }} --}}
-
-    {{-- Modal Edit --}}
-    <div class="modal fade" id="modal-edit" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="exampleModalLabel">แก้ไขธุรกรรม</h1>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <form action="{{ route('moneyhub.historyList.updateTran') }}" method="get">
-                        <input type="hidden" class="form-control" id="tran-id" name="tran-id">
-                        <div class="mb-3">
-                            <label for="" class="col-form-label">ประเภท:</label>
-                            <select class="form-select" name="category" id="category">
-                                @foreach ($categorys as $cate)
-                                    <option db-id="{{ $cate->transaction_type_id }}" value="{{ $cate->id }}">
-                                        {{ $cate->category_name }}</option>
-                                @endforeach
-                            </select>
-                        </div>
-                        <div class="mb-3">
-                            <label for="" class="col-form-label">จำนวนเงิน:</label>
-                            <input class="form-control" type="number" name="amount" id="amount">
-                        </div>
-                        <div class="mb-3">
-                            <label for="" class="col-form-label">คำอธิบาย:</label>
-                            <textarea class="form-control" name="description" id="description"></textarea>
-                        </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">ปิด</button>
-                    <button type="submit" class="btn btn-primary">ยืนยัน</button>
-                </div>
-                </form>
-            </div>
-        </div>
-    </div>
-
-
-    {{-- Modal Delete --}}
-    <div class="modal fade" id="modal-delete" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
-        aria-labelledby="staticBackdropLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="staticBackdropLabel">คุณต้องการลบหรือไม่</h1>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <span id="show-id-delete"></span>
-                </div>
-                <div class="modal-footer">
-                    <form action="{{ route('moneyhub.historyList.delTran') }}" method="get">
-                        <input type="hidden" id="id-delete" name="id">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">ปิด</button>
-                        <button type="submit" class="btn btn-primary">ลบ</button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <style>
-        tr.hide-table-padding td {
-            padding: 0;
-        }
-
-        .expand-button {
-            position: relative;
-        }
-
-        .accordion-toggle .expand-button:after {
-            display: flex;
-            flex-direction: row;
-            justify-content: end;
-            margin-right: 2rem;
-            content: '-';
-        }
-
-        .accordion-toggle.collapsed .expand-button:after {
-            content: '+';
-        }    
-
-        .collapsing {
-        -webkit-transition: height .01s ease-in-out;
-        transition: height .01s ease-in-out;
-      }
-
-    </style>
     @if (!$trans)
         <div class="text-center">
             <h1>
@@ -107,8 +8,104 @@
             </h1>
             <a class="btn btn-secondary" href="{{ url()->previous() }}">ย้อยกลับ</a>
         </div>
+        {{-- ทดสอบโค้ด --}}
+        {{-- {{ array_keys($trans)[count($trans)-1] }}
+        {{ array_keys($trans)[0] }} --}}
+
+        {{-- Modal Edit --}}
+        <div class="modal fade" id="modal-edit" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">แก้ไขธุรกรรม</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form action="{{ route('moneyhub.historyList.updateTran') }}" method="get">
+                            <input type="hidden" class="form-control" id="tran-id" name="tran-id">
+                            <div class="mb-3">
+                                <label for="" class="col-form-label">ประเภท:</label>
+                                <select class="form-select" name="category" id="category">
+                                    @foreach ($categorys as $cate)
+                                        <option db-id="{{ $cate->transaction_type_id }}" value="{{ $cate->id }}">
+                                            {{ $cate->category_name }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <div class="mb-3">
+                                <label for="" class="col-form-label">จำนวนเงิน:</label>
+                                <input class="form-control" type="number" name="amount" id="amount">
+                            </div>
+                            <div class="mb-3">
+                                <label for="" class="col-form-label">คำอธิบาย:</label>
+                                <textarea class="form-control" name="description" id="description"></textarea>
+                            </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">ปิด</button>
+                        <button type="submit" class="btn btn-primary">ยืนยัน</button>
+                    </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+
+        {{-- Modal Delete --}}
+        <div class="modal fade" id="modal-delete" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+            aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="staticBackdropLabel">คุณต้องการลบหรือไม่</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <span id="show-id-delete"></span>
+                    </div>
+                    <div class="modal-footer">
+                        <form action="{{ route('moneyhub.historyList.delTran') }}" method="get">
+                            <input type="hidden" id="id-delete" name="id">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">ปิด</button>
+                            <button type="submit" class="btn btn-primary">ลบ</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <style>
+            tr.hide-table-padding td {
+                padding: 0;
+            }
+
+            .expand-button {
+                position: relative;
+            }
+
+            .accordion-toggle .expand-button:after {
+                display: flex;
+                flex-direction: row;
+                justify-content: end;
+                margin-right: 2rem;
+                content: '-';
+            }
+
+            .accordion-toggle.collapsed .expand-button:after {
+                content: '+';
+            }
+
+            .collapsing {
+                -webkit-transition: height .01s ease-in-out;
+                transition: height .01s ease-in-out;
+            }
+        </style>
     @else
-            <div class="table-responsive">
+        <script>
+            getTransactionMonth(new Date('{{ array_keys($trans)[count($trans) - 1] }}'), new Date(
+                '{{ array_keys($trans)[0] }}'));
+        </script>
+        <div class="table-responsive">
             <table class="table table-hover">
                 <thead>
                     <tr>
@@ -123,8 +120,7 @@
                 <tbody>
                     @foreach ($trans as $key => $detail)
                         <tr class="table-secondary accordion-toggle" aria-expanded="false" data-bs-toggle="collapse"
-                            href="#collapse{{ $key }}" role='button'
-                            aria-controls="collapse{{ $key }}">
+                            href="#collapse{{ $key }}" role='button' aria-controls="collapse{{ $key }}">
                             <td colspan="5">
                                 <script>
                                     document.write(moment('{{ $key }}').format('LL'))
