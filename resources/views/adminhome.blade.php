@@ -43,7 +43,7 @@
                     </td>
                     <td>{{ $user->payment_datetime }}</td>
                     <td>{{ $user->us_email }}</td>
-                    <td><button type="button" class="btn btn-danger">ลบ</button></td>
+                    <td><a class="btn btn-danger" href="{{ route('moneyhub.deleteuser', ['user_id' => $user->id]) }}" onclick="return confirm('Are you sure you want to delete this user?')">Delete</a></td>
                 </tr>
             @endforeach
         </tbody>
