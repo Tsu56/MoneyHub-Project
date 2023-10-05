@@ -16,7 +16,7 @@
     <form action="{{ route('moneyhub.Qrcodelink') }}">
         
         <div class="row">
-             <h1 class="h1 text-center">ลงชื่อเข้าใช้พรีเมียม</h1>
+             <h1 class="h1 text-center">จ่ายเงินเข้าใช้พรีเมียม</h1>
             <H2>สแกน QR CODE</H2>
             <div class="col">
              
