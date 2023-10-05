@@ -29,16 +29,16 @@
 <div class="container mt-3">
     <div class="row">
         <div class="col-md-4 mx-auto">
-            <img src="{{ asset('img/ads-5.png') }}" class="rounded-circle img-pointer" alt="โฆษณาวงกลม" width="304" height="236">
+            <img src="{{ asset('img/ads-5.png') }}" class="rounded-circle img-pointer" alt="โฆษณาวงกลม" width="304" height="290">
         </div>
         <div class="col-md-4 mx-auto">
-            <a href="{{ route('moneyhub.Qrcode') }}"><img src="{{ asset('img/ads.png') }}" class="rounded-circle img-pointer" alt="โฆษณาวงกลม-2" width="304" height="236"></a>
+            <a href="{{ route('moneyhub.Qrcode') }}"><img src="{{ asset('img/ads.png') }}" class="rounded-circle img-pointer" alt="โฆษณาวงกลม-2" width="304" height="290"></a>
         </div>
         <div class="col-md-4 mx-auto">
-            <img src="{{ asset('img/ads-4.png') }}" class="rounded-circle img-pointer" alt="โฆษณาวงกลม-3" width="304" height="236">
+            <img src="{{ asset('img/ads-4.png') }}" class="rounded-circle img-pointer" alt="โฆษณาวงกลม-3" width="304" height="290">
         </div>
     </div>
-</div><br><br><br>
+</div><br><br>
 
 <div class="card" id="card-2">
     <a href="{{ route('moneyhub.noteincome', ['user_id' => auth()->user()->id]) }}"><img src="{{ asset('img/Banner-2.png') }}" class="card-img-top" alt="โฆษณามันนี่ฮับ"></a>

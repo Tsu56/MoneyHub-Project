@@ -7,6 +7,7 @@
     <h5><span id="PremiumUser">Premiun User: </span></h5>
     <div id="careerChart" style="height: 370px; width: 100%;"></div>
     <script src="https://cdn.canvasjs.com/canvasjs.min.js"></script>
+    <br>
     <table class="table table-hover">
         <thead>
             <tr>
@@ -48,15 +49,15 @@
             @endforeach
         </tbody>
     </table>
-    <hr class="border border-primary border-3 opacity-75">
-    <h4><b>คำขอร้อง</b></h4>
+    <br>
+    <h4><b>คำร้องขอ</b></h4>
     <table class="table table-hover">
         <thead>
             <tr>
                 <th scope="col">ลำดับที่</th>
                 <th scope="col">ชื่อผู้ใช้</th>
                 <th scope="col">E-mail</th>
-                <th scope="col">Description</th>
+                <th scope="col">คำอธิบาย</th>
             </tr>
         </thead>
         <tbody class="table-group-divider">
