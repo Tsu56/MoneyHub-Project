@@ -120,7 +120,7 @@
             @yield('main')
         </main>
     </div>
-    <br><br><br>
+    <br><br>
     <!-- ***** Container Area End ***** -->
 
     <!-- ***** Footer Start ***** -->
@@ -135,9 +135,9 @@
                 <div class="col-md-6">
                     <ul class="list-inline m-0">
                         <li class="list-inline-item "><a href="{{ route('moneyhub.indexhome') }}">หน้าหลัก</a></li>
-                        <li class="list-inline-item "><a href="#">เกี่ยวกับเรา</a></li>
+                        <li class="list-inline-item "><a href="{{route('moneyhub.about')}}">เกี่ยวกับเรา</a></li>
                         <li class="list-inline-item "><a href="#">บริการ</a></li>
-                        <li class="list-inline-item "><a href="#">ติดต่อเรา</a></li>
+                        <li class="list-inline-item "><a href="{{route('moneyhub.contact')}}">ติดต่อเรา</a></li>
                     </ul>
                 </div>
             </div>
@@ -148,7 +148,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
   
     <script>
-        @if(auth()-> user()-> is_admin == 1) {
+        @if(auth() -> user() -> is_admin == 1) {
             document.getElementById('adminhome').hidden = false;
         }
         @endif

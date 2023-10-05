@@ -5,6 +5,7 @@
     <div class="container p-5 my-5 text-white custom-pink-container">
         <div>
             <h2 class="py-6">สรุปแผนการเงิน</h2>
+            <hr>
             <h5>เลือกช่วง</h5>
 
             <form id="datepicker" action="{{ route('moneyhub.getsummarize')}}" method="post">
