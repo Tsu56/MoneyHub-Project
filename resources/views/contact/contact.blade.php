@@ -26,7 +26,7 @@
                                 <input type="email" name="email" class="form-control" required>
                                 <br>
                                 <label for="msg">ข้อความ</label><br>
-                                <textarea class="msg" name="msg" id=""></textarea>
+                                <textarea class="msg" name="msg" id="msg" required></textarea>
                                 <button class="btn-sub" type="submit">ส่งข้อมูล</button>
                                 <br>
                                 <p class="or"> - Or -</p>
