@@ -18,8 +18,9 @@
         <link
             href="https://fonts.googleapis.com/css2?family=Inter&family=Kanit&family=Noto+Serif:wght@500&family=Playfair+Display:wght@400;600&family=Varela+Round&display=swap"
             rel="stylesheet">
-            <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
-            <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+        <!-- @font-awsome -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" 
+        crossorigin="anonymous"/>
         @yield('add-link')
     </head>
 
@@ -76,9 +77,6 @@
                     <!--  dropdown-menu End  -->
                     <li class="nav-item">
                         <a class="nav-link text-white" href="{{route('moneyhub.contact')}}">ติดต่อเรา</a>
-                    </li>
-                    <li class="nav-item">
-                        <a id="adminhome" class="nav-link text-white" href="{{route('moneyhub.admin')}}" hidden>Admin</a>
                     </li>
                     <li class="nav-item">
                         <a id="adminhome" class="nav-link text-white" href="{{route('moneyhub.admin')}}" hidden>Admin</a>

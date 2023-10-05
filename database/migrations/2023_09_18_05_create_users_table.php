@@ -28,9 +28,9 @@ return new class extends Migration
                   ->on('careers')
                   ->onUpdate('cascade')
                   ->onDelete('cascade');
-            $table->boolean('is_plus')->nullable();
-            $table->boolean('is_admin')->nullable();
-            $table->boolean('payment_status')->nullable();
+            $table->boolean('is_plus')->default(0);
+            $table->boolean('is_admin')->default(0);
+            $table->boolean('payment_status')->default(0);
             $table->dateTime('payment_datetime')->nullable();
             $table->decimal('balance', 10, 2)->nullable();
             $table->string('us_email')->unique();
