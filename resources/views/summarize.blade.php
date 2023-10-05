@@ -16,18 +16,7 @@
                 dataType: "json",
                 data: data,
                 success: function(res){
-                    const transactions = JSON.parse(res).filter(transaction => transaction.transaction_description)
-                    $.ajax({
-                        headers: {'X-CSRF-token': $("meta[name='csrf-token']").attr('content')},
-                        url: '{{ route("moneyhub.exportCSV") }}',
-                        type: 'POST',
-                        data: {
-                            data: JSON.stringify(transactions)
-                        },
-                        success: function(response){
-                            console.log(response);
-                        }
-                    })
+                    console.log(res);
                 }
             })
         }
@@ -42,44 +31,50 @@
                 <?php echo $completeIncomeDataForchart; ?>
             ]);
 
-        var expensedata = google.visualization.arrayToDataTable([
-            ['Category', 'Amount of Expense'],
-            <?php echo $completeExpenseDataForchart; ?>
-        ]);
+            var expensedata = google.visualization.arrayToDataTable([
+                ['Category', 'Amount of Expense'],
+                <?php echo $completeExpenseDataForchart; ?>
+            ]);
 
-        var incomeoptions = {
-            title: 'รายได้',
-            pieHole: 0.4,
-        };
+            var incomeoptions = {
+                title: 'รายได้',
+                pieHole: 0.4,
+            };
 
-        var expenseoptions = {
-            title: 'ค่าใช้จ่าย',
-            pieHole: 0.4,
-        };
+            var expenseoptions = {
+                title: 'ค่าใช้จ่าย',
+                pieHole: 0.4,
+            };
 
-        var incomechart = new google.visualization.PieChart(document.getElementById('incomechart'));
-        incomechart.draw(incomedata, incomeoptions);
+            var incomechart = new google.visualization.PieChart(document.getElementById('incomechart'));
+            incomechart.draw(incomedata, incomeoptions);
 
             var expensechart = new google.visualization.PieChart(document.getElementById('expensechart'));
             expensechart.draw(expensedata, expenseoptions);
         }
     </script>
-    <span>เลือกช่วง</span>
-    <form action="{{ route('moneyhub.getsummarize')}}" method="post">
-        @csrf
-        <input type="text" name="us_id" value={{auth()->user()->id}} hidden>
-        <label for="start">เริ่ม</label>
-        <input type="date" name="startdate" id="startdate" value={{$StartdateForSetForm}}>
-        <label for="end">สิ้นสุด</label>
-        <input type="date" name="enddate" id="enddate" value={{$EnddateForSetForm}}>
-        <button type="submit">โอเค</button>
-    </form>
-    <span>รายรับ {{number_format($Total_income, 2)}}</span><br>
-    <span>รายจ่าย {{number_format($Total_expense, 2)}}</span><br>
-    <span>สรุปยอด {{number_format($Total_income-$Total_expense, 2)}}</span><br>
-    <input type="button" value="Send" onclick="sendExport()">
-    <div id="incomechart" style="width: 900px; height: 500px;"></div>
-    <div id="expensechart" style="width: 900px; height: 500px;"></div>
-</div>
+    <div class="container p-5 my-5 text-white custom-pink-container">
+        <div>
+            <h2 class="py-6">สรุปแผนการเงิน</h2>
+            <h5>เลือกช่วง</h5>
 
+            <form id="datepicker" action="{{ route('moneyhub.getsummarize')}}" method="post">
+                @csrf
+                <input type="text" name="us_id" value={{auth()->user()->id}} hidden>
+                <label for="start">เริ่ม: </label>
+                <input type="date" name="startdate" id="startdate" value={{$StartdateForSetForm}}>
+                <label for="end">สิ้นสุด: </label>
+                <input type="date" name="enddate" id="enddate" value={{$EnddateForSetForm}}>
+                <button type="submit" class="btn btn-success" id="insert-btn" name="insert-btn">ตกลง</button>
+            </form><br>
+
+            <span>รายรับ {{number_format($Total_income, 2)}} บาท</span><br>
+            <span>รายจ่าย {{number_format($Total_expense, 2)}} บาท</span><br>
+            <span id="summ">สรุปยอด {{number_format($Total_income-$Total_expense, 2)}} บาท</span>
+        </div>
+
+        <br><br>
+        <div id="incomechart" style="width: 900px; height: 500px;"></div>
+        <div id="expensechart" style="width: 900px; height: 500px;"></div>
+    </div>
 @endsection
