@@ -20,17 +20,18 @@ class adminController extends Controller
                           ->groupBy('users.career_id', 'careers.career_name')
                           ->get();
 
-        $listCareerforChart = "";
-
+        $dataCareer = [];
         foreach ($listCareer as $value) {
-            $listCareerforChart.="['".$value->career_name."', ".$value->amount."],"; 
+            $dataCareer[] = array(
+                'label' => $value->career_name,
+                'y' => $value->amount
+            );
         }
-        $completelistCareerDataForchart = $listCareerforChart;
 
         $gender = Gender::all();
         $career = Career::all();
         $users = User::all();
 
-        return view('adminhome', compact('amountOfUser', 'amountNormalUser', 'amountPremiumUser', 'completelistCareerDataForchart', 'users'));
+        return view('adminhome', compact('amountOfUser', 'amountNormalUser', 'amountPremiumUser', 'dataCareer', 'users'));
     }
 }

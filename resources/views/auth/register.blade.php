@@ -1,7 +1,7 @@
 <x-guest-layout>
     <x-authentication-card>
         <x-slot name="logo">
-            <x-authentication-card-logo />
+        <img src="{{ asset('/img/Logo_MoneyHub.png') }}" class="qr" alt="คำอธิบายรูปภาพ">
         </x-slot>
 
         <x-validation-errors class="mb-4" />

@@ -2,65 +2,11 @@
 
 @section('main')
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script>
-        $(document).ready(function() {
-            @if ($amountOfUser <= 1)
-                {
-                    $("#TotalAmount").append(' {{ $amountOfUser }} User')
-                }
-            @else
-                {
-                    $("#TotalAmount").append(' {{ $amountOfUser }} Users')
-                }
-            @endif
-
-            @if ($amountNormalUser <= 1)
-                {
-                    $("#NormalUser").append(' {{ $amountNormalUser }} User')
-                }
-            @else
-                {
-                    $("#NormalUser").append(' {{ $amountNormalUser }} Users')
-                }
-            @endif
-
-            @if ($amountPremiumUser <= 1)
-                {
-                    $("#PremiumUser").append(' {{ $amountPremiumUser }} User')
-                }
-            @else
-                {
-                    $("#PremiumUser").append(' {{ $amountPremiumUser }} Users')
-                }
-            @endif
-        })
-    </script>
-    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-    <script type="text/javascript">
-        google.charts.load("current", {
-            packages: ["corechart"]
-        });
-        google.charts.setOnLoadCallback(drawChart);
-
-        function drawChart() {
-            var careerdata = google.visualization.arrayToDataTable([
-                ['Career', 'Amount'],
-                <?php echo $completelistCareerDataForchart; ?>
-            ]);
-
-            var careeroptions = {
-                title: 'อาชีพกลุ่มผู้ใช้งาน',
-                pieHole: 0.4,
-            };
-
-            var careerchart = new google.visualization.PieChart(document.getElementById('careerchart'));
-            careerchart.draw(careerdata, careeroptions);
-        }
-    </script>
     <h4><b id="TotalAmount">จำนวนผู้ใช้งาน</b></h4>
     <h5><span id="NormalUser">Normal User: </span></h5>
     <h5><span id="PremiumUser">Premiun User: </span></h5>
-    <div id="careerchart" style="width: 900px; height: 500px;"></div>
+    <div id="careerChart" style="height: 370px; width: 100%;"></div>
+    <script src="https://cdn.canvasjs.com/canvasjs.min.js"></script>
     <table class="table table-hover">
         <thead>
             <tr>
@@ -102,4 +48,57 @@
             @endforeach
         </tbody>
     </table>
+    <script>
+        $(document).ready(function() {
+            @if ($amountOfUser <= 1)
+                {
+                    $("#TotalAmount").append(' {{ $amountOfUser }} User')
+                }
+            @else
+                {
+                    $("#TotalAmount").append(' {{ $amountOfUser }} Users')
+                }
+            @endif
+
+            @if ($amountNormalUser <= 1)
+                {
+                    $("#NormalUser").append(' {{ $amountNormalUser }} User')
+                }
+            @else
+                {
+                    $("#NormalUser").append(' {{ $amountNormalUser }} Users')
+                }
+            @endif
+
+            @if ($amountPremiumUser <= 1)
+                {
+                    $("#PremiumUser").append(' {{ $amountPremiumUser }} User')
+                }
+            @else
+                {
+                    $("#PremiumUser").append(' {{ $amountPremiumUser }} Users')
+                }
+            @endif
+        })
+    </script>
+    <script>
+        window.onload = function() {
+            var careerchart = new CanvasJS.Chart("careerChart", {
+                animationEnabled: true,
+                title: {
+                    text: "User's Career"
+                },
+                subtitles: [{
+                    text: "อาชีพผู้ใช้งาน"
+                }],
+                data: [{
+                    type: "pie",
+                    yValueFormatString: "#,##0.00\"\"",
+                    indexLabel: "{label} ({y})",
+                    dataPoints: <?php echo json_encode($dataCareer, JSON_NUMERIC_CHECK); ?>
+                }]
+            });
+            careerchart.render();
+        }
+    </script>
 @endsection
