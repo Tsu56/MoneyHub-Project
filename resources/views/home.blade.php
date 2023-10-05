@@ -3,7 +3,7 @@
 @section('main')
 <div class="card">
     <img src="{{ asset('img/Banner-3.png') }}" class="card-img-top" alt="โฆษณามันนี่ฮับ">
-</div><br><br><br><br>
+</div><br><br><br><hr><br>
 
 <div class="container mt-3" id="paragraph-1">
     <div class="row">
@@ -18,12 +18,12 @@
                 <li>รู้ทุกรายรับ-รายจ่าย วางแผนการเงินได้แม่นยำ</li>
             </ul>
             <a href="{{ route('moneyhub.noteincome', ['user_id' => auth()->user()->id]) }}"><button type="button" class="btn custom-btn-blue">บันทึกรายรับ-รายจ่าย</button></a>
-        </div>
+        </div><br>
         <div class="col-md-6">
             <img src="{{ asset('img/ads-house.png') }}" alt="รูปภาพ" class="img-fluid"> 
         </div>
     </div>
-</div><br>
+</div><br><hr>
 
 
 <div class="container mt-3">

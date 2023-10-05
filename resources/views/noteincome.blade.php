@@ -3,7 +3,7 @@
 @section('main')
 <p class="h2 text-center">บันทึกรายรับ-รายจ่าย</p>
 <!--  select_Group รายรับ-รายจ่าย -->
-<div class="btn-group d-flex justify-content-center">
+<div class="btn-group d-flex justify-content-center bg-yellow">
     <a href="{{ route('moneyhub.noteincome', ['user_id' => auth()->user()->id])}}">
         <button type="button" class="btn">รายรับ</button>
     </a>
