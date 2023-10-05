@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\adminController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\historyListController;
 use App\Http\Controllers\homeController;
@@ -49,5 +50,5 @@ Route::middleware([
     Route::get('/MoneyHub/contact',[ContactController::class,'contact'])->name('moneyhub.contact');
     Route::get('/MoneyHub/QrCode', [QrcodeController::class, "QR"])->name('moneyhub.Qrcode');
     Route::get('/MoneyHub/QrCodelink', [QrcodeController::class, "link"])->name('moneyhub.Qrcodelink');
-    Route::get('/MoneyHub/Adminhome', [QrcodeController::class, "link"])->name('moneyhub.admin');
+    Route::get('/MoneyHub/Adminhome', [adminController::class, "index"])->name('moneyhub.admin');
 });

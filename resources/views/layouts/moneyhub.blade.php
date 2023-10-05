@@ -80,9 +80,6 @@
                     <li class="nav-item">
                         <a id="adminhome" class="nav-link text-white" href="{{route('moneyhub.admin')}}" hidden>Admin</a>
                     </li>
-                    <li class="nav-item">
-                        <a id="adminhome" class="nav-link text-white" href="{{route('moneyhub.admin')}}" hidden>Admin</a>
-                    </li>
                 </ul>
         
                 <!--  navbar Profile-LogOut Start -->
