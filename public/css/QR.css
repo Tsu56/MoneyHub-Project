@@ -15,7 +15,7 @@
   align-items: center;
   padding:25px;
   min-height: 100vh;
-  background: linear-gradient(90deg, #FF8FAE 60%, #FF8FAE 40.1%);
+  background: linear-gradient(90deg, #ff69b4 60%, #ff69b4 40.1%);
 }
 
 .container form{
@@ -47,13 +47,13 @@
   width: 100%;
   padding:12px;
   font-size: 17px;
-  background: #FF8FAE;
+  background: #d1b4c3;
   color:#fff;
   margin-top: 5px;
   cursor: pointer;
 }
 
-.container form .submit-btn:hover{
+.container form .submit-btn:hover{ 
   background: #1abb42;
 }
 
@@ -62,7 +62,7 @@
   display: flex; /* ทำให้เนื้อหาใน div จัดตรงกลางแนวนอน */
   justify-content: center; /* จัดตรงกลางแนวนอน */
   align-items: center; /* จัดตรงกลางแนวตั้ง (ถ้าคุณต้องการ) */
-  height: 100%; /* ให้ความสูงของ div เท่ากับความสูงของคอลัมน์ */
+  height: 80%; /* ให้ความสูงของ div เท่ากับความสูงของคอghfลัมน์ d*/
 }
 .col{
 padding: 10px;
@@ -74,4 +74,7 @@ h2{
 h1{
   text-align: center;
 }
-
+.ba{
+  text-align: center;
+  
+}
