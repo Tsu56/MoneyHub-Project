@@ -10,7 +10,11 @@
     <form action="{{ route('moneyhub.Qrcodelink') }}">
 
         <div class="row">
-            <h1 class="h1 text-center">จ่ายเงินเข้าใช้งานพรีเมียม</h1>
+            @if(auth()->user()->payment_status)
+                <h1 class="h1 text-center">จ่ายเงินเพื่อต่อเวลาบาดเจ็บ😭</h1>
+            @else 
+                <h1 class="h1 text-center">จ่ายเงินเพื่อใช้งาน Premium</h1>
+            @endif
             <H2>สแกน QR CODE</H2>
             <div class="col">
 

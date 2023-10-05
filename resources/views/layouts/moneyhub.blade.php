@@ -11,18 +11,29 @@
         <!-- @bootstrap -->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css" rel="stylesheet" />
-        <!-- @style.css 
-        <link rel="stylesheet" type="text/css" href="{{ asset('css/style.css') }}">   -->
-        <link rel="stylesheet" href="{{ asset('css/premium.css') }}">
+        <!-- @style.css -->
+        @if(1)
+            <link rel="stylesheet" type="text/css" href="{{ asset('css/style.css') }}">
+        @else
+            <link rel="stylesheet" type="text/css" href="{{ asset('css/style.css') }}">
+        @endif
         <!-- @fonts.google -->
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Inter&family=Kanit&family=Noto+Serif:wght@500&family=Playfair+Display:wght@400;600&family=Varela+Round&display=swap" rel="stylesheet">
-        <!-- font-awesome -->
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/js/all.min.js" />
-        <!-- @font-awesome 
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" />   -->
+        <!-- @font-awsome -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" />
+        
+        {{-- @monet --}}
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/locale/th.min.js"></script>  
+
+        {{-- เช็ค Premium --}}
+        @inject('qrcode', 'App\Http\Controllers\QrcodeController')
+        @php
+            $qrcode::checkExpire();
+        @endphp
+        
         @yield('add-link')
     </head>
 
@@ -75,14 +86,17 @@
                 </ul>
 
                 <!--  navbar Profile-LogOut Start -->
+                <div class="navbar-nav">
+                    @if(auth()->user()->payment_status)<a class="dropdown-item custom-nav-level2" href="{{ route('moneyhub.Qrcode') }}">วันหมดอายุ Premium: <script>document.write(moment('{{ auth()->user()->payment_expired }}').format('LLL') + ' น.')</script></a>@endif
+                </div>
                 <ul class="navbar-nav">
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            สวัสดีคุณ {{ Auth::user()->us_fname }}
+                            สวัสดีคุณ {{ Auth::user()->us_fname }} {{ auth()->user()->payment_status ? '👑' : '' }}
                         </a>
                         <ul class="dropdown-menu custom-pink-navbar">
                             <li><a class="dropdown-item custom-nav-level2" href="{{ route('profile.show') }}">โปรไฟล์</a></li>
-                            <li><a class="dropdown-item custom-nav-level2" href="{{ route('moneyhub.Qrcode') }}">อัปเกรดสมาชิก</a></li>
+                            @if(!auth()->user()->payment_status)<li><a class="dropdown-item custom-nav-level2" href="{{ route('moneyhub.Qrcode') }}">อัปเกรดสมาชิก</a></li>@endif
                             <li>
                                 <form action="{{ route('logout') }}" method="POST">
                                     @csrf
@@ -133,6 +147,7 @@
     <!-- ***** Footer End ***** -->
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+  
     <script>
         @if(auth() -> user() -> is_admin == 1) {
             document.getElementById('adminhome').hidden = false;
