@@ -1,9 +1,8 @@
 * {
     margin: 0;
     padding: 0;
-    border: 0;
-    outline: 0;
     font-family: Kanit !important;
+    box-sizing: border-box;
 }
 
 /** CSS navbar always top  **/
@@ -16,22 +15,27 @@
 }
 /** Logo **/
 .logo {
-    padding-bottom: 3px;
-    padding-right: 10px;
-    margin-left: 20px
+    margin-top: 3px;
+    height: 50px;
+    margin-left: 30px;
+    margin-right: 20px;
 }
 
 
 /* navbar สีชมมพู  */
-.custom-pink-navbar,
-.custom-pink-footer,
-.custom-pink-container,
 .custom-pink-dropdown {
     background-color: #ff69b4;
 }
+.custom-pink-navbar,
+.custom-pink-container{
+    background: linear-gradient(to bottom, #ff69b4, #FF8FAE );
+}
+.custom-pink-footer{
+    background: linear-gradient(to bottom, #FF8FAE, #ff69b4 );
+}
 
 nav div ul li a {
-    margin: 0 13px;
+    margin: 0 9px;
 }
 
 /* dropdown bg pink */ 
@@ -45,39 +49,12 @@ nav div .custom-pink-navbar {
 }
 div #navbarSupportedContent ul li a {
     font-size: large;
+    border-radius: 5px;
 }
 
 .btn-bold {
     font-weight: bold;
     letter-spacing: 0.2pt;
-}
-
-footer div ul li a {
-    color: #ffcf3e;
-    text-shadow: 1px 2px 3px orange;
-    letter-spacing: 0.2pt;
-}
-
-footer div ul li a:hover {
-    color: white;
-    transition: 0.1s ease;
-    text-shadow: 2px 4px 10px rgb(255, 221, 50);
-    padding-left: 17px;
-    padding-right: 13px;
-}
-
-footer div ul li a:active{
-    color: yellow;
-    font-size: small;
-    transition: 0.1s;
-}
-
-footer {
-    clear: both;
-}
-
-footer div ul li {
-    margin: 0 16px;
 }
 
 .container-item{
@@ -99,8 +76,7 @@ nav div #navbarSupportedContent ul li a:hover {
     transition: 0.3s ease-in-out;
     box-shadow: 1px 2px 12px #b98c03;
     background-color: #ebb102;
-    border-radius: 4px;
-    margin: 0 16px;
+    margin: 0 15px;
 }
 
 /*  nav dropdown อักษรสีดำ เมื่อ hover */
@@ -126,7 +102,7 @@ nav div #navbarSupportedContent ul li a:hover {
     outline: solid aquamarine 8px;
 }
 
-/***  note income button menu***/
+/***  รายรับ-รายจ่าย button menu***/
 .bg-yellow a button{
     background-color: rgb(255, 200, 0);
     color: black;
@@ -137,21 +113,22 @@ nav div #navbarSupportedContent ul li a:hover {
 .bg-yellow a button:hover {
     background-color: rgb(228, 156, 0); 
     color: white;
-    margin-right: 10px;
     margin-left: 10px;
+    margin-right: 10px;
     transition: 0.3s;
     text-shadow: #b97903 1px 2px 4px;
     box-shadow: 2px 2px 7px rgb(255, 255, 42);
     border-bottom: white 3px solid;
 }
 .bg-yellow a button:active {
-    background-color: rgb(255, 182, 26); 
-    color: wheat;
-    font-size: 14px;
-    border-radius: 1px;
-    box-shadow: 3px 2px 5px yellow;
-    transition: 0.2s ease-in-out;
+    background-color: rgb(241, 168, 10); 
+    color: rgb(57, 37, 0);
+}/***  รายรับ-รายจ่าย button menu end ***/
+
+.form-select{
+    cursor: pointer;
 }
+
 /** ปุ่มบันทึก **/
 #insert-btn {
     color: white;
@@ -161,8 +138,9 @@ nav div #navbarSupportedContent ul li a:hover {
 }
 #insert-btn:hover {
     color: white;
-    text-shadow: yellow 1px 1px 11px;
+    text-shadow: rgb(0, 27, 0) 1px 2px 9px;
     transition: 0.3s ease;
+    scale: 1.07;
 }
 .custom-pink-container form{
     padding: 0 14rem;
@@ -213,24 +191,23 @@ form #startdate, #enddate{
     text-shadow: rgb(44, 60, 87) 1px 1px 5px;
 }
 .custom-btn-blue:hover{
-    color: rgb(1, 1, 30);
-    transition: 0.3s ease-in;
+    color: white;
+    transition: 0.2s ease-in-out;
     box-shadow: aquamarine 2px 2px 12px;
-    padding-right: 20px;
-    padding-left: 20px;
+    scale: 1.08;
     text-shadow: none;
     border: #58f9f9 solid 1px;
 }
 
 /** กรอบฟอร์มติดต่อ **/
 .container-form{
-    border: 6px solid rgb(244, 178, 245);
+    border: 6px solid #ff69b4;
     border-radius: 20px;
     box-shadow: 10px 10px 10px gray;
 }
 
 div .card-header {
-    background-color: #ff69b4;
+    background: linear-gradient(to bottom, #ff69b4, #FF8FAE );
     color: white;
     border-radius: 10px !important;
 }
@@ -258,7 +235,7 @@ textarea {
     margin: 30px auto;
     border-radius: 10px;
     font-size: large;
-    background-color: lightgray;
+    background-color: #FF8FAE;
 }
 
 .btn-sub:hover {
@@ -286,3 +263,31 @@ textarea {
 .alert {
     text-align: center;
 }
+
+/**  ส่วนของ footer start **/
+footer div ul li a {
+    color: purple;
+    letter-spacing: 0.2pt;
+    text-decoration: none;
+}
+
+footer div ul li a:hover {
+    color: white;
+    transition: 0.1s ease;
+    border-bottom: 2px solid white;
+    text-shadow: none;
+}
+
+footer div ul li a:active{
+    color: yellow;
+    font-size: small;
+    transition: 0.1s;
+}
+
+footer {
+    clear: both;
+}
+
+footer div ul li {
+    margin: 0 16px;
+}/**  ส่วนของ footer end **/

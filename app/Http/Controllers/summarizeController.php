@@ -35,20 +35,23 @@ class summarizeController extends Controller
                                    ->groupBy('transactions.category_id', 'categories.category_name')
                                    ->get();
 
-        $incomeTextforChart = "";
-        $expenseTextforChart = "";
-
+        $dataIncome = [];
         foreach ($listIncome as $value) {
-            $incomeTextforChart.="['".$value->category_name."', ".$value->Total_amount."],"; 
+            $dataIncome[] = array(
+                'label' => $value->category_name,
+                'y' => $value->Total_amount
+            );
         }
-        $completeIncomeDataForchart = $incomeTextforChart;
 
+        $dataExpense = [];
         foreach ($listExpense as $value) {
-            $expenseTextforChart.="['".$value->category_name."', ".$value->Total_amount."],"; 
-        }    
-        $completeExpenseDataForchart = $expenseTextforChart; 
+            $dataExpense[] = array(
+                'label' => $value->category_name,
+                'y' => $value->Total_amount
+            );
+        }
 
-        return view("summarize", compact('Total_income', 'Total_expense', 'completeIncomeDataForchart', 'completeExpenseDataForchart', 'StartdateForSetForm', 'EnddateForSetForm'));
+        return view("summarize", compact('Total_income', 'Total_expense', 'dataIncome', 'dataExpense', 'StartdateForSetForm', 'EnddateForSetForm'));
     }
 
     public function getSummarize(Request $request){
@@ -77,19 +80,22 @@ class summarizeController extends Controller
                                    ->groupBy('transactions.category_id', 'categories.category_name')
                                    ->get();
 
-        $incomeTextforChart = "";
-        $expenseTextforChart = "";
-                           
+        $dataIncome = [];
         foreach ($listIncome as $value) {
-            $incomeTextforChart.="['".$value->category_name."', ".$value->Total_amount."],"; 
+            $dataIncome[] = array(
+                'label' => $value->category_name,
+                'y' => $value->Total_amount
+            );
         }
-        $completeIncomeDataForchart = $incomeTextforChart;
-                           
+         
+        $dataExpense = [];
         foreach ($listExpense as $value) {
-            $expenseTextforChart.="['".$value->category_name."', ".$value->Total_amount."],"; 
-        }    
-        $completeExpenseDataForchart = $expenseTextforChart;
+            $dataExpense[] = array(
+                'label' => $value->category_name,
+                'y' => $value->Total_amount
+            );
+        }
 
-        return view("summarize", compact('Total_income', 'Total_expense', 'completeIncomeDataForchart', 'completeExpenseDataForchart', 'StartdateForSetForm', 'EnddateForSetForm'));
+        return view("summarize", compact('Total_income', 'Total_expense', 'dataIncome', 'dataExpense', 'StartdateForSetForm', 'EnddateForSetForm'));
     }
 }
