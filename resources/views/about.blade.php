@@ -5,7 +5,7 @@
     <div class="container" data-aos="fade-up">
 
         <div class="section-title">
-            <h2>Chefs</h2>
+            <h2>สมาชิก</h2>
             <p>Our Proffesional Chefs</p>
         </div>
 
