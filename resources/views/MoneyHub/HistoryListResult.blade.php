@@ -2,11 +2,15 @@
 
 @section('sub-script')
     <script>
-        getTransactionMonth(new Date('{{ array_keys($trans)[count($trans)-1] }}'), new Date('{{ array_keys($trans)[0] }}'));
+        getTransactionMonth(new Date('{{ array_keys($trans)[count($trans) - 1] }}'), new Date('{{ array_keys($trans)[0] }}'));
     </script>
 @endsection
 
 @section('sub-content')
+    {{-- ทดสอบโค้ด --}}
+    {{-- {{ array_keys($trans)[count($trans)-1] }}
+    {{ array_keys($trans)[0] }} --}}
+
     {{-- Modal Edit --}}
     <div class="modal fade" id="modal-edit" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
@@ -21,8 +25,9 @@
                         <div class="mb-3">
                             <label for="" class="col-form-label">ประเภท:</label>
                             <select class="form-select" name="category" id="category">
-                                @foreach($categorys as $cate)
-                                    <option db-id="{{ $cate->transaction_type_id }}" value="{{ $cate->id }}">{{ $cate->category_name }}</option>
+                                @foreach ($categorys as $cate)
+                                    <option db-id="{{ $cate->transaction_type_id }}" value="{{ $cate->id }}">
+                                        {{ $cate->category_name }}</option>
                                 @endforeach
                             </select>
                         </div>
@@ -39,7 +44,7 @@
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">ปิด</button>
                     <button type="submit" class="btn btn-primary">ยืนยัน</button>
                 </div>
-            </form>
+                </form>
             </div>
         </div>
     </div>
@@ -87,7 +92,13 @@
 
         .accordion-toggle.collapsed .expand-button:after {
             content: '+';
-        }
+        }    
+
+        .collapsing {
+        -webkit-transition: height .01s ease-in-out;
+        transition: height .01s ease-in-out;
+      }
+
     </style>
     @if (!$trans)
         <div class="text-center">
@@ -96,8 +107,8 @@
             </h1>
             <a class="btn btn-secondary" href="{{ url()->previous() }}">ย้อยกลับ</a>
         </div>
-        @else
-        <div class="table-responsive">
+    @else
+            <div class="table-responsive">
             <table class="table table-hover">
                 <thead>
                     <tr>
@@ -111,89 +122,98 @@
                 </thead>
                 <tbody>
                     @foreach ($trans as $key => $detail)
-                        <tr class="table-secondary accordion-toggle collapsed" id="accordion{{ $key }}"
-                            data-bs-toggle="collapse" data-db-parent="#accordion{{ $key }}"
-                            href="#collapse{{ $key }}" role='button' aria-controls="collapse{{ $key }}">
+                        <tr class="table-secondary accordion-toggle" aria-expanded="false" data-bs-toggle="collapse"
+                            href="#collapse{{ $key }}" role='button'
+                            aria-controls="collapse{{ $key }}">
                             <td colspan="5">
                                 <script>
                                     document.write(moment('{{ $key }}').format('LL'))
-                                </script> 
+                                </script>
                             </td>
                             <td class="expand-button"></td>
                         </tr>
-                        <tr class="hide-table-padding">
-                            @foreach ($trans[$key]['trans'] as $tran)
-                        <tr id="collapse{{ $key }}" class="collapse in p-3">
-                            <td>เวลา <script>document.write( moment('{{ $tran->transaction_datetime }}').format('H:mm:ss') )</script> น.</td>
-                            <td db-id="{{ $tran->transaction_type->id }}">{{ $tran->transaction_type->transaction_type_name }}</td>
-                            <td db-id="{{ $tran->category ? $tran->category->id : '' }}">{{ $tran->category ? $tran->category->category_name : '-' }}</td>
-                            <td><span class=" {{ $tran->transaction_type->id==1 ? 'text-success' : 'text-danger' }}">{{ number_format($tran->transaction_amount) }}</span> ฿</td>
-                            <td>{{ $tran->transaction_description }}</td>
-                            <td>
-                                <div class="d-flex flex-row justify-content-end align-items-center">
-                                    {{-- ปุ่มแสดงรายละเอียด --}}   
-                                    {{-- <button class="btn btn-outline-primary" style="width: 7em;">รายละเอียด</button> --}}
-
-                                    {{-- ปุ่ม edit --}}
-                                    <button class="btn btn-outline-warning mx-1" value="{{ $tran->id }}" id="btn-edit{{ $tran->id }}"
-                                        type="button">แก้ไข</button>
+                        @foreach ($trans[$key]['trans'] as $tran)
+                            <tr id="collapse{{ $key }}" class="collapse show">
+                                <td>เวลา
                                     <script>
-                                        $(document).ready(() => {
-                                            $('#btn-edit{{ $tran->id }}').click((e) => {
-                                                let select = $('#category').children();
-                                                let prev_amount = $($(e.target).parent().parent().parent().children()[3]).children().text();
-                                                let prev_tran_type_id = $($(e.target).parent().parent().parent().children()[1]).attr('db-id')
-                                                let prev_cate = $($(e.target).parent().parent().parent().children()[2]).attr('db-id')
-                                                let prev_descrip = $($(e.target).parent().parent().parent().children()[4]).text()
+                                        document.write(moment('{{ $tran->transaction_datetime }}').format('H:mm:ss'))
+                                    </script> น.
+                                </td>
+                                <td db-id="{{ $tran->transaction_type->id }}">
+                                    {{ $tran->transaction_type->transaction_type_name }}</td>
+                                <td db-id="{{ $tran->category ? $tran->category->id : '' }}">
+                                    {{ $tran->category ? $tran->category->category_name : '-' }}</td>
+                                <td><span
+                                        class=" {{ $tran->transaction_type->id == 1 ? 'text-success' : 'text-danger' }}">{{ number_format($tran->transaction_amount) }}</span>
+                                    ฿</td>
+                                <td>{{ $tran->transaction_description }}</td>
+                                <td>
+                                    <div class="d-flex flex-row justify-content-end align-items-center">
+                                        {{-- ปุ่มแสดงรายละเอียด --}}
+                                        {{-- <button class="btn btn-outline-primary" style="width: 7em;">รายละเอียด</button> --}}
 
-                                                //Reaplce ข้อความใน input
-                                                $('#tran-id').val(e.target.value);
-                                                $('#amount').val(parseFloat(prev_amount.replace(',', '')));
-                                                for(let i=0; i<select.length; i++) {
-                                                    if(prev_tran_type_id == $(select[i]).attr('db-id')) {
-                                                        $(select[i]).prop('disabled', false);
-                                                        $(select[i]).prop('hidden', false);
-                                                    }else {
-                                                        $(select[i]).prop('disabled', true);
-                                                        $(select[i]).prop('hidden', true);
+                                        {{-- ปุ่ม edit --}}
+                                        <button class="btn btn-outline-warning mx-1" value="{{ $tran->id }}"
+                                            id="btn-edit{{ $tran->id }}" type="button">แก้ไข</button>
+                                        <script>
+                                            $(document).ready(() => {
+                                                $('#btn-edit{{ $tran->id }}').click((e) => {
+                                                    let select = $('#category').children();
+                                                    let prev_amount = $($(e.target).parent().parent().parent().children()[3]).children().text();
+                                                    let prev_tran_type_id = $($(e.target).parent().parent().parent().children()[1]).attr(
+                                                        'db-id')
+                                                    let prev_cate = $($(e.target).parent().parent().parent().children()[2]).attr('db-id')
+                                                    let prev_descrip = $($(e.target).parent().parent().parent().children()[4]).text()
+
+                                                    //Reaplce ข้อความใน input
+                                                    $('#tran-id').val(e.target.value);
+                                                    $('#amount').val(parseFloat(prev_amount.replace(',', '')));
+                                                    for (let i = 0; i < select.length; i++) {
+                                                        if (prev_tran_type_id == $(select[i]).attr('db-id')) {
+                                                            $(select[i]).prop('disabled', false);
+                                                            $(select[i]).prop('hidden', false);
+                                                        } else {
+                                                            $(select[i]).prop('disabled', true);
+                                                            $(select[i]).prop('hidden', true);
+                                                        }
                                                     }
-                                                }
-                                                $('#category').val(prev_cate);
-                                                $('#description').val(prev_descrip);
-                                                
-                                                $('#modal-edit').modal('toggle');
-                                                
-                                            });
-                                        });
-                                    </script>
+                                                    $('#category').val(prev_cate);
+                                                    $('#description').val(prev_descrip);
 
-                                    {{-- ปุ่ม delete --}}
+                                                    $('#modal-edit').modal('toggle');
+
+                                                });
+                                            });
+                                        </script>
+
+                                        {{-- ปุ่ม delete --}}
                                         <input type="hidden" name="id" value="{{ $tran->id }}">
-                                        <button class="btn btn-outline-danger mx-1" value="{{ $tran->id }}" id="btn-delete{{ $tran->id }}" type="submit">ลบ</button>
+                                        <button class="btn btn-outline-danger mx-1" value="{{ $tran->id }}"
+                                            id="btn-delete{{ $tran->id }}" type="submit">ลบ</button>
                                         <script>
                                             $(document).ready(() => {
                                                 $('#btn-delete{{ $tran->id }}').click((e) => {
-                                                    $('#show-id-delete').text({{$tran->id}});
-                                                    $('#id-delete').val({{$tran->id}});
+                                                    $('#show-id-delete').text({{ $tran->id }});
+                                                    $('#id-delete').val({{ $tran->id }});
                                                     $('#modal-delete').modal('toggle');
                                                 });
                                             });
                                         </script>
-                                </div>
-                            </td>
+                                    </div>
+                                </td>
+                            </tr>
+                        @endforeach
                         </tr>
                     @endforeach
-                    </tr>
-    @endforeach
-    </tbody>
+                </tbody>
 
-    </table>
-    </div>
-    <script>
-        $(document).ready(function() {
-            $('.collapse').collapse();
-        });
-    </script>
+            </table>
+        </div>
+        <script>
+            // $(document).ready(function() {
+            //     $('.collapse').collapse();
+            // });
+        </script>
     @endif
 
 @endsection
