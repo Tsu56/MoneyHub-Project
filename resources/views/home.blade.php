@@ -32,7 +32,7 @@
             <img src="{{ asset('img/ads-5.png') }}" class="rounded-circle img-pointer" alt="โฆษณาวงกลม" width="304" height="236">
         </div>
         <div class="col-md-4 mx-auto">
-            <img src="{{ asset('img/ads.png') }}" class="rounded-circle img-pointer" alt="โฆษณาวงกลม-2" width="304" height="236">
+            <a href="{{ route('moneyhub.Qrcode') }}" target=""><img src="{{ asset('img/ads.png') }}" class="rounded-circle img-pointer" alt="โฆษณาวงกลม-2" width="304" height="236"></a>
         </div>
         <div class="col-md-4 mx-auto">
             <img src="{{ asset('img/ads-4.png') }}" class="rounded-circle img-pointer" alt="โฆษณาวงกลม-3" width="304" height="236">
