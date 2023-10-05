@@ -20,6 +20,8 @@
     padding-right: 10px;
     margin-left: 20px
 }
+
+
 /* navbar สีชมมพู  */
 .custom-pink-navbar,
 .custom-pink-footer,
@@ -279,9 +281,3 @@ ion-icon:hover{
     color: #ebb102;
     transition: 0.3s ease-in-out;
 }
-
-
-
-
-
-
