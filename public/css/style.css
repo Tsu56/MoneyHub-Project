@@ -99,7 +99,7 @@ nav div #navbarSupportedContent ul li a:hover {
 }
 .img-pointer:hover{
     scale: 1.1;
-    transition: 0.3s ;
+    transition: 0.3s ease-in-out;
     border: solid 9px cyan;
     outline: solid aquamarine 8px;
 }

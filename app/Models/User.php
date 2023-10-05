@@ -36,7 +36,8 @@ class User extends Authenticatable
         'is_plus',
         'is_admin',
         'payment_status',
-        'payment_datetime'
+        'payment_datetime',
+        'payment_expired'
     ];
 
     /**
