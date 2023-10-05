@@ -30,11 +30,10 @@ class adminController extends Controller
             );
         }
 
-        $gender = Gender::all();
-        $career = Career::all();
         $users = User::all();
+        $enquiries = Enquiry::all();
 
-        return view('adminhome', compact('amountOfUser', 'amountNormalUser', 'amountPremiumUser', 'dataCareer', 'users'));
+        return view('adminhome', compact('amountOfUser', 'amountNormalUser', 'amountPremiumUser', 'dataCareer', 'users', 'enquiries'));
     }
 
     public function delete($user_id){
