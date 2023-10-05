@@ -15,7 +15,7 @@
         @if(1)
             <link rel="stylesheet" type="text/css" href="{{ asset('css/style.css') }}">
         @else
-            <link rel="stylesheet" type="text/css" href="{{ asset('css/style.css') }}">
+            <link rel="stylesheet" type="text/css" href="{{ asset('css/premium.css') }}">
         @endif
         <!-- @fonts.google -->
         <link rel="preconnect" href="https://fonts.googleapis.com">
