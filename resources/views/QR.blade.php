@@ -19,7 +19,7 @@
                     
                 </div>
                 
-            
+                <H2>49บาท</H2>
 
             <div class="col">
        
@@ -30,10 +30,10 @@
                 </div>
 
             </div>
-    
+            <input type="submit" value="เสร็จสิ้น" class="submit-btn">
         </div>
-
-        <input type="submit" value="เสร็จสิ้น" class="submit-btn">
+        
+        
 
     </form>
     
