@@ -75,8 +75,10 @@
                             </li>
                             <li><a class="dropdown-item" href="{{ route('moneyhub.historyListReuslt') }}">ประวัติรายการ</a></li>
                         </ul>
+                    </li><!--  dropdown-menu End  -->
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="{{route('moneyhub.about')}}">เกี่ยวกับเรา</a>
                     </li>
-                    <!--  dropdown-menu End  -->
                     <li class="nav-item">
                         <a class="nav-link text-white" href="{{route('moneyhub.contact')}}">ติดต่อเรา</a>
                     </li>
@@ -87,7 +89,8 @@
 
                 <!--  navbar Profile-LogOut Start -->
                 <div class="navbar-nav">
-                    @if(auth()->user()->payment_status)<a class="dropdown-item custom-nav-level2" href="{{ route('moneyhub.Qrcode') }}">วันหมดอายุ Premium: <script>document.write(moment('{{ auth()->user()->payment_expired }}').format('LLL') + ' น.')</script></a>@endif
+                    @if(auth()->user()->payment_status)<a class="dropdown-item custom-nav-level2" id="time-out" href="{{ route('moneyhub.Qrcode') }}">วันหมดอายุ Premium: 
+                        <script>document.write(moment('{{ auth()->user()->payment_expired }}').format('LLL') + ' น.')</script></a>@endif
                 </div>
                 <ul class="navbar-nav">
                     <li class="nav-item dropdown">
@@ -137,8 +140,8 @@
                     <ul class="list-inline m-0">
                         <li class="list-inline-item "><a href="{{ route('moneyhub.indexhome') }}">หน้าหลัก</a></li>
                         <li class="list-inline-item "><a href="{{route('moneyhub.about')}}">เกี่ยวกับเรา</a></li>
-                        <li class="list-inline-item "><a href="#">บริการ</a></li>
                         <li class="list-inline-item "><a href="{{route('moneyhub.contact')}}">ติดต่อเรา</a></li>
+                        <li class="list-inline-item "><a href="#">โทร: 097-0099777</a></li>
                     </ul>
                 </div>
             </div>
