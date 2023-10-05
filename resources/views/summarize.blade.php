@@ -2,57 +2,6 @@
 
 @section('main')
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script>
-        function sendExport(){
-            let data = {
-                Start: $("#startdate").val(), 
-                End: $("#enddate").val()
-            }
-
-            $.ajax({
-                headers: {'X-CSRF-token': $("meta[name='csrf-token']").attr('content')},
-                url: "{{ route('moneyhub.gettransaction')}}",
-                type: "POST",
-                dataType: "json",
-                data: data,
-                success: function(res){
-                    console.log(res);
-                }
-            })
-        }
-    </script>
-    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-    <script type="text/javascript">
-        google.charts.load("current", {packages:["corechart"]});
-        google.charts.setOnLoadCallback(drawChart);
-        function drawChart() {
-            var incomedata = google.visualization.arrayToDataTable([
-                ['Category', 'Amount of Income'],
-                <?php echo $completeIncomeDataForchart; ?>
-            ]);
-
-            var expensedata = google.visualization.arrayToDataTable([
-                ['Category', 'Amount of Expense'],
-                <?php echo $completeExpenseDataForchart; ?>
-            ]);
-
-            var incomeoptions = {
-                title: 'รายได้',
-                pieHole: 0.4,
-            };
-
-            var expenseoptions = {
-                title: 'ค่าใช้จ่าย',
-                pieHole: 0.4,
-            };
-
-            var incomechart = new google.visualization.PieChart(document.getElementById('incomechart'));
-            incomechart.draw(incomedata, incomeoptions);
-
-            var expensechart = new google.visualization.PieChart(document.getElementById('expensechart'));
-            expensechart.draw(expensedata, expenseoptions);
-        }
-    </script>
     <div class="container p-5 my-5 text-white custom-pink-container">
         <div>
             <h2 class="py-6">สรุปแผนการเงิน</h2>
@@ -74,7 +23,63 @@
         </div>
 
         <br><br>
-        <div id="incomechart" style="width: 900px; height: 500px;"></div>
-        <div id="expensechart" style="width: 900px; height: 500px;"></div>
+        <div id="incomechart" style="height: 370px; width: 100%;"></div>
+        <div id="expensechart" style="height: 370px; width: 100%;"></div>
+        <script src="https://cdn.canvasjs.com/canvasjs.min.js"></script>
     </div>
+    <script>
+        function sendExport(){
+            let data = {
+                Start: $("#startdate").val(), 
+                End: $("#enddate").val()
+            }
+
+            $.ajax({
+                headers: {'X-CSRF-token': $("meta[name='csrf-token']").attr('content')},
+                url: "{{ route('moneyhub.gettransaction')}}",
+                type: "POST",
+                dataType: "json",
+                data: data,
+                success: function(res){
+                    console.log(res);
+                }
+            })
+        }
+    </script>
+    <script>
+        window.onload = function() {
+            var incomechart = new CanvasJS.Chart("incomechart", {
+                animationEnabled: true,
+                title: {
+                    text: "Income"
+                },
+                subtitles: [{
+                    text: "รายได้"
+                }],
+                data: [{
+                    type: "pie",
+                    yValueFormatString: "#,##0.00\"\"",
+                    indexLabel: "{label} ({y})",
+                    dataPoints: <?php echo json_encode($dataIncome, JSON_NUMERIC_CHECK); ?>
+                }]
+            });
+            var expensechart = new CanvasJS.Chart("expensechart", {
+                animationEnabled: true,
+                title: {
+                    text: "Expense"
+                },
+                subtitles: [{
+                    text: "รายจ่าย"
+                }],
+                data: [{
+                    type: "pie",
+                    yValueFormatString: "#,##0.00\"\"",
+                    indexLabel: "{label} ({y})",
+                    dataPoints: <?php echo json_encode($dataExpense, JSON_NUMERIC_CHECK); ?>
+                }]
+            });
+            incomechart.render();
+            expensechart.render();
+        }
+    </script>
 @endsection
