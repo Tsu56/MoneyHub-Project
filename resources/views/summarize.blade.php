@@ -8,8 +8,8 @@
                 <h2 class="py-6">สรุปแผนการเงิน</h2>
                 @if(auth()->user()->payment_status)
                 <div>
-                    <button class="btn btn-success">Export Excel</button>
-                    <button class="btn btn-danger">Export PDF</button>
+                    <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" class="btn btn-success">Export Excel</a>
+                    <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" class="btn btn-danger">Export PDF</a>
                 </div>
                 @endif
             </div>
