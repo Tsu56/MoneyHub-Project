@@ -14,8 +14,8 @@
                         function exportExcel() {
                         const workbook = new ExcelJS.Workbook();
                         const worksheet = workbook.addWorksheet("User data");
-                        let headerRow = worksheet.addRow(['วันที่', 'รายรับ(รวม)', 'รายจ่าย(รวม)']);
-                        worksheet.addRow(['{{ $StartdateForSetForm }} - {{$EnddateForSetForm}}', '{{ $Total_income }}', '{{ $Total_expense }}']);
+                        let headerRow = worksheet.addRow(['วันที่', 'รายรับ(รวม)', 'รายจ่าย(รวม)', 'สรุปยอด']);
+                        worksheet.addRow(['{{ $StartdateForSetForm }} - {{$EnddateForSetForm}}', '{{ number_format($Total_income, 2) }}', '{{ number_format($Total_expense, 2) }}', ' {{ number_format($Total_income - $Total_expense, 2) }} ']);
                         workbook.xlsx.writeBuffer().then((buffer) => {
                             const blob = new Blob([buffer], {
                                 type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
