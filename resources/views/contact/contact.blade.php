@@ -20,10 +20,10 @@
                         <div class="row justify-content-center">
                             <div class="form-group w-50 p-3" method="POST" action="">
                                 <label for="name">ชื่อ<span class="text-danger">*</span></label>
-                                <input type="text" name="name" class="form-control" autofocus required>
+                                <input type="text" name="name" value="{{ auth()->user()->us_fname . ' ' . auth()->user()->us_lname}}" class="form-control" autofocus required>
                                 <br>
                                 <label for="email">อีเมล<span class="text-danger">*</span></label>                               
-                                <input type="email" name="email" class="form-control" required>
+                                <input value="{{ auth()->user()->us_email }}" type="email" name="email" class="form-control" required>
                                 <br>
                                 <label for="msg">ข้อความ</label><br>
                                 <textarea class="msg" name="msg" id="msg" required></textarea>
