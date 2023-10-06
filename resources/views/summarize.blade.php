@@ -13,7 +13,15 @@
                     <script>
                         function exportExcel() {
                         const workbook = new ExcelJS.Workbook();
-                        console.log(workbook);
+                        const worksheet = workbook.addWorksheet("User data");
+                        let headerRow = worksheet.addRow(['วันที่', 'รายรับ(รวม)', 'รายจ่าย(รวม)']);
+                        worksheet.addRow(['{{ $StartdateForSetForm }} - {{$EnddateForSetForm}}', '{{ $Total_income }}', '{{ $Total_expense }}']);
+                        workbook.xlsx.writeBuffer().then((buffer) => {
+                            const blob = new Blob([buffer], {
+                                type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
+                            });
+                            saveAs(blob,'Report สรุป ' + moment().format('MMMM Do YYYY, h:mm:ss a'));
+                        });
                         }
                     </script>
                     <a onclick="exportExcel()" class="btn btn-success">Export Excel</a>
@@ -23,8 +31,7 @@
             </div>
             <hr>
             <h5>เลือกช่วง</h5>
-
-            <form id="datepicker" action="{{ route('moneyhub.getsummarize')}}" method="post">
+            <form id="datepicker" action="{{ route('moneyhub.getsummarize')}}" method="get">
                 @csrf
                 <input type="text" name="us_id" value={{auth()->user()->id}} hidden>
                 <label for="start">เริ่ม: </label>
