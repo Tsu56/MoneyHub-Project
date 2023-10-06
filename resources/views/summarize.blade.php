@@ -4,7 +4,15 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <div class="container p-5 my-5 text-white custom-pink-container">
         <div>
-            <h2 class="py-6">สรุปแผนการเงิน</h2>
+            <div class="d-flex justify-content-between align-items-center">
+                <h2 class="py-6">สรุปแผนการเงิน</h2>
+                @if(auth()->user()->payment_status)
+                <div>
+                    <button class="btn btn-success">Export Excel</button>
+                    <button class="btn btn-danger">Export PDF</button>
+                </div>
+                @endif
+            </div>
             <hr>
             <h5>เลือกช่วง</h5>
 

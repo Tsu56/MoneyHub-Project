@@ -75,7 +75,7 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">ปิด</button>
-                        <button type="submit" class="btn btn-primary">ยืนยัน</button>
+                        <button type="submit" class="btn btn-primary">บันทึก</button>
                     </div>
                     </form>
                 </div>
@@ -89,17 +89,17 @@
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h1 class="modal-title fs-5" id="staticBackdropLabel">คุณต้องการลบหรือไม่</h1>
+                        <h1 class="modal-title fs-5" id="staticBackdropLabel">ลบธุรกรรม</h1>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        <span id="show-id-delete"></span>
+                        ต้องการลบธุรกรรมวันที่ "<span class="text-danger" id="show-id-delete"></span>" หรือไม่?
                     </div>
                     <div class="modal-footer">
                         <form action="{{ route('moneyhub.historyList.delTran') }}" method="get">
                             <input type="hidden" id="id-delete" name="id">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">ปิด</button>
-                            <button type="submit" class="btn btn-primary">ลบ</button>
+                            <button type="submit" class="btn btn-danger">ลบ</button>
                         </form>
                     </div>
                 </div>
@@ -140,8 +140,7 @@
                                 <td db-id="{{ $tran->category ? $tran->category->id : '' }}">
                                     {{ $tran->category ? $tran->category->category_name : '-' }}</td>
                                 <td><span
-                                        class=" {{ $tran->transaction_type->id == 1 ? 'text-success' : 'text-danger' }}">{{ number_format($tran->transaction_amount) }}</span>
-                                    ฿</td>
+                                        class=" {{ $tran->transaction_type->id == 1 ? 'text-success' : 'text-danger' }}">{{ number_format($tran->transaction_amount) }} ฿</span>
                                 <td>{{ $tran->transaction_description }}</td>
                                 <td>
                                     <div class="d-flex flex-row justify-content-end align-items-center">
@@ -163,7 +162,7 @@
 
                                                     //Reaplce ข้อความใน input
                                                     $('#tran-id').val(e.target.value);
-                                                    $('#amount').val(parseFloat(prev_amount.replace(',', '')));
+                                                    $('#amount').val(parseFloat(prev_amount.replaceAll(',', '')));
                                                     for (let i = 0; i < select.length; i++) {
                                                         if (prev_tran_type_id == $(select[i]).attr('db-id')) {
                                                             $(select[i]).prop('disabled', false);
@@ -189,7 +188,7 @@
                                         <script>
                                             $(document).ready(() => {
                                                 $('#btn-delete{{ $tran->id }}').click((e) => {
-                                                    $('#show-id-delete').text({{ $tran->id }});
+                                                    $('#show-id-delete').text( moment('{{ $tran->transaction_datetime }}').format('LLLL') + ' น.');
                                                     $('#id-delete').val({{ $tran->id }});
                                                     $('#modal-delete').modal('toggle');
                                                 });
