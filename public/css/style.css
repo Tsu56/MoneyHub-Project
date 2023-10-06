@@ -217,6 +217,7 @@ div .card-header {
     background: linear-gradient(to bottom, #ff69b4, #FF8FAE );
     color: white;
     border-radius: 10px !important;
+    padding: 8px;
 }
 
 .card-header h3 {

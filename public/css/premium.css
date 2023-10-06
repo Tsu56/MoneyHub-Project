@@ -26,14 +26,14 @@
 
 /* navbar สีชมมพู  */
 .custom-pink-dropdown {
-    background-color: #ff69b4;
+    background-color: purple;
 }
 .custom-pink-navbar,
 .custom-pink-container{
-    background: linear-gradient(to bottom, #ff69b4, #FF8FAE );
+    background: linear-gradient(to bottom, purple, rgb(69, 0, 69) );
 }
 .custom-pink-footer{
-    background: linear-gradient(to bottom, #FF8FAE, #ff69b4 );
+    background: linear-gradient(to bottom, purple, rgb(97, 1, 97) );
 }
 
 nav div ul li a {
@@ -42,7 +42,7 @@ nav div ul li a {
 
 /* dropdown bg pink */ 
 nav div .custom-pink-navbar {
-    background-color: #ff69b4;
+    background-color: purple;
     color: white;
 }
 
@@ -67,9 +67,9 @@ div #navbarSupportedContent ul li a {
     scale: 1.225;
     cursor: pointer;
     margin-bottom: 40px;
-    border-left: rgb(212, 63, 212) 6px solid;
-    border-right: rgb(212, 63, 212) 6px solid;
-    border-bottom: rgb(212, 63, 212) 6px solid;
+    border-left: rgb(69, 0, 69) 6px solid;
+    border-right: rgb(69, 0, 69) 6px solid;
+    border-bottom: rgb(69, 0, 69) 6px solid;
     border-radius: 0;
 }
 
@@ -87,7 +87,11 @@ nav div #navbarSupportedContent ul li a:hover {
     color: black;
 }
 #navbarDropdown, .custom-nav-level2{
-    color: purple;
+    color: #ebb102;
+}
+#time-out:hover{
+    color: white;
+    border-bottom: 1px solid white;
 }
 .dropdown-menu {
     border-top: 4px solid #ebb102;
@@ -208,15 +212,16 @@ form #startdate, #enddate{
 
 /** กรอบฟอร์มติดต่อ **/
 .container-form{
-    border: 6px solid #ff69b4;
+    border: 6px solid rgb(69, 0, 69) ;
     border-radius: 20px;
     box-shadow: 10px 10px 10px gray;
 }
 
 div .card-header {
-    background: linear-gradient(to bottom, #ff69b4, #FF8FAE );
+    background: linear-gradient(to bottom, purple, rgb(69, 0, 69) );
     color: white;
     border-radius: 10px !important;
+    padding: 8px;
 }
 
 .card-header h3 {
@@ -242,11 +247,11 @@ textarea {
     margin: 30px auto;
     border-radius: 10px;
     font-size: large;
-    background-color: #FF8FAE;
+    background-color: violet;
 }
 
 .btn-sub:hover {
-    background-color: #ff69b4;
+    background-color: purple;
     transition: .3s;
     color: white;
 }
@@ -273,7 +278,7 @@ textarea {
 
 /**  ส่วนของ footer start **/
 footer div ul li a {
-    color: purple;
+    color: rgb(255, 187, 0);
     letter-spacing: 0.2pt;
     text-decoration: none;
 }
@@ -303,7 +308,7 @@ footer div ul li {
   # About Us
   --------------------------------------------------------------*/
   .chefs-bg {
-    background: linear-gradient(to bottom, #1a1814, #0f0b03 );
+    background: linear-gradient(to bottom, rgb(39, 2, 39), rgb(16, 0, 16) );
     color: white;
     padding: 50px;
     cursor: pointer;
@@ -366,7 +371,7 @@ footer div ul li {
   }
   
   .chefs .member .social a:hover {
-    color: #cda45e;
+    color: #ebb102;
   }
   
   .chefs .member .social i {

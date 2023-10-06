@@ -6,9 +6,9 @@
     <div class="container" data-aos="fade-up">
 
         <div class="section-title">
-            <h1>สมาชิก (Members)</h1>
-            <p>โปรเจคต์ของเราสำเร็จด้วยบุคคลเหล่านี้</p>
-        </div>
+            <h1>เกี่ยวกับเรา</h1>
+            <p>โปรเจคต์ของเราสำเร็จด้วยบุคคลเหล่านี้ :</p>
+        </div><br>
 
         <div class="row">
 
@@ -100,10 +100,10 @@
                 </div>
             </div>
 
-        </div>
+        </div><br>
 
     </div>
-</section><!-- End Chefs Section -->
+</section>
 
 
 

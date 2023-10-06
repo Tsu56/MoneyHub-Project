@@ -8,7 +8,7 @@
             <div class="col">
                 <div class="card-header">
                     <h3>ติดต่อสอบถาม</h3>
-                </div>
+                </div><br>
                 <div class="card-body">
                 @if(session('success'))
                         <div class="alert alert-success">
