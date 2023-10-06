@@ -148,6 +148,19 @@
         </div><br>
 
     </div>
+</section><br><br><br>
+
+<!-- Play-btn  -->
+<section id="hero" class="d-flex align-items-center">
+    <div class="container position-relative text-center text-lg-start" data-aos="zoom-in" data-aos-delay="100">
+        <div class="row">
+
+            <div class="col-lg-12 d-flex align-items-center justify-content-center position-relative" data-aos="zoom-in" data-aos-delay="200">
+                <a href="https://www.youtube.com/watch?v=kO8fhI_-jnA" class="glightbox play-btn"></a>
+            </div>
+
+        </div>
+    </div>
 </section>
 
 <br><br>
