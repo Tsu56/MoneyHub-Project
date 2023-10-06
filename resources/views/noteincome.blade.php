@@ -23,14 +23,17 @@
         </div>
         @endif
         <br>
+        <!--  ระบุค่าที่จะถูกแสดงในช่องข้อมูล ค่านี้จะเป็นไอดีของผู้ใช้ที่ลงชื่อเข้าใช้ (ใช้ auth()->user()->id เพื่อดึงไอดีผู้ใช้ปัจจุบัน)
+              ช่องข้อมูลนี้ถูกซ่อนแสดงอยู่ ผู้ใช้จะไม่เห็นช่องข้อมูลนี้บนหน้าเว็บ แต่ค่าข้อมูลจะถูกส่งไปยังเซิร์ฟเวอร์เมื่อผู้ใช้ส่งแบบฟอร์ม -->
         <input type="text" name="us_id" value={{auth()->user()->id}} hidden>
         <input type="text" name="trantype" value=1 hidden>
+        <!-- ระบุชื่อฟิลด์ที่จะส่งข้อมูลไปยังเซิร์ฟเวอร์เมื่อผู้ใช้ส่งแบบฟอร์ม value=1 ค่า 1 (ใช้เพื่อแสดงว่าเป็นรายได้) -->
 
         <label for="typeincome" class="form-label">ประเภทรายรับ :</label>
-        <div class="form-floating">
+        <div class="form-floating">  <!--  เรียกฟังก์ชัน selectChange() เมื่อมีการเลือกประเภทรายรับ  -->
             <select class="form-select" name="category" id="category" onchange="selectChange()" required>
-                @foreach ($categories as $category)
-                <option>{{$category->category_name}}</option>
+                @foreach ($categories as $category) <!--  แสดงตัวเลือกสำหรับประเภทรายรับที่มีอยู่ในตัวแปร $categories  -->
+                <option>{{$category->category_name}}</option> <!-- ใช้ในการแสดงชื่อประเภทรายรับจากตัวแปร $category  -->
                 @endforeach
                 <option>อื่นๆ</option>
             </select>
@@ -60,10 +63,12 @@
 
 <script>
     function selectChange() {
-        if (document.getElementById('category').value == 'อื่นๆ') {
+        if // เมื่อผู้ใช้เลือก "อื่นๆ" ค่าในอิลิเมนต์ <select> 'อื่นๆ' คำสั่งในบล็อก if จะทำงาน
+        (document.getElementById('category').value == 'อื่นๆ') {
             document.getElementById('otherCategory').hidden = false;
             document.getElementById('btn-add').hidden = false;
         } else {
+            // เมื่อผู้ใช้ไม่ได้เลือก "อื่นๆ" อิลิเมนต์นี้จะถูกซ่อน.
             document.getElementById('otherCategory').hidden = true;
             document.getElementById('btn-add').hidden = true;
         }

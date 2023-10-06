@@ -33,7 +33,7 @@
     background: linear-gradient(to bottom, purple, rgb(69, 0, 69) );
 }
 .custom-pink-footer{
-    background: linear-gradient(to bottom, purple, rgb(97, 1, 97) );
+    background: linear-gradient(to bottom, purple, rgb(69, 0, 69) );
 }
 
 nav div ul li a {
@@ -67,9 +67,9 @@ div #navbarSupportedContent ul li a {
     scale: 1.225;
     cursor: pointer;
     margin-bottom: 40px;
-    border-left: rgb(69, 0, 69) 6px solid;
-    border-right: rgb(69, 0, 69) 6px solid;
-    border-bottom: rgb(69, 0, 69) 6px solid;
+    border-left: rgb(69, 0, 69) 7px solid;
+    border-right: rgb(69, 0, 69) 7px solid;
+    border-bottom: rgb(69, 0, 69) 7px solid;
     border-radius: 0;
 }
 

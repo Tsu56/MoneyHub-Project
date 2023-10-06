@@ -21,6 +21,6 @@ class ContactController extends Controller
         $new_request->contract_email = $request->email;
         $new_request->description = $request->msg;
         $new_request->save();
-        return redirect()->route('moneyhub.contact')->with('success', 'ส่งข้อความสำเร็จ!');;
+        return redirect()->route('moneyhub.contact')->with('success', 'ส่งข้อความสำเร็จ!');
     }
 }
