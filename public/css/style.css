@@ -306,7 +306,7 @@ footer div ul li {
   .chefs-bg {
     background-color: #1a1814;
     color: white;
-    border: #1a1814 25px solid;
+    padding: 50px;
 }
   .chefs .member {
     text-align: center;

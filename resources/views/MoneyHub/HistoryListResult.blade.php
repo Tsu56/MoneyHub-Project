@@ -2,12 +2,13 @@
 
 @section('sub-content')
     @if (!$trans)
+    <br><br>
         <div class="text-center">
             <h1>
                 Oops! ไม่มีข้อมูลจ้าาาาา
-            </h1>
-            <a class="btn btn-secondary" href="{{ url()->previous() }}">ย้อยกลับ</a>
-        </div>
+            </h1><br><br><br><br>
+            <a class="btn btn-warning" href="{{ url()->previous() }}">ย้อนกลับ</a>
+        </div><br><br><br><br>
        
     @else
         <script>

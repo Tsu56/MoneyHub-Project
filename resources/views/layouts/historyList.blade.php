@@ -79,9 +79,9 @@
                     {{-- <button class="btn" id="my-button">Get Date</button> --}}
                 </div>
                 <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
-                    <a class="btn btn-outline-secondary {{ request()->routeIs('moneyhub.historyListReuslt') ? 'active' : '' }}"
+                    <a class="btn btn-outline-warning {{ request()->routeIs('moneyhub.historyListReuslt') ? 'active' : '' }}"
                         href="{{ route('moneyhub.historyListReuslt') }}">รายการ</a>
-                    <a class="btn btn-outline-secondary {{ request()->routeIs('moneyhub.historyList') ? 'active' : '' }}"
+                    <a class="btn btn-outline-warning {{ request()->routeIs('moneyhub.historyList') ? 'active' : '' }}"
                         href="{{ route('moneyhub.historyList') }}">ปฏิทิน</a>
                 </div>
             </div>
