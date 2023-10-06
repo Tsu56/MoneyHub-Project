@@ -44,6 +44,14 @@
                 success: function(res) {
                     console.log(res);
                     $('#show-date').text(`${moment(start).format('LL')} ถึง ${moment(last).format('LL')}`);
+                    if(res.analy.balance > 0) {
+                        $('#show-sumarize').removeClass('text-danger');
+                        $('#show-sumarize').addClass('text-success');
+                    }else {
+                        $('#show-sumarize').removeClass('text-success');
+                        $('#show-sumarize').addClass('text-danger');
+
+                    }
                     $('#show-sumarize').text(`${ (res.analy.balance).toLocaleString('th-TH') } ฿`);
                     $('#show-income').text(`${ (res.analy.income).toLocaleString('th-TH') } ฿`);
                     $('#show-expense').text(`${ (res.analy.expense).toLocaleString('th-TH') } ฿`);

@@ -65,7 +65,7 @@
                         `ของวันที่ '${ start.format('LL') }' หรือไม่`);
                 }else {
                     $('#show-pre-date').html(
-                        `ของวันที่ '${ start.format('LL') } ถึงวันที่ ${ end.format('LL') }' หรือไม่`);
+                        `ของวันที่ <b><u>'${ start.format('LL') } </b></u> ถึงวันที่ <b><u>${ end.format('LL') }'</b></u> หรือไม่`);
                 }
                 $('#confirmModal').modal('toggle');
                 $('#closeModalBtn1').click(() => {
