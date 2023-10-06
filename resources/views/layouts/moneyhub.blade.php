@@ -1,6 +1,9 @@
 @inject('qrcode', 'App\Http\Controllers\QrcodeController')
 @php
-    $qrcode::checkExpire();
+    if($qrcode::checkExpire()) {
+        echo "<script>alert('หมดเวลา Premium แล้ววว เธอคงต้องไป~~~')</script>";
+        header("Refresh:0");
+    };
 @endphp
 
 <html lang="en">
@@ -105,7 +108,7 @@
                 <!--  navbar Profile-LogOut Start -->
                 <div class="navbar-nav">
                     @if(auth()->user()->payment_status)<a class="dropdown-item custom-nav-level2" id="time-out" href="{{ route('moneyhub.Qrcode') }}">วันหมดอายุ Premium: 
-                        <script>document.write(moment('{{ auth()->user()->payment_expired }}').format('LLL') + ' น.')</script></a>@endif
+                        <script>document.write(moment('{{ auth()->user()->payment_expired }}').endOf('minus').fromNow() )</script></a>@endif
                 </div>
                 <ul class="navbar-nav">
                     <li class="nav-item dropdown">

@@ -1,10 +1,10 @@
 <x-form-section submit="updatePassword">
     <x-slot name="title">
-        {{ __('Update Password') }}
+        {{ __('เปลี่ยนรหัสผ่าน') }}
     </x-slot>
 
     <x-slot name="description">
-        {{ __('Ensure your account is using a long, random password to stay secure.') }}
+        {{ __('โปรดตรวจสอบให้ดีก่อนยืนยันการเปลี่ยนรหัส') }}
     </x-slot>
 
     <x-slot name="form">

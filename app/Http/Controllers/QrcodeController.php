@@ -12,7 +12,7 @@ class QrcodeController extends Controller
     public function QR(Request $request)
     {
         if($request->rp) {
-            self::checkExpire(1);
+            self::checkExpire($request->rp);
         }
         return view("QR");
     }
@@ -22,7 +22,6 @@ class QrcodeController extends Controller
         $payment_expired = auth()->user()->payment_expired;
         $user_id = auth()->user()->id;
         $user = User::where('id', $user_id);
-        $refresh = 0;
         if( (date_create('now') > date_create($payment_expired)) && $payment_expired) {
             $user->update([
                 'is_plus' => 0,
@@ -30,7 +29,7 @@ class QrcodeController extends Controller
                 'payment_expired' => null,
                 'payment_datetime' => null
             ]);
-            $refresh = 1;
+            return 1;
         }
         if($rp) {
             $user->update([
@@ -39,9 +38,8 @@ class QrcodeController extends Controller
                 'payment_expired' => null,
                 'payment_datetime' => null
             ]);
-            $refresh = 1;
+            return 1;
         }
-        return $refresh;
     }
 
     public function link(Request $request)
@@ -51,9 +49,15 @@ class QrcodeController extends Controller
         if ($user) {
 
             // เพิ่มใหม่
+            $interval = '30 mins';
+            $payment_date = auth()->user()->payment_datetime;
+            $payment_expired = auth()->user()->payment_expired;
             $cur_date = date_create('now');
             $expired_date = date_create('now');
-            $expired_date = date_add($expired_date, date_interval_create_from_date_string('20 minute'));
+            if($payment_date) {
+                $expired_date = date_create($payment_expired);
+            }
+            $expired_date = date_add($expired_date, date_interval_create_from_date_string($interval));
             // return [$cur_date, $expired_date];
 
 

@@ -35,7 +35,7 @@ Route::middleware([
     })->name('dashboard');
     Route::get('/MoneyHub', [homeController::class, "index"])->name('moneyhub.indexhome');
     Route::get('/MoneyHub/summarize/{user_id}', [summarizeController::class, "index"])->name('moneyhub.indexsummarize');
-    Route::post('/MoneyHub/getSummarize', [summarizeController::class, "getSummarize"])->name('moneyhub.getsummarize');
+    Route::get('/MoneyHub/getSummarize', [summarizeController::class, "getSummarize"])->name('moneyhub.getsummarize');
     Route::post('/MoneyHub/getTransaction', [transactionController::class, "getAllTransaction"])->name('moneyhub.gettransaction');
     Route::get('/MoneyHub/noteIncome/{user_id}', [transactionController::class, "noteIncomeForm"])->name('moneyhub.noteincome');
     Route::get('/MoneyHub/noteExpense/{user_id}', [transactionController::class, "noteExpenseForm"])->name('moneyhub.noteexpense');
@@ -51,7 +51,12 @@ Route::middleware([
     Route::post('/MoneyHub/contact', [ContactController::class, 'store'])->name('moneyhub.contact.store');
     Route::get('/MoneyHub/QrCode', [QrcodeController::class, "QR"])->name('moneyhub.Qrcode');
     Route::get('/MoneyHub/QrCodelink', [QrcodeController::class, "link"])->name('moneyhub.Qrcodelink');
-    Route::get('/MoneyHub/Adminhome', [adminController::class, "index"])->name('moneyhub.admin');
-    Route::get('/MoneyHub/delete/{user_id}', [adminController::class, "delete"])->name('moneyhub.deleteuser');
     Route::get('/MoneyHub/about', [homeController::class, "about"])->name('moneyhub.about');
+    
+    Route::middleware([
+        'admin'
+        ])->group(function () {
+            Route::get('/MoneyHub/Adminhome', [adminController::class, "index"])->name('moneyhub.admin');
+            Route::get('/MoneyHub/delete/{user_id}', [adminController::class, "delete"])->name('moneyhub.deleteuser');
+    });
 });

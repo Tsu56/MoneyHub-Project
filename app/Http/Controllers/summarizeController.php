@@ -50,7 +50,7 @@ class summarizeController extends Controller
                 'y' => $value->Total_amount
             );
         }
-
+        // $dataIncome = response()->json($dataIncome);
         return view("summarize", compact('Total_income', 'Total_expense', 'dataIncome', 'dataExpense', 'StartdateForSetForm', 'EnddateForSetForm'));
     }
 
