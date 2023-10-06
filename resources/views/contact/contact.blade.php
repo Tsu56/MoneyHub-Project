@@ -25,7 +25,7 @@
                                 <label for="email">อีเมล<span class="text-danger">*</span></label>                               
                                 <input value="{{ auth()->user()->us_email }}" type="email" name="email" class="form-control" required>
                                 <br>
-                                <label for="msg">ข้อความ</label><br>
+                                <label for="msg">ข้อความ<span class="text-danger">*</span></label><br>
                                 <textarea class="msg" name="msg" id="msg" required></textarea>
                                 <button class="btn-sub" type="submit">ส่งข้อมูล</button>
                                 <br>
