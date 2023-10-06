@@ -20,9 +20,9 @@
                 @csrf
                 <input type="text" name="us_id" value={{auth()->user()->id}} hidden>
                 <label for="start">เริ่ม: </label>
-                <input type="date" name="startdate" id="startdate" value={{$StartdateForSetForm}}>
+                <input type="date" name="startdate" id="startdate" value='{{$StartdateForSetForm}}'>
                 <label for="end">สิ้นสุด: </label>
-                <input type="date" name="enddate" id="enddate" value={{$EnddateForSetForm}}>
+                <input type="date" name="enddate" id="enddate" value='{{$EnddateForSetForm}}'>
                 <button type="submit" class="btn btn-success" id="insert-btn" name="insert-btn">ตกลง</button>
             </form><br>
 
