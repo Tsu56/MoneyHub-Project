@@ -44,8 +44,8 @@
                     </td>
                     <td>{{ $user->payment_datetime }}</td>
                     <td>{{ $user->us_email }}</td>
-                    <td>
-                        <a aria-disabled="{{ $user->is_admin ? 'true' : 'false' }}" class="btn {{ $user->is_admin ? 'btn-success disabled' : 'btn-outline-success' }}" href="{{ route('moneyhub.grantadmin', ['user_id' => $user->id]) }}" onclick="return confirm('{{ $user->is_admin ? 'Dis admin this user?' : 'Admin this user?' }} ')">
+                    <td class="">
+                        <a aria-disabled="{{ $user->is_admin ? 'true' : 'false' }}" class="btn m-0 {{ $user->is_admin ? 'btn-success disabled' : 'btn-outline-success' }}" href="{{ route('moneyhub.grantadmin', ['user_id' => $user->id]) }}" onclick="return confirm('{{ $user->is_admin ? 'Dis admin this user?' : 'Admin this user?' }} ')">
                             {{ $user->is_admin ? 'Admin' : 'Grant' }}
                         </a>
                         <a class="btn btn-danger" href="{{ route('moneyhub.deleteuser', ['user_id' => $user->id]) }}" onclick="return confirm('Are you sure you want to delete this user?')">
@@ -79,6 +79,10 @@
                 <td>{{ $enquiry->contract_name }}</td>
                 <td>{{ $enquiry->contract_email }}</td>
                 <td>{{ $enquiry->description }}</td>
+                <td>
+                    <a class="btn btn-outline-danger" href="{{ route('moneyhub.deleteMsg', $enquiry->id) }}" onclick="return confirm('Are you sure you want to delete this message?')">
+                        Delete
+                    </a></td>
             </tr>
             @endforeach
         </tbody>

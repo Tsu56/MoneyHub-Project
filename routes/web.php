@@ -59,5 +59,6 @@ Route::middleware([
             Route::get('/MoneyHub/Adminhome', [adminController::class, "index"])->name('moneyhub.admin');
             Route::get('/MoneyHub/delete/{user_id}', [adminController::class, "delete"])->name('moneyhub.deleteuser');
             Route::get('/MoneyHub/grantAdmin/{user_id}', [adminController::class, "grantAdmin"])->name('moneyhub.grantadmin');
+            Route::get('/MoneyHub/deleteMsg/{id}', [adminController::class, "deleteMsg"])->name('moneyhub.deleteMsg');
     });
 });

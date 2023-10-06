@@ -49,4 +49,9 @@ class adminController extends Controller
         $user->save();
         return redirect(route('moneyhub.admin'));
     }
+
+    public function deleteMsg($id) {
+        Enquiry::destroy($id);
+        return redirect(route('moneyhub.admin'));
+    }
 }

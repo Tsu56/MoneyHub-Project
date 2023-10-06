@@ -131,7 +131,7 @@
 
             <div class="col-lg-4 col-md-6">
                 <div class="member" data-aos="zoom-in" data-aos-delay="300">
-                    <img src="{{ asset('img/far.jpg') }}" class="img-fluid" alt="">
+                    <img src="{{ asset('img/far2.jpg') }}" class="img-fluid" alt="">
                     <div class="member-info">
                         <div class="member-info-content">
                             <h4>Kingnapa Singharach</h4>
