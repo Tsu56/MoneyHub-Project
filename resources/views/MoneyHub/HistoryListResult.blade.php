@@ -40,7 +40,7 @@
                 -webkit-transition: height .01s ease-in-out;
                 transition: height .01s ease-in-out;
             }
-        </style>
+        </style><br>
          {{-- ทดสอบโค้ด --}}
         {{-- {{ array_keys($trans)[count($trans)-1] }}
         {{ array_keys($trans)[0] }} --}}
@@ -204,7 +204,7 @@
                 </tbody>
 
             </table>
-        </div>
+        </div><br>
         <script>
             // $(document).ready(function() {
             //     $('.collapse').collapse();
