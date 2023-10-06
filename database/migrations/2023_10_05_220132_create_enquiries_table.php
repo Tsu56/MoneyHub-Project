@@ -19,6 +19,8 @@ return new class extends Migration
                   ->on('users')
                   ->onUpdate('cascade')
                   ->onDelete('cascade');
+            $table->string('contract_name')->nullable();
+            $table->string('contract_email')->nullable();
             $table->string('description')->nullable();
             $table->timestamps();
             $table->softDeletes();

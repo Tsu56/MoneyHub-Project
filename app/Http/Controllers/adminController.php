@@ -37,9 +37,16 @@ class adminController extends Controller
     }
 
     public function delete($user_id){
-        User::destroy($user_id);
+        User::find($user_id)->forceDelete();
         Transaction::where('us_id', $user_id)->delete();
         Enquiry::where('us_id', $user_id)->delete();
+        return redirect(route('moneyhub.admin'));
+    }
+
+    public function grantAdmin($user_id) {
+        $user = User::find($user_id);
+        $user->is_admin = !$user->is_admin;
+        $user->save();
         return redirect(route('moneyhub.admin'));
     }
 }

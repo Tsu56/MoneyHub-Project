@@ -59,7 +59,7 @@ class transactionController extends Controller
         $new_transaction->transaction_amount = $request->amount;  
         $new_transaction->transaction_datetime = date("Y-m-d H:i:s", strtotime("now"));
         $new_transaction->save();
-        return redirect( route('moneyhub.noteincome', ['user_id' => auth()->user()->id]));
+        return redirect( route('moneyhub.noteincome', ['user_id' => auth()->user()->id]))->with('success', 'บันทึกข้อมูลสำเร็จง้าบบบบ');
     }
 
     public static function getAllTransaction(Request $request){
