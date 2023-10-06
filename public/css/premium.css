@@ -212,15 +212,16 @@ form #startdate, #enddate{
 
 /** กรอบฟอร์มติดต่อ **/
 .container-form{
-    border: 6px solid #ff69b4;
+    border: 6px solid rgb(69, 0, 69) ;
     border-radius: 20px;
     box-shadow: 10px 10px 10px gray;
 }
 
 div .card-header {
-    background: linear-gradient(to bottom, #ff69b4, #FF8FAE );
+    background: linear-gradient(to bottom, purple, rgb(69, 0, 69) );
     color: white;
     border-radius: 10px !important;
+    padding: 8px;
 }
 
 .card-header h3 {
@@ -246,11 +247,11 @@ textarea {
     margin: 30px auto;
     border-radius: 10px;
     font-size: large;
-    background-color: #FF8FAE;
+    background-color: violet;
 }
 
 .btn-sub:hover {
-    background-color: #ff69b4;
+    background-color: purple;
     transition: .3s;
     color: white;
 }

@@ -3,7 +3,8 @@
 @section('main')
 <div class="card">
     <img src="{{ asset('img/Banner-3.png') }}" class="card-img-top" alt="โฆษณามันนี่ฮับ">
-</div><br><br><br><hr><br>
+</div><br><br><br>
+<hr><br>
 
 <div class="container mt-3" id="paragraph-1">
     <div class="row">
@@ -20,10 +21,11 @@
             <a href="{{ route('moneyhub.noteincome', ['user_id' => auth()->user()->id]) }}"><button type="button" class="btn custom-btn-blue">บันทึกรายรับ-รายจ่าย</button></a>
         </div><br>
         <div class="col-md-6">
-            <img src="{{ asset('img/ads-house.png') }}" alt="รูปภาพ" class="img-fluid"> 
+            <img src="{{ asset('img/ads-house.png') }}" alt="รูปภาพ" class="img-fluid">
         </div>
     </div>
-</div><br><hr>
+</div><br>
+<hr>
 
 
 <div class="container mt-3">
@@ -44,7 +46,111 @@
 
 <div class="card" id="card-2">
     <a href="{{ route('moneyhub.noteincome', ['user_id' => auth()->user()->id]) }}"><img src="{{ asset('img/Banner-2.png') }}" class="card-img-top" alt="โฆษณามันนี่ฮับ"></a>
-</div><br><br>
+</div><br>
+<section id="chefs" class="chefs chefs-bg">
+    <div class="container" data-aos="fade-up">
+
+        <div class="section-title">
+            <h1>เกี่ยวกับเรา</h1>
+            <p>โปรเจคต์ของเราสำเร็จด้วยบุคคลเหล่านี้ :</p>
+        </div><br>
+
+        <div class="row">
+
+            <div class="col-lg-4 col-md-6">
+                <div class="member" data-aos="zoom-in" data-aos-delay="100">
+                    <img src="{{ asset('img/friend.jpg') }}" class="img-fluid" alt="">
+                    <div class="member-info">
+                        <div class="member-info-content">
+                            <h3>Sorrawit Phiphan</h3>
+                            <span>653380036-1</span>
+                        </div>
+                        <div class="social">
+
+                            <a href="https://www.facebook.com/bismark2487"><i class="bi bi-facebook"></i></a>
+                            <a href="https://www.instagram.com/sorawit.phx/"><i class="bi bi-instagram"></i></a>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6">
+                <div class="member" data-aos="zoom-in" data-aos-delay="200">
+                    <img src="{{ asset('img/title.jpg') }}" class="img-fluid" alt="">
+                    <div class="member-info">
+                        <div class="member-info-content">
+                            <h4>Phukritsakon Yotphiphat</h4>
+                            <span>653380035-3</span>
+                        </div>
+                        <div class="social">
+
+                            <a href="https://www.facebook.com/supawitch.boonkun"><i class="bi bi-facebook"></i></a>
+                            <a href="https://instagram.com/phx_title/"><i class="bi bi-instagram"></i></a>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6">
+                <div class="member" data-aos="zoom-in" data-aos-delay="300">
+                    <img src="{{ asset('img/ployy.jpg') }}" class="img-fluid" alt="">
+                    <div class="member-info">
+                        <div class="member-info-content">
+                            <h4>Araya Hongsawong</h4>
+                            <span>653380041-8</span>
+                        </div>
+                        <div class="social">
+
+                            <a href="https://www.facebook.com/profile.php?id=100088538841786"><i class="bi bi-facebook"></i></a>
+                            <a href="https://www.instagram.com/bebe.ariix18/"><i class="bi bi-instagram"></i></a>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6">
+                <div class="member" data-aos="zoom-in" data-aos-delay="200">
+                    <img src="{{ asset('img/palm.jpg') }}" class="img-fluid" alt="">
+                    <div class="member-info">
+                        <div class="member-info-content">
+                            <h4>Punyawat Seankort</h4>
+                            <span>653380031-1</span>
+                        </div>
+                        <div class="social">
+
+                            <a href="https://www.facebook.com/profile.php?id=100014322600932"><i class="bi bi-facebook"></i></a>
+                            <a href="https://www.instagram.com/dp_plamx.pun/"><i class="bi bi-instagram"></i></a>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6">
+                <div class="member" data-aos="zoom-in" data-aos-delay="300">
+                    <img src="{{ asset('img/far.jpg') }}" class="img-fluid" alt="">
+                    <div class="member-info">
+                        <div class="member-info-content">
+                            <h4>Kingnapa Singharach</h4>
+                            <span>653380369-4</span>
+                        </div>
+                        <div class="social">
+                            <a href="https://www.facebook.com/kingnapa.singharach.56"><i class="bi bi-facebook"></i></a>
+                            <a href="https://www.instagram.com/skybykx/"><i class="bi bi-instagram"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div><br>
+
+    </div>
+</section>
+
+<br><br>
 
 
 @endsection
