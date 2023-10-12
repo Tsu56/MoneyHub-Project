@@ -33,7 +33,6 @@ return new class extends Migration
                   ->onDelete('cascade');
             $table->string('transaction_description')->nullable();
             $table->decimal('transaction_amount',10,2);
-            $table->dateTime('transaction_datetime');
             $table->timestamps();
             $table->softDeletes();
         });

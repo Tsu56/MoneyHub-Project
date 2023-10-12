@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('enquiries', function (Blueprint $table) {
+        Schema::create('payments', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('us_id');
             $table->foreign('us_id')
@@ -19,9 +19,8 @@ return new class extends Migration
                   ->on('users')
                   ->onUpdate('cascade')
                   ->onDelete('cascade');
-            $table->string('description')->nullable();
+            $table->dateTime('payment_expired')->nullable();
             $table->timestamps();
-            $table->softDeletes();
         });
     }
 
@@ -30,9 +29,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('enquiries');
-        Schema::table('enquiries', function (Blueprint $table){
-            $table->dropSoftDeletes();
-        });
+        Schema::dropIfExists('payments');
     }
 };

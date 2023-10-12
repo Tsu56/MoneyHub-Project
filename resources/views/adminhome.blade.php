@@ -57,18 +57,14 @@
         </tbody>
     </table>
     <br>
-    <h4><b>ข้อความจาก User</b></h4>
-    @if(!count($enquiries))
-        <div class="alert alert-warning">ม่ายมีข้อมูล</div>
-    @else
+    <h4><b>คำร้องขอ</b></h4>
     <table class="table table-hover">
         <thead>
             <tr>
                 <th scope="col">ลำดับที่</th>
-                <th scope="col">วันที่</th>
-                <th scope="col">ชื่อผู้ติดต่อ</th>
-                <th scope="col">E-mail ผู้ติดต่อ</th>
-                <th scope="col">ข้อความ</th>
+                <th scope="col">ชื่อผู้ใช้</th>
+                <th scope="col">E-mail</th>
+                <th scope="col">คำอธิบาย</th>
             </tr>
         </thead>
         <tbody class="table-group-divider">
@@ -87,34 +83,33 @@
             @endforeach
         </tbody>
     </table>
-    @endif
     <script>
         $(document).ready(function() {
             @if ($amountOfUser <= 1)
-            {
-                $("#TotalAmount").append(' {{ $amountOfUser }} User')
-            }
+                {
+                    $("#TotalAmount").append(' {{ $amountOfUser }} User')
+                }
             @else
-            {
+                {
                     $("#TotalAmount").append(' {{ $amountOfUser }} Users')
                 }
-                @endif
-                
-                @if ($amountNormalUser <= 1)
+            @endif
+
+            @if ($amountNormalUser <= 1)
                 {
                     $("#NormalUser").append(' {{ $amountNormalUser }} User')
                 }
-                @else
+            @else
                 {
                     $("#NormalUser").append(' {{ $amountNormalUser }} Users')
                 }
-                @endif
-                
-                @if ($amountPremiumUser <= 1)
+            @endif
+
+            @if ($amountPremiumUser <= 1)
                 {
                     $("#PremiumUser").append(' {{ $amountPremiumUser }} User')
                 }
-                @else
+            @else
                 {
                     $("#PremiumUser").append(' {{ $amountPremiumUser }} Users')
                 }
@@ -140,5 +135,5 @@
             });
             careerchart.render();
         }
-        </script>
-    @endsection
+    </script>
+@endsection

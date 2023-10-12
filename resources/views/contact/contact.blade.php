@@ -44,10 +44,13 @@
                                     </div>
                                 </div>
                             </div>
-                        </form>
-                    </div>
+                        </div>
+                    </form>
                 </div>
-            </div>
+            </div>   
         </div>
-    </section>
+    </div>
+</section>
+
 @endsection
+
