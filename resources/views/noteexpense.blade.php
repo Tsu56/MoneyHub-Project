@@ -16,13 +16,7 @@
     <form action="{{ route('moneyhub.inserttransaction') }}" method="post">
         @csrf
         <p class="h3 text-center">บันทึกรายจ่าย</p>
-        <hr>
-        @if (session('success'))
-        <div class="alert alert-success">
-            {{ session('success') }}
-        </div>
-        @endif
-        <br>
+        <hr><br>
         <input type="text" name="us_id" value={{auth()->user()->id}} hidden>
         <input type="text" name="trantype" value=2 hidden>
 
