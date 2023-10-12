@@ -1,7 +1,7 @@
 @extends('layouts.moneyhub')
 
 @section('main')
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    
     <div class="container p-5 my-5 text-white custom-pink-container">
         <div>
             <div class="d-flex justify-content-between align-items-center">

@@ -31,7 +31,7 @@ return new class extends Migration
                   ->on('categories')
                   ->onUpdate('cascade')
                   ->onDelete('cascade');
-            $table->string('transaction_description')->nullable();
+            $table->text('transaction_description')->nullable();
             $table->decimal('transaction_amount',10,2);
             $table->timestamps();
             $table->softDeletes();

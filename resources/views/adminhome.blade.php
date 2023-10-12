@@ -45,7 +45,7 @@
                     <td>{{ $user->payment_datetime }}</td>
                     <td>{{ $user->us_email }}</td>
                     <td class="">
-                        <a aria-disabled="{{ $user->is_admin ? 'true' : 'false' }}" class="btn m-0 {{ $user->is_admin ? 'btn-success disabled' : 'btn-outline-success' }}" href="{{ route('moneyhub.grantadmin', ['user_id' => $user->id]) }}" onclick="return confirm('{{ $user->is_admin ? 'Dis admin this user?' : 'Admin this user?' }} ')">
+                        <a aria-disabled="{{ $user->is_admin ? 'true' : 'false' }}" class="btn m-0 {{ $user->is_admin ? 'btn-success' : 'btn-outline-success' }}" href="{{ route('moneyhub.grantadmin', ['user_id' => $user->id]) }}" onclick="return confirm('{{ $user->is_admin ? 'Dis admin this user?' : 'Admin this user?' }} ')">
                             {{ $user->is_admin ? 'Admin' : 'Grant' }}
                         </a>
                         <a class="btn btn-danger" href="{{ route('moneyhub.deleteuser', ['user_id' => $user->id]) }}" onclick="return confirm('Are you sure you want to delete this user?')">
