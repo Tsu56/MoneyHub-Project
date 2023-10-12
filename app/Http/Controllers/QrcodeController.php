@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Payment;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
@@ -18,25 +19,29 @@ class QrcodeController extends Controller
     }
 
     public static function checkExpire($rp=0) {
-        $payment_date = auth()->user()->payment_datetime;
-        $payment_expired = auth()->user()->payment_expired;
+
+        $payment = Payment::where('us_id', auth()->user()->id)->first();
+        $payment_date = $payment->payment_datetime;
+        $payment_expired = $payment->payment_expired;
         $user_id = auth()->user()->id;
         $user = User::where('id', $user_id);
         if( (date_create('now') > date_create($payment_expired)) && $payment_expired) {
             $user->update([
-                'is_plus' => 0,
-                'payment_status' => 0,
-                'payment_expired' => null,
-                'payment_datetime' => null
+                'is_plus' => 0
+            ]);
+            $payment->update([
+                'payment_datetime' => null,
+                'payment_expired' => null
             ]);
             return 1;
         }
         if($rp) {
             $user->update([
-                'is_plus' => 0,
-                'payment_status' => 0,
-                'payment_expired' => null,
-                'payment_datetime' => null
+                'is_plus' => 0
+            ]);
+            $payment->update([
+                'payment_datetime' => null,
+                'payment_expired' => null
             ]);
             return 1;
         }
@@ -47,11 +52,11 @@ class QrcodeController extends Controller
 
         $user = Auth::user();
         if ($user) {
-
             // เพิ่มใหม่
-            $interval = '3 mins';
-            $payment_date = auth()->user()->payment_datetime;
-            $payment_expired = auth()->user()->payment_expired;
+            $interval = '30 mins';
+            $payment = Payment::where('us_id', auth()->user()->id)->first();
+            $payment_date = $payment->payment_datetime;
+            $payment_expired = $payment->payment_expired;
             $cur_date = date_create('now');
             $expired_date = date_create('now');
             if($payment_date) {
@@ -65,13 +70,16 @@ class QrcodeController extends Controller
                 ->where('id', $user->id)
                 ->update(
                     [
-                        'is_plus' => 1,
-                        'payment_status' => 1,
+                        'is_plus' => 1
+                    ]
+                );
+            
+            DB::table('payments')
+                ->where('us_id', $user->id)
+                ->update(
+                    [
                         'payment_datetime' => $cur_date,
-
-                        // เพิ่มใหม่
                         'payment_expired' => $expired_date
-                        //
                     ]
                 );
         }

@@ -20,7 +20,7 @@
             integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css" rel="stylesheet" />
         <!-- @style.css -->
-        @if(auth()->user()->payment_status)
+        @if(auth()->user()->is_plus)
             <link rel="stylesheet" type="text/css" href="{{ asset('css/premium.css') }}">
         @else
             <link rel="stylesheet" type="text/css" href="{{ asset('css/style.css') }}">
@@ -107,33 +107,42 @@
 
                 <!--  navbar Profile-LogOut Start -->
                 <div class="navbar-nav">
-                    @if(auth()->user()->payment_status)
-                    <a class="dropdown-item custom-nav-level2" id="time-out" href="{{ route('moneyhub.Qrcode') }}">
-                        วันหมดอายุ Premium: 
-                        <span id="premium-out"></span>
-                    </a>
-                        <script>
-                            setInterval(function () {
-                                $('#premium-out').text(moment('{{ auth()->user()->payment_expired }}').endOf('minus').fromNow());
-                                if(moment() >= moment('{{ auth()->user()->payment_expired }}')) {
-                                    location.reload();
-                                }
-                            }, 1000);
-                        </script>
+                    @if(auth()->user()->is_plus)
+                        <span class="text-white">Balance: {{number_format(auth()->user()->balance, 2)}} บาท</span>
                     @endif
                 </div>
                 <ul class="navbar-nav">
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="" id="navbarDropdown" role="button"
                             data-bs-toggle="dropdown" aria-expanded="false">
-                            สวัสดีคุณ {{ Auth::user()->us_fname }} {{ auth()->user()->payment_status ? '👑' : '' }}
+                            สวัสดีคุณ {{ Auth::user()->us_fname }} {{ auth()->user()->is_plus ? '👑' : '' }}
                         </a>
                         <ul class="dropdown-menu custom-pink-navbar">
                             <li><a class="dropdown-item custom-nav-level2"
                                     href="{{ route('profile.show') }}">โปรไฟล์</a></li>
-                            @if (!auth()->user()->payment_status)
+                            @if (!auth()->user()->is_plus)
                                 <li><a class="dropdown-item custom-nav-level2"
                                         href="{{ route('moneyhub.Qrcode') }}">อัปเกรดสมาชิก</a></li>
+                            @else
+                                <li>
+                                    <a class="dropdown-item custom-nav-level2" id="time-out" href="{{ route('moneyhub.Qrcode') }}">
+                                        วันหมดอายุ Premium: 
+                                        <span id="premium-out"></span>
+                                    </a>
+                                        <?php
+                                            $payment = DB::table('payments')->where('us_id', auth()->user()->id)->first();
+                                            $payment_date = $payment->payment_datetime;
+                                            $payment_expired = $payment->payment_expired;
+                                        ?>
+                                        <script>
+                                            setInterval(function () {
+                                                $('#premium-out').text(moment('{{ $payment_expired }}').endOf('minus').fromNow());
+                                                if(moment() >= moment('{{ $payment_expired }}')) {
+                                                    location.reload();
+                                                }
+                                            }, 1000);
+                                        </script>
+                                </li>
                             @endif
                             <li>
                                 <form action="{{ route('logout') }}" method="POST">

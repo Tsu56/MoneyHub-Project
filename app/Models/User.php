@@ -34,10 +34,7 @@ class User extends Authenticatable
         'us_email',
         'password',
         'is_plus',
-        'is_admin',
-        'payment_status',
-        'payment_datetime',
-        'payment_expired'
+        'is_admin'
     ];
 
     /**

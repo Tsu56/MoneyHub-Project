@@ -2,6 +2,7 @@
 
 namespace App\Actions\Fortify;
 
+use App\Models\Payment;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -30,7 +31,7 @@ class CreateNewUser implements CreatesNewUsers
             'terms' => Jetstream::hasTermsAndPrivacyPolicyFeature() ? ['accepted', 'required'] : '',
         ])->validate();
 
-        return User::create([
+        $user = User::create([
             'us_fname' => $input['us_fname'],
             'us_lname' => $input['us_lname'],
             'us_email' => $input['us_email'],
@@ -39,5 +40,11 @@ class CreateNewUser implements CreatesNewUsers
             'gender_id' => $input['gender_id'],
             'career_id' => $input['career_id']
         ]);
+
+        $payment = new Payment();
+        $payment->us_id = $user->id;
+        $payment->save();
+
+        return $user;
     }
 }

@@ -6,7 +6,7 @@
         <div>
             <div class="d-flex justify-content-between align-items-center">
                 <h2 class="py-6">สรุปแผนการเงิน</h2>
-                @if(auth()->user()->payment_status)
+                @if(auth()->user()->is_plus)
                 <div>
                     <script src="https://cdnjs.cloudflare.com/ajax/libs/exceljs/4.3.0/exceljs.js" integrity="sha512-cGr/NaKGtjxGJokVug48VTo4KNaVgqDxylS4lT5Wi39OFsqfv4J/eMZKOfrcwh/lAnOlK5/P7tEnRkdsbZrxUA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
                     <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.0/FileSaver.js" integrity="sha512-UNbeFrHORGTzMn3HTt00fvdojBYHLPxJbLChmtoyDwB6P9hX5mah3kMKm0HHNx/EvSPJt14b+SlD8xhuZ4w9Lg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>

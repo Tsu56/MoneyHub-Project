@@ -19,6 +19,7 @@ return new class extends Migration
                   ->on('users')
                   ->onUpdate('cascade')
                   ->onDelete('cascade');
+            $table->dateTime('payment_datetime')->nullable();
             $table->dateTime('payment_expired')->nullable();
             $table->timestamps();
         });

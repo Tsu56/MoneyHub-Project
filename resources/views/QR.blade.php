@@ -10,7 +10,7 @@
     <form action="{{ route('moneyhub.Qrcodelink') }}">
 
         <div class="row">
-            @if(auth()->user()->payment_status)
+            @if(auth()->user()->is_plus)
                 <h1 class="h1 text-center">จ่ายเงินเพื่อต่อเวลาบาดเจ็บ😭</h1>
             @else 
                 <h1 class="h1 text-center">จ่ายเงินเพื่อใช้งาน Premium</h1>
