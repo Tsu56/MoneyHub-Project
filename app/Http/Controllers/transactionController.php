@@ -11,7 +11,8 @@ use CSV;
 
 class transactionController extends Controller
 {
-    public function noteIncomeForm($user_id){
+    public function noteIncomeForm(){
+        $user_id = auth()->user()->id;
         $categories = Category::where([["transaction_type_id", 1], ["us_id", null]])
                                 ->orWhere([["transaction_type_id", 1], ["us_id", $user_id]])
                                 ->get();
@@ -23,7 +24,8 @@ class transactionController extends Controller
         ดึงข้อมูลของผู้ใช้และรายการหมวดหมู่ที่เป็นรายได้จากฐานข้อมูล ฟังก์ชันจะส่งข้อมูลนี้ไปยังหน้า noteincome 
         โดยใช้ฟังก์ชัน view และทำการส่งข้อมูลผู้ใช้และรายการหมวดหมู่ไปกับการแสดงผลด้วย compact  **/
 
-    public function noteExpenseForm($user_id){
+    public function noteExpenseForm(){
+        $user_id = auth()->user()->id;
         $categories = Category::where([["transaction_type_id", 2], ["us_id", null]])
                                 ->orWhere([["transaction_type_id", 2], ["us_id", $user_id]])
                                 ->get();
@@ -38,18 +40,18 @@ class transactionController extends Controller
         /*      ตรวจสอบประเภทของธุรกรรม โดยใช้ $request->trantype ซึ่งเป็นค่าที่ผู้ใช้เลือกในแบบฟอร์ม (1, 2. โดยที่ 1 แทนรายได้และ 2 แทนรายจ่าย)   */
         // return date_format(date_create($request['tran-datetime']), 'Y-m-d H:i:s');
         if ($request->trantype == 1) {
-            $balance = User::find($request->us_id);
+            $balance = User::find(auth()->user()->id);
             $balance->balance += $request->amount;
             $balance->save();
         } else {
-            $balance = User::find($request->us_id);
+            $balance = User::find(auth()->user()->id);
             $balance->balance -= $request->amount;
             $balance->save();
         } /*     อัปเดตเงินคงเหลือของผู้ใช้ โดยเพิ่มหรือลดจำนวนเงินขึ้นออกไป กรณีรายได้ (1) เราเพิ่มจำนวนเงินในฟิลด์ balance ของผู้ใช้ 
             และในกรณีรายจ่าย (2) เราลดจำนวนเงินในฟิลด์ balance ของผู้ใช้ และทำการบันทึกการเปลี่ยนแปลงนี้ในฐานข้อมูล  */
 
         $new_transaction = new Transaction;
-        $new_transaction->us_id = $request->us_id;
+        $new_transaction->us_id = auth()->user()->id;
         $new_transaction->transaction_type_id = $request->trantype;
         $new_transaction->created_at = date_format(date_create($request['tran-datetime']), 'Y-m-d H:i:s');
 
@@ -59,7 +61,7 @@ class transactionController extends Controller
             $new_category = new Category;
             $new_category->category_name = $request->otherCategory;
             $new_category->transaction_type_id = $request->trantype;
-            $new_category->us_id = $request->us_id;
+            $new_category->us_id = auth()->user()->id;
             $new_category->save();
             /*   หาหมวดหมู่ที่เพิ่งสร้าง   */ 
             $category = Category::where("category_name", $request->otherCategory)->first();
@@ -69,7 +71,8 @@ class transactionController extends Controller
         $new_transaction->transaction_description = $request->description;
         $new_transaction->transaction_amount = $request->amount;  
         $new_transaction->save();
-        return redirect( route('moneyhub.noteincome', ['user_id' => auth()->user()->id]))->with('success', 'บันทึกข้อมูลสำเร็จ!');
+        return redirect()->back()->with('success', 'บันทึกข้อมูลสำเร็จ!');
+        // return redirect( route('moneyhub.noteincome', ['user_id' => auth()->user()->id]))->with('success', 'บันทึกข้อมูลสำเร็จ!');
         /*  ใช้คำสั่ง redirect เพื่อเปลี่ยนเส้นทางการเรียกใช้หน้าเว็บไปยังหน้า noteincome หรือ noteexpense ขึ้นอยู่กับประเภทของธุรกรรมที่ผู้ใช้เลือก  */
     }
 
@@ -97,7 +100,11 @@ class transactionController extends Controller
         return redirect()->back();
     }
 
-    public function updateCate() {
-
+    public function updateCate(Request $request) {
+        // return $request['input-edit-cate-id'];
+        $cate = Category::find($request['input-edit-cate-id']);
+        $cate->category_name = $request['input-edit-cate-name'];
+        $cate->save();
+        return redirect()->back()->with(['cate_id' => $cate->id]);
     }
 }

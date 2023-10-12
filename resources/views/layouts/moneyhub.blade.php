@@ -77,7 +77,7 @@
                         <a class="nav-link text-white
                         @if (request()->routeIs('moneyhub.noteincome')) active @endif
                         "
-                            href="{{ route('moneyhub.noteincome', ['user_id' => auth()->user()->id]) }}">รายรับ-รายจ่าย</a>
+                            href="{{ route('moneyhub.noteincome') }}">รายรับ-รายจ่าย</a>
                     </li>
                     <!--  dropdown-menu start-->
                     <li class="nav-item dropdown">
