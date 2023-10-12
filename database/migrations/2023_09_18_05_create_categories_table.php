@@ -20,6 +20,12 @@ return new class extends Migration
                   ->on('transaction_types')
                   ->onUpdate('cascade')
                   ->onDelete('cascade');
+            $table->unsignedBigInteger('us_id')->nullable();
+            $table->foreign('us_id')
+                  ->references('id')
+                  ->on('users')
+                  ->onUpdate('cascade')
+                  ->onDelete('cascade');
             $table->timestamps();
         });
     }

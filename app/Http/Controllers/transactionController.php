@@ -68,7 +68,7 @@ class transactionController extends Controller
         $new_transaction->transaction_amount = $request->amount;  
         $new_transaction->transaction_datetime = date("Y-m-d H:i:s", strtotime("now"));
         $new_transaction->save();
-        return redirect( route('moneyhub.noteincome', ['user_id' => auth()->user()->id]));
+        return redirect( route('moneyhub.noteincome', ['user_id' => auth()->user()->id]))->with('success', 'บันทึกข้อมูลสำเร็จ!');
         /*  ใช้คำสั่ง redirect เพื่อเปลี่ยนเส้นทางการเรียกใช้หน้าเว็บไปยังหน้า noteincome หรือ noteexpense ขึ้นอยู่กับประเภทของธุรกรรมที่ผู้ใช้เลือก  */
     }
 

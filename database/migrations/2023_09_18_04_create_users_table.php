@@ -30,9 +30,6 @@ return new class extends Migration
                   ->onDelete('cascade');
             $table->boolean('is_plus')->default(0);
             $table->boolean('is_admin')->default(0);
-            $table->boolean('payment_status')->default(0);
-            $table->dateTime('payment_datetime')->nullable();
-            $table->dateTime('payment_expired')->nullable();
             $table->decimal('balance', 10, 2)->nullable();
             $table->string('us_email')->unique();
             $table->string('password');
