@@ -108,9 +108,7 @@
 
                 <!--  navbar Profile-LogOut Start -->
                 <div class="navbar-nav">
-                    @if(auth()->user()->is_plus)
-                        <span class="text-white">Balance: {{number_format(auth()->user()->balance, 2)}} บาท</span>
-                    @endif
+                    <span class="text-white">Balance: {{number_format(auth()->user()->balance, 2)}} บาท</span>
                 </div>
                 <ul class="navbar-nav">
                     <li class="nav-item dropdown">
