@@ -37,7 +37,7 @@ class historyListController extends Controller
         $transac_cal_table = array();
         $user_transactions = Transaction::where('us_id', Auth::user()->id)->get();
         foreach ($user_transactions as $transac) {
-            $date = Carbon::createFromFormat('Y-m-d H:i:s', $transac->transaction_datetime)->format('Y-m-d');
+            $date = Carbon::createFromFormat('Y-m-d H:i:s', $transac->created_at)->format('Y-m-d');
             if(!array_key_exists($date, $transac_cal_table)) {
                 $transac_cal_table[$date] = array(
                     'income' => 0,
@@ -61,14 +61,15 @@ class historyListController extends Controller
 
     public function pageResult(Request $request) {
         $user_id = auth()->user()->id;
-        $categorys = Category::all();
-        $trans = Transaction:: with('transaction_type')->with('category')->selectRaw('*, date(transactions.transaction_datetime) as date')->where('us_id', $user_id);
+        $categorys = Category::where([["us_id", auth()->user()->id], ["us_id", null]])
+                    ->get();
+        $trans = Transaction:: with('transaction_type')->with('category')->selectRaw('*, date(transactions.created_at) as date')->where('us_id', $user_id);
         if($request->start_date && $request->end_date) {
             $start = $request->start_date;
             $end = $request->end_date;
             $start = date_format(date_create($start), 'Y-m-d H:i:s');
             $end = date_format(date_create($end), 'Y-m-d H:i:s');
-            $trans = $trans->whereBetween('transaction_datetime', [$start, $end]);
+            $trans = $trans->whereBetween('created_at', [$start, $end]);
         }
         $trans = $trans->get();
         $trans = $this->conv_trans_key_date($trans);
@@ -88,8 +89,8 @@ class historyListController extends Controller
         );
         $trans = Transaction::where('us_id', auth()->user()->id)->get();
         for($i=0; $i<count($trans); $i++) {
-            $trans[$i]['transaction_datetime'] = date_format(date_create($trans[$i]['transaction_datetime']), 'Y-m-d') ;
-            if( strtotime($trans[$i]['transaction_datetime']) >= strtotime($start) && strtotime($trans[$i]['transaction_datetime']) <= strtotime($last)) {
+            $trans[$i]['created_at'] = date_format(date_create($trans[$i]['created_at']), 'Y-m-d') ;
+            if( strtotime($trans[$i]['created_at']) >= strtotime($start) && strtotime($trans[$i]['created_at']) <= strtotime($last)) {
                 if($trans[$i]['transaction_type_id'] == 1) $analize_trans['income'] += $trans[$i]['transaction_amount'];
                 if($trans[$i]['transaction_type_id'] == 2) $analize_trans['expense'] += $trans[$i]['transaction_amount'];
             }
