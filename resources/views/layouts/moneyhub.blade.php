@@ -41,7 +41,7 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/locale/th.min.js"></script>
 
         {{-- เช็ค Premium --}}
-
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
         @yield('add-link')
     </head>
@@ -107,8 +107,20 @@
 
                 <!--  navbar Profile-LogOut Start -->
                 <div class="navbar-nav">
-                    @if(auth()->user()->payment_status)<a class="dropdown-item custom-nav-level2" id="time-out" href="{{ route('moneyhub.Qrcode') }}">วันหมดอายุ Premium: 
-                        <script>document.write(moment('{{ auth()->user()->payment_expired }}').endOf('minus').fromNow() )</script></a>@endif
+                    @if(auth()->user()->payment_status)
+                    <a class="dropdown-item custom-nav-level2" id="time-out" href="{{ route('moneyhub.Qrcode') }}">
+                        วันหมดอายุ Premium: 
+                        <span id="premium-out"></span>
+                    </a>
+                        <script>
+                            setInterval(function () {
+                                $('#premium-out').text(moment('{{ auth()->user()->payment_expired }}').endOf('minus').fromNow());
+                                if(moment() >= moment('{{ auth()->user()->payment_expired }}')) {
+                                    location.reload();
+                                }
+                            }, 1000);
+                        </script>
+                    @endif
                 </div>
                 <ul class="navbar-nav">
                     <li class="nav-item dropdown">

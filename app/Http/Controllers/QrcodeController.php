@@ -49,7 +49,7 @@ class QrcodeController extends Controller
         if ($user) {
 
             // เพิ่มใหม่
-            $interval = '30 mins';
+            $interval = '3 mins';
             $payment_date = auth()->user()->payment_datetime;
             $payment_expired = auth()->user()->payment_expired;
             $cur_date = date_create('now');
