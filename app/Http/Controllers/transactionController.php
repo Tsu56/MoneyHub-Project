@@ -12,7 +12,9 @@ use CSV;
 class transactionController extends Controller
 {
     public function noteIncomeForm($user_id){
-        $categories = Category::where("transaction_type_id", 1)->get();
+        $categories = Category::where([["transaction_type_id", 1], ["us_id", null]])
+                                ->orWhere([["transaction_type_id", 1], ["us_id", $user_id]])
+                                ->get();
         $userinfo = User::find($user_id);
         return view('noteincome', compact('userinfo', 'categories'));
     }
@@ -21,7 +23,9 @@ class transactionController extends Controller
         โดยใช้ฟังก์ชัน view และทำการส่งข้อมูลผู้ใช้และรายการหมวดหมู่ไปกับการแสดงผลด้วย compact  **/
 
     public function noteExpenseForm($user_id){
-        $categories = Category::where("transaction_type_id", 2)->get();
+        $categories = Category::where([["transaction_type_id", 2], ["us_id", null]])
+                                ->orWhere([["transaction_type_id", 2], ["us_id", $user_id]])
+                                ->get();
         $userinfo = User::find($user_id);
         return view('noteexpense', compact('userinfo', 'categories'));
     }
@@ -47,7 +51,9 @@ class transactionController extends Controller
         $new_transaction->transaction_type_id = $request->trantype;
 
         if ($request->otherCategory == null) { /*  ตรวจสอบว่าผู้ใช้เลือกหมวดหมู่ที่มีอยู่หรือไม่  */
-            $categories = Category::where("transaction_type_id", $request->trantype)->get();
+            $categories = Category::where([["transaction_type_id", $request->trantype], ["us_id", null]])
+                                    ->orWhere([["transaction_type_id", $request->trantype], ["us_id", $request->us_id]])
+                                    ->get();
             foreach ($categories as $category){
                 if($request->category == $category->category_name) {
                     $new_transaction->category_id = $category->id;
@@ -58,6 +64,7 @@ class transactionController extends Controller
             $new_category = new Category;
             $new_category->category_name = $request->otherCategory;
             $new_category->transaction_type_id = $request->trantype;
+            $new_category->us_id = $request->us_id;
             $new_category->save();
             /*   หาหมวดหมู่ที่เพิ่งสร้าง   */ 
             $category = Category::where("category_name", $request->otherCategory)->first();
@@ -66,7 +73,6 @@ class transactionController extends Controller
         
         $new_transaction->transaction_description = $request->description;
         $new_transaction->transaction_amount = $request->amount;  
-        $new_transaction->transaction_datetime = date("Y-m-d H:i:s", strtotime("now"));
         $new_transaction->save();
         return redirect( route('moneyhub.noteincome', ['user_id' => auth()->user()->id]))->with('success', 'บันทึกข้อมูลสำเร็จ!');
         /*  ใช้คำสั่ง redirect เพื่อเปลี่ยนเส้นทางการเรียกใช้หน้าเว็บไปยังหน้า noteincome หรือ noteexpense ขึ้นอยู่กับประเภทของธุรกรรมที่ผู้ใช้เลือก  */
@@ -80,9 +86,9 @@ class transactionController extends Controller
                              /**  ใช้เงื่อนไข where เพื่อเลือกเฉพาะการเงินที่เกี่ยวข้องกับผู้ใช้ปัจจุบัน โดยใช้ auth()->user()->id เป็นไอดีของผู้ใช้ที่ลงชื่อเข้าใช้  **/
                              ->where('transactions.us_id', auth()->user()->id)
                              /**  ใช้เงื่อนไข whereBetween เพื่อเลือกการเงินที่อยู่ในช่วงเวลาที่ผู้ใช้ต้องการ โดยใช้ $request->Start และ $request->End ที่เป็นข้อมูลที่ผู้ใช้ส่งมาในคำขอ  **/
-                             ->whereBetween('transaction_datetime', [$request->Start, $request->End])
+                             ->whereBetween('created_at', [$request->Start, $request->End])
                              /**  ใช้ select เพื่อเลือกฟิลด์ที่เราต้องการให้แสดงในผลลัพธ์ ในกรณีนี้เราเลือกฟิลด์:  **/
-                             ->select('transaction_types.transaction_type_name', 'categories.category_name', 'transactions.transaction_amount', 'transactions.transaction_description', 'transactions.transaction_datetime')
+                             ->select('transaction_types.transaction_type_name', 'categories.category_name', 'transactions.transaction_amount', 'transactions.transaction_description', 'transactions.created_at')
                              /**  ใช้ get เพื่อดึงข้อมูลทั้งหมดที่เลือกมา และเก็บไว้ในตัวแปร $result  **/
                              ->get();
         
