@@ -61,7 +61,8 @@ class historyListController extends Controller
 
     public function pageResult(Request $request) {
         $user_id = auth()->user()->id;
-        $categorys = Category::where([["us_id", auth()->user()->id], ["us_id", null]])
+        $categorys = Category::where("us_id", null)
+                    ->orWhere("us_id", auth()->user()->id)
                     ->get();
         $trans = Transaction:: with('transaction_type')->with('category')->selectRaw('*, date(transactions.created_at) as date')->where('us_id', $user_id);
         if($request->start_date && $request->end_date) {
@@ -69,11 +70,12 @@ class historyListController extends Controller
             $end = $request->end_date;
             $start = date_format(date_create($start), 'Y-m-d H:i:s');
             $end = date_format(date_create($end), 'Y-m-d H:i:s');
-            $trans = $trans->whereBetween('created_at', [$start, $end]);
+            $trans = $trans->whereBetween('transactions.created_at', [$start, $end]);
         }
         $trans = $trans->get();
         $trans = $this->conv_trans_key_date($trans);
         krsort($trans);
+        // return $categorys;
         // return $trans;
         // return array_keys($trans)[count($trans)-1];
         return view('MoneyHub.historyListResult', compact('trans', 'categorys'));

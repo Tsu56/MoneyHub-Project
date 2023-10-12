@@ -133,7 +133,7 @@
                             <tr id="collapse{{ $key }}" class="collapse show">
                                 <td>เวลา
                                     <script>
-                                        document.write(moment('{{ $tran->transaction_datetime }}').format('H:mm:ss'))
+                                        document.write(moment('{{ $tran->created_at }}').format('H:mm:ss'))
                                     </script> น.
                                 </td>
                                 <td db-id="{{ $tran->transaction_type->id }}">
@@ -189,7 +189,7 @@
                                         <script>
                                             $(document).ready(() => {
                                                 $('#btn-delete{{ $tran->id }}').click((e) => {
-                                                    $('#show-id-delete').text( moment('{{ $tran->transaction_datetime }}').format('LLLL') + ' น.');
+                                                    $('#show-id-delete').text( moment('{{ $tran->created_at }}').format('LLLL') + ' น.');
                                                     $('#id-delete').val({{ $tran->id }});
                                                     $('#modal-delete').modal('toggle');
                                                 });
