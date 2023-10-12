@@ -16,6 +16,7 @@ class transactionController extends Controller
                                 ->orWhere([["transaction_type_id", 1], ["us_id", $user_id]])
                                 ->get();
         $userinfo = User::find($user_id);
+        // return $categories;
         return view('noteincome', compact('userinfo', 'categories'));
     }
     /**       ใช้แสดงแบบฟอร์มบันทึกรายได้ของผู้ใช้ ที่ระบุโดยใช้ $user_id เป็นพารามิเตอร์:
@@ -35,6 +36,7 @@ class transactionController extends Controller
 
     public function insertTransaction(Request $request){
         /*      ตรวจสอบประเภทของธุรกรรม โดยใช้ $request->trantype ซึ่งเป็นค่าที่ผู้ใช้เลือกในแบบฟอร์ม (1, 2. โดยที่ 1 แทนรายได้และ 2 แทนรายจ่าย)   */
+        // return date_format(date_create($request['tran-datetime']), 'Y-m-d H:i:s');
         if ($request->trantype == 1) {
             $balance = User::find($request->us_id);
             $balance->balance += $request->amount;
@@ -49,17 +51,10 @@ class transactionController extends Controller
         $new_transaction = new Transaction;
         $new_transaction->us_id = $request->us_id;
         $new_transaction->transaction_type_id = $request->trantype;
+        $new_transaction->created_at = date_format(date_create($request['tran-datetime']), 'Y-m-d H:i:s');
 
         if ($request->otherCategory == null) { /*  ตรวจสอบว่าผู้ใช้เลือกหมวดหมู่ที่มีอยู่หรือไม่  */
-            $categories = Category::where([["transaction_type_id", $request->trantype], ["us_id", null]])
-                                    ->orWhere([["transaction_type_id", $request->trantype], ["us_id", $request->us_id]])
-                                    ->get();
-            foreach ($categories as $category){
-                if($request->category == $category->category_name) {
-                    $new_transaction->category_id = $category->id;
-                    break;
-                }
-            }
+            $new_transaction->category_id = $request->category;
         } else {  /*   สร้างหมวดหมู่ใหม่หากผู้ใช้เลือก "อื่น ๆ"  */
             $new_category = new Category;
             $new_category->category_name = $request->otherCategory;
@@ -95,5 +90,14 @@ class transactionController extends Controller
         //  return response()->json(['start'=>$request->Start, 'end'=>$request->End]);
         //  ส่งข้อมูลที่ดึงมาในรูปแบบ JSON
         return response()->json($result);
+    }
+
+    public function delCate(Request $request) {
+        Category::destroy($request['input-cate-id']);
+        return redirect()->back();
+    }
+
+    public function updateCate() {
+
     }
 }
