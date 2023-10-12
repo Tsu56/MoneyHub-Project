@@ -18,7 +18,8 @@
         <!-- @bootstrap -->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
             integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css" rel="stylesheet" />
+        {{-- <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css" rel="stylesheet" /> --}}
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
         <!-- @style.css -->
         @if(auth()->user()->is_plus)
             <link rel="stylesheet" type="text/css" href="{{ asset('css/premium.css') }}">
@@ -40,7 +41,7 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/locale/th.min.js"></script>
 
-        {{-- เช็ค Premium --}}
+        {{-- @jQuery --}}
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
         @yield('add-link')
@@ -76,7 +77,7 @@
                         <a class="nav-link text-white
                         @if (request()->routeIs('moneyhub.noteincome')) active @endif
                         "
-                            href="{{ route('moneyhub.noteincome', ['user_id' => auth()->user()->id]) }}">รายรับ-รายจ่าย</a>
+                            href="{{ route('moneyhub.noteincome') }}">รายรับ-รายจ่าย</a>
                     </li>
                     <!--  dropdown-menu start-->
                     <li class="nav-item dropdown">
