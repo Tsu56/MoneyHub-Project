@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Career;
 use App\Models\Enquiry;
 use App\Models\Gender;
+use App\Models\Payment;
 use App\Models\Transaction;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -31,9 +32,10 @@ class adminController extends Controller
         }
 
         $users = User::all();
+        $payments = Payment::all();
         $enquiries = Enquiry::all();
 
-        return view('adminhome', compact('amountOfUser', 'amountNormalUser', 'amountPremiumUser', 'dataCareer', 'users', 'enquiries'));
+        return view('adminhome', compact('amountOfUser', 'amountNormalUser', 'amountPremiumUser', 'dataCareer', 'users', 'enquiries', 'payments'));
     }
 
     public function delete($user_id){

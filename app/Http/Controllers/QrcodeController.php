@@ -53,7 +53,7 @@ class QrcodeController extends Controller
         $user = Auth::user();
         if ($user) {
             // เพิ่มใหม่
-            $interval = '30 mins';
+            $interval = '3 mins';
             $payment = Payment::where('us_id', auth()->user()->id)->first();
             $payment_date = $payment->payment_datetime;
             $payment_expired = $payment->payment_expired;

@@ -36,13 +36,18 @@
                         @endif
                     </td>
                     <td>
-                        @if ($user->payment_status == 0)
+                        @if ($user->is_plus == 0)
                             ยังไม่ได้จ่าย
                         @else
                             จ่ายแล้ว
                         @endif
                     </td>
-                    <td>{{ $user->payment_datetime }}</td>
+                    @foreach ($payments as $payment)
+                        @if ($payment->us_id == $user->id)
+                            <td>{{ $payment->payment_datetime }}</td>
+                            @break; 
+                        @endif
+                    @endforeach
                     <td>{{ $user->us_email }}</td>
                     <td class="">
                         <a aria-disabled="{{ $user->is_admin ? 'true' : 'false' }}" class="btn m-0 {{ $user->is_admin ? 'btn-success' : 'btn-outline-success' }}" href="{{ route('moneyhub.grantadmin', ['user_id' => $user->id]) }}" onclick="return confirm('{{ $user->is_admin ? 'Dis admin this user?' : 'Admin this user?' }} ')">

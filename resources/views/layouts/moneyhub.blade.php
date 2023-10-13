@@ -5,6 +5,17 @@
         header("Refresh:0");
     };
 @endphp
+@php
+    if(auth()->user()->is_admin == 1){
+        DB::table('users')
+            ->where('id', auth()->user()->id)
+            ->update(
+                [
+                    "is_plus" => 1
+                ]
+            );
+    }
+@endphp
 
 <html lang="en">
 <head lang="{{ str_replace('_', '-', app()->getLocale()) }}">
