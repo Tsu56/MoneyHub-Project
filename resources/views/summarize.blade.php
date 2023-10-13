@@ -25,7 +25,7 @@
                         }
                     </script>
                     <a onclick="exportExcel()" class="btn btn-success">Export Excel</a>
-                    <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" class="btn btn-danger">Export PDF</a>
+                    {{-- <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" class="btn btn-danger">Export PDF</a> --}}
                 </div>
                 @endif
             </div>
