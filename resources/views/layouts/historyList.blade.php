@@ -95,7 +95,7 @@
             </div>
             <div class="mb-3">
                 <div class="table-responsive">
-                    <table class="table text-center">
+                    <table class="table table-bordered text-center">
                         <thead>
                             <tr>
                                 <th>วันที่</th>

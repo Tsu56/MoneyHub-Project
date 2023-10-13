@@ -61,7 +61,8 @@
                                 <select class="form-select" name="category" id="category">
                                     @foreach ($categorys as $cate)
                                         <option db-id="{{ $cate->transaction_type_id }}" value="{{ $cate->id }}">
-                                            {{ $cate->category_name }}</option>
+                                            {{ $cate->us_id ? '👤' : '' }} {{ $cate->category_name }}
+                                        </option>
                                     @endforeach
                                 </select>
                             </div>
@@ -106,7 +107,7 @@
                 </div>
             </div>
         </div>
-        <div class="table-responsive">
+        <div class="table-responsive border shadow-sm rounded p-3">
             <table class="table table-hover">
                 <thead>
                     <tr>
@@ -115,12 +116,12 @@
                         <th scope="col" style="width: 20%;">ประเภท</th>
                         <th scope="col" style="width: 20%;">จำนวนเงิน</th>
                         <th scope="col" style="width: 20%;">คำอธิบาย</th>
-                        <th scope="col" class="d-flex justify-content-center">เพิ่มเติม</th>
+                        <th scope="col" class="d-flex justify-content-center"></th>
                     </tr>
                 </thead>
                 <tbody>
                     @foreach ($trans as $key => $detail)
-                        <tr class="table-secondary accordion-toggle" aria-expanded="false" data-bs-toggle="collapse"
+                        <tr class="table-dark accordion-toggle" aria-expanded="false" data-bs-toggle="collapse"
                             href="#collapse{{ $key }}" role='button' aria-controls="collapse{{ $key }}">
                             <td colspan="5">
                                 <script>
@@ -205,11 +206,6 @@
 
             </table>
         </div><br>
-        <script>
-            // $(document).ready(function() {
-            //     $('.collapse').collapse();
-            // });
-        </script>
     @endif
 
 @endsection

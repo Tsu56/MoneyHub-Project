@@ -88,7 +88,7 @@
                         </a>
                         <ul class="dropdown-menu custom-pink-dropdown" aria-labelledby="navbarDropdown">
                             <li><a class="dropdown-item"
-                                    href="{{ route('moneyhub.indexsummarize', ['user_id' => auth()->user()->id]) }}">สรุปแผนการเงิน</a>
+                                    href="{{ route('moneyhub.indexsummarize') }}">สรุปแผนการเงิน</a>
                             </li>
                             <li><a class="dropdown-item"
                                     href="{{ route('moneyhub.historyListReuslt') }}">ประวัติรายการ</a></li>
@@ -107,8 +107,33 @@
                 </ul>
 
                 <!--  navbar Profile-LogOut Start -->
+                @if(auth()->user()->is_plus)
+                <div class="navbar-nav mx-3">
+                    <a class="dropdown-item custom-nav-level2" id="time-out" href="{{ route('moneyhub.Qrcode') }}">
+                        อายุ Premium: 
+                        <span id="premium-out"></span>
+                    </a>
+                        <?php
+                            $payment = DB::table('payments')->where('us_id', auth()->user()->id)->first();
+                            $payment_date = $payment->payment_datetime;
+                            $payment_expired = $payment->payment_expired;
+                            $balance = auth()->user()->balance;
+                        ?>
+                        <script>
+                            setInterval(function () {
+                                $('#premium-out').text(moment('{{ $payment_expired }}').endOf('minus').fromNow());
+                                if(moment() >= moment('{{ $payment_expired }}')) {
+                                    location.reload();
+                                }
+                            }, 1000);
+                        </script>
+                </div>
+                @endif
                 <div class="navbar-nav">
-                    <span class="text-white">Balance: {{number_format(auth()->user()->balance, 2)}} บาท</span>
+                    <?php 
+                        $balance = auth()->user()->balance;    
+                    ?>
+                    <span class="text-white">Balance: <span class="fw-bold {{ ($balance >= 0) ? 'text-success' : 'text-danger' }}">{{number_format(auth()->user()->balance, 2)}}</span> บาท</span>
                 </div>
                 <ul class="navbar-nav">
                     <li class="nav-item dropdown">
@@ -124,23 +149,7 @@
                                         href="{{ route('moneyhub.Qrcode') }}">อัปเกรดสมาชิก</a></li>
                             @else
                                 <li>
-                                    <a class="dropdown-item custom-nav-level2" id="time-out" href="{{ route('moneyhub.Qrcode') }}">
-                                        วันหมดอายุ Premium: 
-                                        <span id="premium-out"></span>
-                                    </a>
-                                        <?php
-                                            $payment = DB::table('payments')->where('us_id', auth()->user()->id)->first();
-                                            $payment_date = $payment->payment_datetime;
-                                            $payment_expired = $payment->payment_expired;
-                                        ?>
-                                        <script>
-                                            setInterval(function () {
-                                                $('#premium-out').text(moment('{{ $payment_expired }}').endOf('minus').fromNow());
-                                                if(moment() >= moment('{{ $payment_expired }}')) {
-                                                    location.reload();
-                                                }
-                                            }, 1000);
-                                        </script>
+
                                 </li>
                             @endif
                             <li>
