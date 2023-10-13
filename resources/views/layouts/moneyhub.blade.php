@@ -119,26 +119,28 @@
 
                 <!--  navbar Profile-LogOut Start -->
                 @if(auth()->user()->is_plus)
-                <div class="navbar-nav mx-3">
-                    <a class="dropdown-item custom-nav-level2" id="time-out" href="{{ route('moneyhub.Qrcode') }}">
-                        อายุ Premium: 
-                        <span id="premium-out"></span>
-                    </a>
-                        <?php
-                            $payment = DB::table('payments')->where('us_id', auth()->user()->id)->first();
-                            $payment_date = $payment->payment_datetime;
-                            $payment_expired = $payment->payment_expired;
-                            $balance = auth()->user()->balance;
-                        ?>
-                        <script>
-                            setInterval(function () {
-                                $('#premium-out').text(moment('{{ $payment_expired }}').endOf('minus').fromNow());
-                                if(moment() >= moment('{{ $payment_expired }}')) {
-                                    location.reload();
-                                }
-                            }, 1000);
-                        </script>
-                </div>
+                    @if (auth()->user()->is_admin == 0) 
+                    <div class="navbar-nav mx-3">
+                        <a class="dropdown-item custom-nav-level2" id="time-out" href="{{ route('moneyhub.Qrcode') }}">
+                            อายุ Premium: 
+                            <span id="premium-out"></span>
+                        </a>
+                            <?php
+                                $payment = DB::table('payments')->where('us_id', auth()->user()->id)->first();
+                                $payment_date = $payment->payment_datetime;
+                                $payment_expired = $payment->payment_expired;
+                                $balance = auth()->user()->balance;
+                            ?>
+                            <script>
+                                setInterval(function () {
+                                    $('#premium-out').text(moment('{{ $payment_expired }}').endOf('minus').fromNow());
+                                    if(moment() >= moment('{{ $payment_expired }}')) {
+                                        location.reload();
+                                    }
+                                }, 1000);
+                            </script>
+                    </div>
+                    @endif
                 @endif
                 <div class="navbar-nav">
                     <?php 

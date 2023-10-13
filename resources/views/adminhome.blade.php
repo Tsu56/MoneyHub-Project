@@ -39,12 +39,20 @@
                         @if ($user->is_plus == 0)
                             ยังไม่ได้จ่าย
                         @else
-                            จ่ายแล้ว
+                            @if (auth()->user()->is_admin == 1)
+                                ผ่านฉลุย
+                            @else
+                                จ่ายแล้ว
+                            @endif
                         @endif
                     </td>
                     @foreach ($payments as $payment)
                         @if ($payment->us_id == $user->id)
-                            <td>{{ $payment->payment_datetime }}</td>
+                            @if (auth()->user()->is_admin == 1)
+                                <td>ผ่านฉลุย</td>
+                            @else
+                                <td>{{ $payment->payment_datetime }}</td>
+                            @endif
                             @break; 
                         @endif
                     @endforeach
