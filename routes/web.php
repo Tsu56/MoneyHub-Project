@@ -34,7 +34,7 @@ Route::middleware([
         return view('dashboard');
     })->name('dashboard');
     Route::get('/MoneyHub', [homeController::class, "index"])->name('moneyhub.indexhome');
-    Route::get('/MoneyHub/summarize/{user_id}', [summarizeController::class, "index"])->name('moneyhub.indexsummarize');
+    Route::get('/MoneyHub/summarize/', [summarizeController::class, "index"])->name('moneyhub.indexsummarize');
     Route::get('/MoneyHub/getSummarize', [summarizeController::class, "getSummarize"])->name('moneyhub.getsummarize');
     Route::post('/MoneyHub/getTransaction', [transactionController::class, "getAllTransaction"])->name('moneyhub.gettransaction');
     Route::post('MoneyHub/delCategory', [transactionController::class, 'delCate'])->name('moneyhub.delcate');

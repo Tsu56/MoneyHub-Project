@@ -9,7 +9,8 @@ use Illuminate\Support\Facades\DB;
 
 class summarizeController extends Controller
 {
-    public function index($user_id){
+    public function index(){
+        $user_id = auth()->user()->id;
         $StartdateForSetForm =  date_format(date_create(now()), 'Y-m-d');
         $EnddateForSetForm = date_format(date_create(now()), 'Y-m-d');
         $Total_income = Transaction::where('us_id', $user_id)
@@ -55,25 +56,26 @@ class summarizeController extends Controller
     }
 
     public function getSummarize(Request $request){
+        $user_id = auth()->user()->id;
         $StartdateForSetForm = date_format(date_create($request->startdate), 'Y-m-d 00:00:00') ;
         $EnddateForSetForm = date_format(date_create($request->enddate), 'Y-m-d 23:59:29') ;
-        $Total_income = Transaction::where('us_id', $request->us_id)
+        $Total_income = Transaction::where('us_id',$user_id)
                                    ->where('transaction_type_id', 1)
                                    ->whereBetween('transactions.created_at', [$StartdateForSetForm, $EnddateForSetForm])
                                    ->sum('transaction_amount');
-        $Total_expense = Transaction::where('us_id', $request->us_id)
+        $Total_expense = Transaction::where('us_id',$user_id)
                                    ->where('transaction_type_id', 2)
                                    ->whereBetween('transactions.created_at', [$StartdateForSetForm, $EnddateForSetForm])
                                    ->sum('transaction_amount');
         $listIncome = Transaction::join('categories', 'categories.id', '=', 'transactions.category_id')
-                                   ->where('transactions.us_id', $request->us_id)
+                                   ->where('transactions.us_id',$user_id)
                                    ->where('transactions.transaction_type_id', 1)
                                    ->whereBetween('transactions.created_at', [$StartdateForSetForm, $EnddateForSetForm])
                                    ->select('categories.category_name', DB::raw('SUM(transaction_amount) as Total_amount'))
                                    ->groupBy('transactions.category_id', 'categories.category_name')
                                    ->get();
         $listExpense = Transaction::join('categories', 'categories.id', '=', 'transactions.category_id')
-                                   ->where('transactions.us_id', $request->us_id)
+                                   ->where('transactions.us_id',$user_id)
                                    ->where('transactions.transaction_type_id', 2)
                                    ->whereBetween('transactions.created_at', [$StartdateForSetForm, $EnddateForSetForm])
                                    ->select('categories.category_name', DB::raw('SUM(transaction_amount) as Total_amount'))
