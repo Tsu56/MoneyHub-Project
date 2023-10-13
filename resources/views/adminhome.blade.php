@@ -5,6 +5,7 @@
     <h4><b id="TotalAmount">จำนวนผู้ใช้งาน</b></h4>
     <h5><span id="NormalUser">Normal User: </span></h5>
     <h5><span id="PremiumUser">Premiun User: </span></h5>
+    <h5><span id="PremiumUser">Admin: {{ $amountAdmin }}</span></h5>
     <div id="careerChart" style="height: 370px; width: 100%;"></div>
     <script src="https://cdn.canvasjs.com/canvasjs.min.js"></script>
     <br>
@@ -31,8 +32,10 @@
                     <td>
                         @if ($user->is_plus == 0)
                             Normal User
-                        @else
+                        @elseif($user->is_plus == 1 && $user->is_admin == 0)
                             Premium User
+                        @elseif($user->is_admin)
+                            Admin
                         @endif
                     </td>
                     <td>
