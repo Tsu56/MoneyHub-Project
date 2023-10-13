@@ -74,6 +74,9 @@
     </table>
     <br>
     <h4><b>คำร้องขอ</b></h4>
+    @if(!count($enquiries) )
+        <div class="alert alert-warning">ไม่มีข้อมูลจ้าาาาา</div>
+    @else
     <table class="table table-hover">
         <thead>
             <tr>
@@ -99,6 +102,7 @@
             @endforeach
         </tbody>
     </table>
+    @endif
     <script>
         $(document).ready(function() {
             @if ($amountOfUser <= 1)
