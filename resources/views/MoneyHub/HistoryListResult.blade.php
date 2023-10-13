@@ -2,7 +2,7 @@
 
 @section('sub-content')
     @if(session('refresh'))
-        {{ header("Refresh:0"); }}
+        {{ header("Refresh:0") }}
     @endif
 
     @if (!$trans)
