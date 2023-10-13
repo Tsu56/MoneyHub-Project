@@ -2,7 +2,7 @@
 
 @section('main')
     
-    <div class="container p-5 my-5 text-white custom-pink-container">
+    <div class="container p-5 my-5 text-white custom-pink-container rounded-5">
         <div>
             <div class="d-flex justify-content-between align-items-center">
                 <h2 class="py-6">สรุปแผนการเงิน</h2>
