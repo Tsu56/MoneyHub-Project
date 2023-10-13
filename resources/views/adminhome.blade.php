@@ -23,7 +23,7 @@
         </thead>
         <tbody class="table-group-divider">
             @foreach ($users as $user)
-                <tr>
+                <tr class=" {{ $user->is_admin ? 'table-warning' : ''}}">
                     <th scope="row">{{ $user->id }}</th>
                     <td>{{ $user->us_fname }} {{ $user->us_lname }}</td>
                     <td>{{ $user->gender->gender_name }}</td>
