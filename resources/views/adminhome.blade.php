@@ -48,7 +48,7 @@
                     </td>
                     @foreach ($payments as $payment)
                         @if ($payment->us_id == $user->id)
-                            @if (auth()->user()->is_admin == 1)
+                            @if ($user->is_admin == 1)
                                 <td>ผ่านฉลุย</td>
                             @else
                                 <td>{{ $payment->payment_datetime }}</td>
