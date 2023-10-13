@@ -146,7 +146,7 @@
                                 <td db-id="{{ $tran->category ? $tran->category->id : '' }}">
                                     {{ $tran->category ? $tran->category->category_name : '-' }}</td>
                                 <td><span
-                                        class=" {{ $tran->transaction_type->id == 1 ? 'text-success' : 'text-danger' }}">{{ number_format($tran->transaction_amount) }} ฿</span>
+                                        class=" {{ $tran->transaction_type->id == 1 ? 'text-success' : 'text-danger' }}">{{ number_format($tran->transaction_amount,2) }} ฿</span>
                                 <td>{{ $tran->transaction_description }}</td>
                                 <td>
                                     <div class="d-flex flex-row justify-content-end align-items-center">
