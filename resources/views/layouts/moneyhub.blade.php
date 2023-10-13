@@ -146,7 +146,7 @@
                     <?php 
                         $balance = auth()->user()->balance;    
                     ?>
-                    <span class="text-white">Balance: <span class="fw-bold {{ ($balance >= 0) ? 'text-success' : 'text-danger' }}">{{number_format(auth()->user()->balance, 2)}}</span> บาท</span>
+                    <span class="text-white">ยอดเงินคงเหลือ: <span class="fw-bold {{ ($balance >= 0) ? 'text-success' : 'text-danger' }}">{{number_format(auth()->user()->balance, 2)}}</span> บาท</span>
                 </div>
                 <ul class="navbar-nav">
                     <li class="nav-item dropdown">
