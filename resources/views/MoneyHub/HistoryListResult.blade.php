@@ -1,6 +1,10 @@
 @extends('layouts.historyList')
 
 @section('sub-content')
+    @if(session('refresh'))
+        {{ header("Refresh:0") }}
+    @endif
+
     @if (!$trans)
     <br><br>
         <div class="text-center">

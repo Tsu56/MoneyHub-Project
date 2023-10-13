@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use App\Models\Transaction;
+use App\Models\User;
 use DateTimeInterface;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
@@ -75,6 +76,15 @@ class historyListController extends Controller
         $trans = $trans->get();
         $trans = $this->conv_trans_key_date($trans);
         krsort($trans);
+
+        //Update Balance
+        $income = Transaction::where('us_id', $user_id)->where('transaction_type_id', 1)->sum('transaction_amount');
+        $expense = Transaction::where('us_id', $user_id)->where('transaction_type_id', 2)->sum('transaction_amount');
+        $balance = $income - $expense;
+        $user = User::find($user_id);
+        $user->balance = $balance;
+        $user->save(); 
+
         // return $categorys;
         // return $trans;
         // return array_keys($trans)[count($trans)-1];
@@ -124,7 +134,8 @@ class historyListController extends Controller
         $tran->update(['category_id' => $request['category']]);
         $tran->update(['transaction_amount' => $request['amount']]);
         // return $tran;
-        return redirect()->back();
+        // return view('MoneyHub.historyListResult');
+        return redirect()->back()->with('refresh', true);
     }
 
 }
