@@ -47,9 +47,26 @@
         </div>
 
         <br><br>
-        <div id="incomechart" style="height: 370px; width: 100%;"></div>
-        <div id="expensechart" style="height: 370px; width: 100%;"></div>
-        <script src="https://cdn.canvasjs.com/canvasjs.min.js"></script>
+        @if(empty($dataIncome) && empty($dataExpense))
+            <div class="alert alert-warning">
+                ไม่มีข้อมูลให้ประมวลผล <br>
+                <u> กรุณาเลือกช่วงวันที่ </u>
+            </div>
+        @else
+            <div class="show-graph">
+                <style>
+                    .canvasjs-chart-canvas {
+                        border-radius: 2em;
+                    }
+                    .canvasjs-chart-credit {
+                        display: none;
+                    }
+                </style>
+                <div class="mb-5" id="incomechart" style="height: 370px; width: 100%;"></div>
+                <div id="expensechart" style="height: 370px; width: 100%;"></div>
+                <script src="https://cdn.canvasjs.com/canvasjs.min.js"></script>
+            </div>
+        @endif
     </div>
     <script>
         function sendExport(){

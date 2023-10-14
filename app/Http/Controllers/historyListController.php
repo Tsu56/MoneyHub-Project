@@ -65,7 +65,7 @@ class historyListController extends Controller
         $categorys = Category::where("us_id", null)
                     ->orWhere("us_id", auth()->user()->id)
                     ->get();
-        $trans = Transaction:: with('transaction_type')->with('category')->selectRaw('*, date(transactions.created_at) as date')->where('us_id', $user_id);
+        $trans = Transaction:: with('transaction_type')->with(['category' => function($query) {return $query->withTrashed();}])->selectRaw('*, date(transactions.created_at) as date')->where('us_id', $user_id);
         if($request->start_date && $request->end_date) {
             $start = $request->start_date;
             $end = $request->end_date;
@@ -101,7 +101,7 @@ class historyListController extends Controller
         );
         $trans = Transaction::where('us_id', auth()->user()->id)->get();
         for($i=0; $i<count($trans); $i++) {
-            $trans[$i]['created_at'] = date_format(date_create($trans[$i]['created_at']), 'Y-m-d') ;
+            $trans[$i]['created_at'] = date_format(date_create($trans[$i]['created_at']), 'Y-m-d');
             if( strtotime($trans[$i]['created_at']) >= strtotime($start) && strtotime($trans[$i]['created_at']) <= strtotime($last)) {
                 if($trans[$i]['transaction_type_id'] == 1) $analize_trans['income'] += $trans[$i]['transaction_amount'];
                 if($trans[$i]['transaction_type_id'] == 2) $analize_trans['expense'] += $trans[$i]['transaction_amount'];

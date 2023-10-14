@@ -73,7 +73,7 @@
             @if (session('success'))
             <div class="alert alert-success">
                 {{ session('success') }} <br>
-                <a class="btn btn-success" href="{{ route('moneyhub.historyListReuslt') }}">ไปยังหน้าบันประวัติ</a>
+                <a class="btn btn-success" href="{{ route('moneyhub.historyListReuslt') }}">ไปยังหน้ารายการธุรกรรม</a>
             </div>
             @endif
             <br>

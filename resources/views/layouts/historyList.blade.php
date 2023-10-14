@@ -44,7 +44,7 @@
                 success: function(res) {
                     console.log(res);
                     $('#show-date').text(`${moment(start).format('LL')} ถึง ${moment(last).format('LL')}`);
-                    if(res.analy.balance > 0) {
+                    if(res.analy.balance >= 0) {
                         $('#show-sumarize').removeClass('text-danger');
                         $('#show-sumarize').addClass('text-success');
                     }else {

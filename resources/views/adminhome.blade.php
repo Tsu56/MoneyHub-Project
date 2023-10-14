@@ -35,7 +35,7 @@
                         @elseif($user->is_plus == 1 && $user->is_admin == 0)
                             Premium User
                         @elseif($user->is_admin)
-                            Admin
+                            🔧Admin
                         @endif
                     </td>
                     <td>
@@ -43,7 +43,7 @@
                             ยังไม่ได้จ่าย
                         @else
                             @if (auth()->user()->is_admin == 1)
-                                ผ่านฉลุย
+                                🔧ผ่านฉลุย
                             @else
                                 จ่ายแล้ว
                             @endif
@@ -52,7 +52,7 @@
                     @foreach ($payments as $payment)
                         @if ($payment->us_id == $user->id)
                             @if ($user->is_admin == 1)
-                                <td>ผ่านฉลุย</td>
+                                <td>🔧ผ่านฉลุย</td>
                             @else
                                 <td>{{ $payment->payment_datetime }}</td>
                             @endif
