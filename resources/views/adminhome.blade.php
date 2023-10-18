@@ -81,6 +81,7 @@
         <thead>
             <tr>
                 <th scope="col">ลำดับที่</th>
+                <th scope="col">วันที่</th>
                 <th scope="col">ชื่อผู้ใช้</th>
                 <th scope="col">E-mail</th>
                 <th scope="col">คำอธิบาย</th>

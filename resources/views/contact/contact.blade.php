@@ -14,10 +14,10 @@
                                 {{ session('success') }}
                             </div>
                         @endif
-                        <form action="" method="post">
+                        <form action="{{ route('moneyhub.contact.store') }}" method="post">
                             @csrf
                             <div class="row justify-content-center">
-                                <div class="form-group w-50 p-3" method="POST" action="">
+                                <div class="form-group w-50 p-3">
                                     <label for="name">ชื่อ<span class="text-danger"></span></label>
                                     <input type="text" name="name"
                                         value="{{ auth()->user()->us_fname . ' ' . auth()->user()->us_lname }}"
