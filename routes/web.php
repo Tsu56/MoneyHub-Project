@@ -54,7 +54,7 @@ Route::middleware([
     Route::get('/MoneyHub/QrCode', [QrcodeController::class, "QR"])->name('moneyhub.Qrcode');
     Route::get('/MoneyHub/QrCodelink', [QrcodeController::class, "link"])->name('moneyhub.Qrcodelink');
     Route::get('/MoneyHub/about', [homeController::class, "about"])->name('moneyhub.about');
-    
+
     Route::middleware([
         'admin'
         ])->group(function () {
